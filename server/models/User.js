@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 
-
 const userSchema = new mongoose.Schema({
     firstname:{type:String, required:true, min:6, max:231},
     lastname:{type:String, min:6, max:231},
@@ -11,8 +10,7 @@ const userSchema = new mongoose.Schema({
     country:{type:String},
     picture:{ type:String},
     password:{type:String, required: true, min: 6, max: 1024},
-    isAdmin:{type:Boolean, required: true},
-    status:{type:String, required: true},
+    // isAdmin:{type:Boolean, required: true},
     date:{type:Date, default: Date.now},
 });
 
