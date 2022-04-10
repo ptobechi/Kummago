@@ -1,7 +1,7 @@
 <?php
-// require "Mailer.php";
+require "../config/connection.php";
 
-class User{
+class User extends Database{
 
     public function userRegistration($firstname, $lastname, $email, $password){
         $this->firstname = $firstname;
@@ -18,8 +18,7 @@ class User{
         $password = mysqli_escape_string($this->connect(),$password);
 
         //Generate Userid 
-        $table = "register";
-        $userid = $this->IdGenerator($table);
+        $userid = $this->IdGenerator("register", "userid");
 
         // $pass = md5($password);
         $email_address = strtolower($email);
@@ -29,26 +28,24 @@ class User{
         $query = $this->connect()->query($sql);
         $numRows = $query->num_rows;
         if($numRows > 0){
-            echo "<script>alert('The Email Address Already Exists');  history.back();</script>";
-            die();
+            echo "emailExists";
+            exit;
         }
 
         //INSERT INTO TABLE
         $sql3 = "INSERT INTO register SET userid='$userid', email='$email_address', password='$password', status='0', date=NOW() ";
         $query3 = $this->connect()->query($sql3);
         if($query3){ 
-            $_SESSION["email"] = $email_address;
-            $_SESSION["userid"] = $userid;
-            $sql4 = "INSERT INTO profile SET userid='$userid', firstname='$firstname', lastname='$lastname', email='$email_address', date=NOW()";
+            $sql4 = "INSERT INTO profile SET userid='$userid', firstname='$firstname', lastname='$lastname', email='$email_address'";
             $query4 = $this->connect()->query($sql4);
 
             // $this->WelcomeMessage($email, $fname);
             
-            echo "<script>alert('Regristration successful, kindly proceed to verify your email address.'); window.location='../login.html'; </script>";
-            die();
+            echo "201";
+            exit;
         }else{
-            echo "<script>alert('An Unknown Error Occurred Try Again Later'); history.back();</script>";
-            die();
+            echo "400";
+            exit;
 
         }
 
@@ -74,27 +71,26 @@ class User{
                 $_SESSION["userid"] = $row["userid"];
 
                 if($row["status"] == "2"){
-                    $code = random_int(100000, 999999);
+                    // $code = random_int(100000, 999999);
 
-                    $this->TwoFactorAuthentication($code);
+                    // $this->TwoFactorAuthentication($code);
 
-                    echo "<script>window.location='../auth.html'; </script>";
+                    echo "101";
 
                 }elseif($row["status"] == "4"){
-                    echo "<script>alert('Account has been temporarily disabled. contact support'); history.back(); </script>";
-                    die();
-                }elseif($row["status"] == "0"){
-                    $this->WelcomeMessage($email, $fname);
-                    echo "<script>alert('Email address not verified, kindly proceed to your inbox and confirm the email address provided. Check your spam if not found in inbox'); history.back(); </script>";
-                    die();
+                    echo "401";
+                    exit;
+                }elseif($row["status"] == "x"){
+                    // $this->WelcomeMessage($email, $fname);
+                    echo "404";
+                    exit;
                 }
 
-                echo "<script>window.location='../$/index.php'; </script>";
+                echo "200";
             }
         }else{
-            echo "<script>alert('Incorrect email and password'); history.back(); </script>";
-            die();
-
+            echo "404";
+            exit;
         }
 
     }

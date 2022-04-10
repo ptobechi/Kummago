@@ -26,16 +26,16 @@ class Database{
         $generated_id = $explode[1];        
 
         //Check if Generated Id Already exisits on DB
-        $sql1 = "SELECT * FROM $table WHERE $table='$id'  ";
-        $query1 = $this->connect()->query($sql1);
-        $numRows1 = $query1->num_rows;
+        $sql = "SELECT * FROM $table WHERE $id='$generated_id'  ";
+        $query = $this->connect()->query($sql);
+        $numRows1 = $query->num_rows;
         if($numRows1 > 0){
             do{
                 $gen = uniqid(1,2);
                 $explode = explode('.', $gen);
                 $generated_id = $explode[1];
 
-                $sql1 = "SELECT * FROM $table WHERE $table='$id'  ";
+                $sql1 = "SELECT * FROM $table WHERE $id='$generated_id'  ";
                 $query11 = $this->connect()->query($sql11);
                 $rowCheck = $query11->num_rows;
             }while($rowCheck > 0);
@@ -49,13 +49,12 @@ class Database{
     protected function CreateDataTables(){
         $create_table = ("CREATE TABLE IF NOT EXISTS register ( 
             `id` INT NOT NULL AUTO_INCREMENT ,
-            `userid` VARCHAR(255) NOT NULL , 
-            `name` VARCHAR(255) NOT NULL , 
+            `userid` INT(11) NOT NULL , 
             `email` VARCHAR(255) NOT NULL , 
             `password` VARCHAR(255) NOT NULL ,  
-            `phrase` VARCHAR(500) NOT NULL ,  
-            `status` VARCHAR(255) NOT NULL ,   
-            `code` VARCHAR(255) NOT NULL ,   
+            `role` VARCHAR(50) NOT NULL ,   
+            `code` INT(11) NOT NULL ,   
+            `status` INT(11) NOT NULL ,   
             `date` DATETIME NOT NULL ,  
             PRIMARY KEY  (`id`),
             UNIQUE (`userid`) 
@@ -64,102 +63,52 @@ class Database{
 
         $create_table = ("CREATE TABLE IF NOT EXISTS profile ( 
             `id` INT NOT NULL AUTO_INCREMENT ,
-            `userid` VARCHAR(255) NOT NULL , 
-            `name` VARCHAR(255) NOT NULL , 
+            `userid` INT(11) NOT NULL , 
+            `firstname` VARCHAR(255) NOT NULL , 
+            `lastname` VARCHAR(255) NOT NULL , 
             `email` VARCHAR(255) NOT NULL , 
             `phone` VARCHAR(255) NOT NULL ,  
-            `wallet` VARCHAR(255) NOT NULL , 
             `address` VARCHAR(255) NOT NULL ,  
+            `state` VARCHAR(255) NOT NULL ,  
             `country` VARCHAR(255) NOT NULL , 
-            `postal` VARCHAR(255) NOT NULL ,  
-            `front` VARCHAR(255) NOT NULL ,  
-            `back` VARCHAR(255) NOT NULL ,  
-            `referral_code` VARCHAR(500) NOT NULL ,  
-            `status` VARCHAR(255) NOT NULL ,   
-            `date` DATETIME NOT NULL ,  
+            `image` VARCHAR(255) NOT NULL ,  
             PRIMARY KEY  (`id`),
             FOREIGN KEY (`userid`) REFERENCES register(`userid`)
         )ENGINE = InnoDB;");
         $create = $this->connect()->query($create_table);
 
-        $create_table = ("CREATE TABLE IF NOT EXISTS portfolio ( 
+        $create_table = ("CREATE TABLE IF NOT EXISTS box ( 
             `id` INT NOT NULL AUTO_INCREMENT ,
-            `userid` VARCHAR(255) NOT NULL , 
-            `crypto_id` VARCHAR(255) NOT NULL , 
-            `name` VARCHAR(255) NOT NULL , 
-            `email` VARCHAR(255) NOT NULL , 
-            `amount` VARCHAR(255) NOT NULL , 
-            `crypto_amount` VARCHAR(255) NOT NULL , 
-            `crypto_name` VARCHAR(255) NOT NULL , 
-            `profit` VARCHAR(255) NOT NULL , 
-            `roi_period` VARCHAR(255) NOT NULL , 
-            `plan` VARCHAR(255) NOT NULL , 
-            `wallet_address` VARCHAR(255) NOT NULL , 
-            `receipt` VARCHAR(255) NOT NULL , 
-            `status` VARCHAR(255) NOT NULL ,  
+            `boxid` INT(11) NOT NULL , 
+            `box` VARCHAR(255) NOT NULL , 
+            `descripton` VARCHAR(1976) NOT NULL , 
+            `items` VARCHAR(1976) NOT NULL , 
+            `total_sum` VARCHAR(255) NOT NULL , 
+            `status` INT(11) NOT NULL ,  
             `date` DATETIME NOT NULL ,  
-            PRIMARY KEY  (`id`),
-            FOREIGN KEY (`userid`) REFERENCES register(`userid`)
+            PRIMARY KEY  (`id`)
         )ENGINE = InnoDB;");
         $create = $this->connect()->query($create_table);
 
-        $create_table = ("CREATE TABLE IF NOT EXISTS withdrawals ( 
+        $create_table = ("CREATE TABLE IF NOT EXISTS orders ( 
             `id` INT NOT NULL AUTO_INCREMENT ,
-            `userid` VARCHAR(255) NOT NULL , 
-            `withdrawalid` VARCHAR(255) NOT NULL , 
+            `userid` INT(11) NOT NULL , 
+            `orderid` INT(11) NOT NULL , 
             `name` VARCHAR(255) NOT NULL , 
             `email` VARCHAR(255) NOT NULL , 
-            `amount` VARCHAR(255) NOT NULL , 
-            `crypto_amount` VARCHAR(255) NOT NULL , 
-            `crypto_name` VARCHAR(255) NOT NULL , 
-            `action` VARCHAR(255) NOT NULL , 
-            `wallet_address` VARCHAR(255) NOT NULL , 
-            `status` VARCHAR(255) NOT NULL ,  
+            `phone` VARCHAR(50) NOT NULL , 
+            `address` VARCHAR(555) NOT NULL , 
+            `basket` VARCHAR(1976) NOT NULL , 
+            `total_sum` VARCHAR(255) NOT NULL , 
+            `status` INT(11) NOT NULL ,  
+            `delivery_date` DATETIME NOT NULL ,  
             `date` DATETIME NOT NULL ,  
             PRIMARY KEY  (`id`),
             FOREIGN KEY (`userid`) REFERENCES register(`userid`) 
         )ENGINE = InnoDB;");
         $create = $this->connect()->query($create_table);
 
-        $create_table = ("CREATE TABLE IF NOT EXISTS wallet_address ( 
-            `id` INT NOT NULL AUTO_INCREMENT ,
-            `currency` VARCHAR(255) NOT NULL , 
-            `address` VARCHAR(255) NOT NULL , 
-            `img` VARCHAR(255) NOT NULL , 
-            `tag` VARCHAR(255) NOT NULL , 
-            PRIMARY KEY  (`id`)
-        )ENGINE = InnoDB;");
-        $create = $this->connect()->query($create_table);
-
-
-        $create_table = ("CREATE TABLE IF NOT EXISTS admin ( 
-            `id` INT NOT NULL AUTO_INCREMENT ,
-            `userid` INT(11) NOT NULL , 
-            `email` VARCHAR(255) NOT NULL , 
-            `password` VARCHAR(255) NOT NULL , 
-            `status` INT(11) NOT NULL , 
-            `date` DATETIME NOT NULL , 
-            PRIMARY KEY  (`id`)
-        )ENGINE = InnoDB;");
-        $create = $this->connect()->query($create_table);
-
-        $create_table = ("CREATE TABLE IF NOT EXISTS bonus ( 
-            `id` INT NOT NULL AUTO_INCREMENT ,
-            `userid` VARCHAR(255) NOT NULL , 
-            `bonusid` VARCHAR(255) NOT NULL , 
-            `investmentid` VARCHAR(255) NOT NULL , 
-            `investor` VARCHAR(255) NOT NULL , 
-            `bonus` VARCHAR(255) NOT NULL , 
-            `currency` VARCHAR(255) NOT NULL , 
-            `action` VARCHAR(255) NOT NULL , 
-            `amount` VARCHAR(255) NOT NULL , 
-            `status` VARCHAR(255) NOT NULL ,   
-            `investment_date` DATETIME NOT NULL ,  
-            `date` DATETIME NOT NULL ,  
-            PRIMARY KEY  (`id`),
-            FOREIGN KEY (`userid`) REFERENCES register(`userid`)
-        )ENGINE = InnoDB;");
-        $create = $this->connect()->query($create_table);
+       
 
    
     }
