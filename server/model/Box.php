@@ -57,7 +57,7 @@ class Box extends Database{
                             <span class='fw-bold fs-4 text-muted'>$rows[descripton]</span>
                         </span>
                     </span>
-                </label>
+                </label></div>
                 ";
             }
         }else{

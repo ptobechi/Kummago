@@ -104,7 +104,7 @@ function removeItem(id){
 
 
 }
-alert("ghh")
+// alert("ghh")
 
 
 
