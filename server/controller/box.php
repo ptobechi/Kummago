@@ -17,3 +17,9 @@ if($_POST["action"] == "place_order"){
 if($_POST["action"] == "getBox"){
     $box->getBox();
 }
+
+if($_POST["action"] == "getBoxDetails"){
+    $id = $_POST["id"];
+
+    $box->getBoxDetails($id);
+}

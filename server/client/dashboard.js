@@ -1,17 +1,30 @@
-// alert("we re ahe")
+// alert("we re ahe");
 (function(){
     $.ajax({
         url: "../server/controller/box.php",
         method: "POST",
         data:{action:"getBox"},
         success: function (data) {
-            const label = document.createElement("div");
-            // label.addClass = "btn btn-outline btn-outline-dashed btn-outline-default d-flex text-start p-6";
-            label.innerHTML = data;
-
             const label_div = document.getElementById("label_div");
-            const before = document.getElementById("label");
-            label_div.insertBefore(label, before);
+            label_div.innerHTML += data;
+        },
+        error: function (e) {
+            $("#output").text(e.responseText);
+            console.log("ERROR : ", e);
+            $("#place-order").prop("disabled", false);
+        }
+    });
+
+})();
+
+(function(){
+    $.ajax({
+        url: "../server/controller/order.php",
+        method: "POST",
+        data:{action:"getDraftedOrder"},
+        success: function (data) {
+            const todo_list_body = document.getElementById("todo_list_body");
+            todo_list_body.innerHTML += data;
         },
         error: function (e) {
             $("#output").text(e.responseText);
@@ -23,3 +36,24 @@
     
 })();
 
+function box_details(boxid){
+    document.getElementById("detail_div").innerHTML = "";
+    $.ajax({
+        url: "../server/controller/box.php",
+        method: "POST",
+        data:{action:"getBoxDetails", id:boxid},
+        success: function (data) {
+            console.log(data)
+            const label_div = document.getElementById("detail_div");
+            label_div.innerHTML += data;            
+        },
+        error: function (e) {
+            $("#output").text(e.responseText);
+            console.log("ERROR : ", e);
+            $("#place-order").prop("disabled", false);
+        }
+    });
+    
+
+
+}

@@ -13,5 +13,9 @@ if($_POST["action"] == "register"){
     $email = $_POST["email"];
     $password = $_POST["password"];
 
-    $user->UserLogin($email, $password);
+    $user->userLogin($email, $password);
+}elseif($_POST["action"] == "getProfile"){
+    
+
+    $user->retrieveProfile();
 }

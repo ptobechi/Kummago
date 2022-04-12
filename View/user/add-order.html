@@ -24,7 +24,8 @@
 		<!--end::Page Vendor Stylesheets-->
 		<!--begin::Global Stylesheets Bundle(used by all pages)-->
 		<link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
-		<link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+		<link href="assets/css/style.dark.bundle.css" rel="stylesheet" type="text/css" />
+		<!-- <link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" /> -->
 		<!--end::Global Stylesheets Bundle-->
 	</head>
 	<!--end::Head-->
@@ -64,7 +65,7 @@
 						<div class="hover-scroll-overlay-y my-5 my-lg-5" id="kt_aside_menu_wrapper" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-height="auto" data-kt-scroll-dependencies="#kt_aside_logo, #kt_aside_footer" data-kt-scroll-wrappers="#kt_aside_menu" data-kt-scroll-offset="0">
 							<!--begin::Menu-->
 							<div class="menu menu-column menu-title-gray-800 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500" id="#kt_aside_menu" data-kt-menu="true" data-kt-menu-expand="false">
-								<div class="menu-item">
+								<div class="menu-item"><a href="user/index.html">
 									<span class="menu-link">
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
@@ -78,10 +79,10 @@
 											</span>
 											<!--end::Svg Icon-->
 										</span>
-										<span class="menu-title">Dashboards</span>
-									</span>
+										<span class="menu-title">Dashboard</span>
+									</span></a>
 								</div>
-								<div  class="menu-item">
+								<div  class="menu-item"><a href="user/orders.html">
 									<span class="menu-link">
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm001.svg-->
@@ -96,14 +97,14 @@
 											<!--end::Svg Icon-->
 										</span>
 										<span class="menu-title">Orders</span>
-									</span>
+									</span></a>
 								</div>
 								<div class="menu-item">
 									<div class="menu-content pt-8 pb-0">
 										<span class="menu-section text-muted text-uppercase fs-8 ls-1">user management</span>
 									</div>
 								</div>
-								<div  class="menu-item">
+								<div  class="menu-item"><a href="user/profile.html">
 									<span class="menu-link">
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotune/communication/com013.svg-->
@@ -116,10 +117,10 @@
 											<!--end::Svg Icon-->
 										</span>
 										<span class="menu-title">Profile</span>
-									</span> 
+									</span> </a>
 								</div>
 								<div class="menu-item">
-									<a class="menu-link" href="apps/calendar.html">
+									<a class="menu-link" href="user/settings.html">
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotune/general/gen051.svg-->
 											<span class="svg-icon svg-icon-2">
@@ -290,23 +291,14 @@
 										</li>
 										<!--end::Item-->
 										<!--begin::Item-->
-										<li class="breadcrumb-item text-muted">eCommerce</li>
+										<li class="breadcrumb-item text-muted">Box</li>
 										<!--end::Item-->
 										<!--begin::Item-->
 										<li class="breadcrumb-item">
 											<span class="bullet bg-gray-300 w-5px h-2px"></span>
 										</li>
-										<!--end::Item-->
 										<!--begin::Item-->
-										<li class="breadcrumb-item text-muted">Sales</li>
-										<!--end::Item-->
-										<!--begin::Item-->
-										<li class="breadcrumb-item">
-											<span class="bullet bg-gray-300 w-5px h-2px"></span>
-										</li>
-										<!--end::Item-->
-										<!--begin::Item-->
-										<li class="breadcrumb-item text-dark">Add Order</li>
+										<li class="breadcrumb-item text-dark">Customise Box</li>
 										<!--end::Item-->
 									</ul>
 									<!--end::Breadcrumb-->
@@ -353,6 +345,16 @@
 														<!--end::Label-->
 														<!--begin::Select2-->
 														<input type="text" class="form-control" id="box_description" >
+														<!--end::Select2-->
+													</div>
+													<!--end::Input group-->
+													<!--begin::Input group-->
+													<div class="fv-row">
+														<!--begin::Label-->
+														<label class="required form-label">Set Delivery Date</label>
+														<!--end::Label-->
+														<!--begin::Select2-->
+														<input type="date" class="form-control" id="delivery_date" >
 														<!--end::Select2-->
 													</div>
 													<!--end::Input group-->
@@ -444,11 +446,11 @@
 										
 										<div class="d-flex justify-content-end">
 											<!--begin::Button-->
-											<a href="user/" id="kt_ecommerce_edit_order_cancel" class="btn btn-light me-5">Cancel</a>
+											<button type="submit" id="save_to_draft" class="btn btn-light me-5">Save to Draft</button>
 											<!--end::Button-->
 											<!--begin::Button-->
 											<button type="submit" id="place-order" class="btn btn-primary">
-												<span class="indicator-label">Save Changes</span>
+												<span class="indicator-label">Place Order</span>
 												<span class="indicator-progress">Please wait...
 												<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
 											</button>

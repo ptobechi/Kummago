@@ -52,7 +52,7 @@ class User extends Database{
 
     }
 
-    public function UserLogin($email, $password){
+    public function userLogin($email, $password){
         $this->email = $email;
         $this->password = $password;
 
@@ -95,7 +95,7 @@ class User extends Database{
 
     }
 
-    public function RetrieveProfile(){
+    public function retrieveProfile(){
         $userid = $_SESSION["userid"];
         $email = $_SESSION["email"];
 
@@ -112,7 +112,7 @@ class User extends Database{
 
             $user[] = "";
         }
-        return $user;
+        echo json_encode($user, true);
     }
 
     public function UpdateProfile($fname, $phone, $address, $postal, $country, $wallet){

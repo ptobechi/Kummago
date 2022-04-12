@@ -263,135 +263,157 @@
 								<!--begin::Page title-->
 								<div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
 									<!--begin::Title-->
-									<h1 class="d-flex text-dark fw-bolder fs-3 align-items-center my-1">Logistics</h1>
+									<h1 class="d-flex text-dark fw-bolder fs-3 align-items-center my-1">Profile</h1>
 									<!--end::Title-->
+									<!--begin::Separator-->
+									<span class="h-20px border-gray-300 border-start mx-4"></span>
+									<!--end::Separator-->
+									<!--begin::Breadcrumb-->
+									<ul class="breadcrumb breadcrumb-separatorless fw-bold fs-7 my-1">
+										<!--begin::Item-->
+										<li class="breadcrumb-item text-muted">
+											<a href="../../demo1/dist/index.html" class="text-muted text-hover-primary">Home</a>
+										</li>
+										<!--end::Item-->
+										<!--begin::Item-->
+										<li class="breadcrumb-item">
+											<span class="bullet bg-gray-300 w-5px h-2px"></span>
+										</li>
+										<!--end::Item-->
+										<!--begin::Item-->
+										<li class="breadcrumb-item text-muted">User Management</li>
+										<!--end::Item-->
+										<!--begin::Item-->
+										<li class="breadcrumb-item">
+											<span class="bullet bg-gray-300 w-5px h-2px"></span>
+										</li>
+										<!--end::Item-->
+										<!--begin::Item-->
+										<li class="breadcrumb-item text-dark">Profile</li>
+										<!--end::Item-->
+									</ul>
+									<!--end::Breadcrumb-->
 								</div>
 								<!--end::Page title-->
-								<!--begin::Actions-->
-								<div class="d-flex align-items-center gap-2 gap-lg-3">
-									<!--begin::Primary button-->
-									<a href="user/add-order.html" class="btn btn-sm btn-primary">Customise Box</a>
-									<!--end::Primary button-->
-								</div>
-								<!--end::Actions-->
 							</div>
 							<!--end::Container-->
 						</div>
 						<!--end::Toolbar-->
-
-
-
-
 						<!--begin::Post-->
 						<div class="post d-flex flex-column-fluid" id="kt_post">
 							<!--begin::Container-->
 							<div id="kt_content_container" class="container-xxl">
-								<!--begin::Row-->
-								<div class="row gy-5 g-xl-10">
-									<!--begin::Col-->
-									<div class="col-xl-4 mb-xl-10">
-										<!--begin::Engage widget 1-->
-										<div class="card h-md-100">
-											<!--begin::Body-->
-											<div class="card-body d-flex flex-column flex-center">
-												<!--begin::Heading-->
-												<div class="mb-2">
-													<!--begin::Title-->
-													<h1 class="fw-bold text-gray-800 text-center lh-lg">Quick form to
-													<br />
-													<span class="fw-boldest">Build Box</span></h1>
-													<!--end::Title-->
-													<!--begin::Illustration-->
-													<div class="flex-grow-1 bgi-no-repeat bgi-size-contain bgi-position-x-center card-rounded-bottom h-200px mh-200px my-5 my-lg-12" style="background-image:url('assets/media/svg/illustrations/easy/4.svg')"></div>
-													<!--end::Illustration-->
-												</div>
-												<!--end::Heading-->
-												<!--begin::Links-->
-												<div class="text-center">
-													<!--begin::Link-->
-													<a class="btn btn-sm btn-primary me-2" data-bs-target="#kt_modal_offer_a_deal" data-bs-toggle="modal">Quick Box</a>
-													<!--end::Link-->
-												</div>
-												<!--end::Links-->
-											</div>
-											<!--end::Body-->
+								<!--begin::Basic info-->
+								<div class="card mb-5 mb-xl-10">
+									<!--begin::Card header-->
+									<div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse" data-bs-target="#kt_account_profile_details" aria-expanded="true" aria-controls="kt_account_profile_details">
+										<!--begin::Card title-->
+										<div class="card-title m-0">
+											<h3 class="fw-bolder m-0">Profile Details</h3>
 										</div>
-										<!--end::Engage widget 1-->
+										<!--end::Card title-->
 									</div>
-									<!--end::Col-->
-
-
-
-
-									<!--begin::Col-->
-									<div class="col-xl-4">
-										<!--begin::List Widget 3-->
-										<div class="card card-xl-stretch mb-xl-8">
-											<!--begin::Header-->
-											<div class="card-header border-0">
-												<h3 class="card-title fw-bolder text-dark">Todo List</h3>
-												
-											</div>
-											<!--end::Header-->
-											<!--begin::Body-->
-											<div class="card-body pt-2" id="todo_list_body">
-												<!--begin::Item-->
-												<!-- <div class="d-flex align-items-center mb-8">
-													<span class="bullet bullet-vertical h-40px bg-success"></span>
-													<div class="flex-grow-1 mx-5">
-														<a href="#" class="text-gray-800 text-hover-primary fw-bolder fs-6">Easter Shopping</a>
-														<span class="text-muted fw-bold d-block">Due in 2 Days</span>
-													</div>
-													<span class="badge badge-light-success fs-8 fw-bolder">Edit</span>
-												</div> -->
-												<!--end:Item-->
-											</div>
-											<!--end::Body-->
-										</div>
-										<!--end:List Widget 3-->
-									</div>
-									<!--end::Col-->
-
-
-
-
-
-									<div class="col-xl-4">
-										<!--begin::List Widget 5-->
-										<div class="card card-xl-stretch">
-											<!--begin::Header-->
-											<div class="card-header align-items-center border-0 mt-4">
-												<h3 class="card-title align-items-start flex-column">
-													<span class="fw-bolder mb-2 text-dark">Activities</span>
-													<!-- <span class="text-muted fw-bold fs-7">890,344 Sales</span> -->
-												</h3>
-											</div>
-											<!--end::Header-->
-											<!--begin::Body-->
-											<div class="card-body pt-5">
-												<!--begin::Timeline-->
-												<div class="timeline-label">
-													<!--begin::Item-->
-													<div class="timeline-item">
-														<div class="timeline-label fw-bolder text-gray-800 fs-6">08:42</div>
-														<div class="timeline-badge">
-															<i class="fa fa-genderless text-warning fs-1"></i>
+									<!--begin::Card header-->
+									<!--begin::Content-->
+									<div id="kt_account_settings_profile_details" class="collapse show">
+										<!--begin::Form-->
+										<form id="kt_account_profile_details_form" class="form">
+											<!--begin::Card body-->
+											<div class="card-body border-top p-9">
+												<!--begin::Input group-->
+												<div class="row mb-6">
+													<!--begin::Label-->
+													<label class="col-lg-4 col-form-label fw-bold fs-6">Avatar</label>
+													<!--end::Label-->
+													<!--begin::Col-->
+													<div class="col-lg-8">
+														<!--begin::Image input-->
+														<div class="image-input image-input-outline" data-kt-image-input="true" style="background-image: url('assets/media/svg/avatars/blank.svg')">
+															<!--begin::Preview existing avatar-->
+															<div class="image-input-wrapper w-125px h-125px" style="background-image: url(assets/media/avatars/300-1.jpg)"></div>
+															<!--end::Preview existing avatar-->
+															<!--begin::Label-->
+															<label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" title="Change avatar">
+																<i class="bi bi-pencil-fill fs-7"></i>
+																<!--begin::Inputs-->
+																<input type="file" name="avatar" accept=".png, .jpg, .jpeg" />
+																<input type="hidden" name="avatar_remove" />
+																<!--end::Inputs-->
+															</label>
+															<!--end::Label-->
+															<!--begin::Cancel-->
+															<span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="cancel" data-bs-toggle="tooltip" title="Cancel avatar">
+																<i class="bi bi-x fs-2"></i>
+															</span>
+															<!--end::Cancel-->
+															<!--begin::Remove-->
+															<span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="remove" data-bs-toggle="tooltip" title="Remove avatar">
+																<i class="bi bi-x fs-2"></i>
+															</span>
+															<!--end::Remove-->
 														</div>
-														<div class="fw-mormal timeline-content text-muted ps-3">Outlines keep you honest. And keep structure</div>
+														<!--end::Image input-->
+														<!--begin::Hint-->
+														<div class="form-text">Allowed file types: png, jpg, jpeg.</div>
+														<!--end::Hint-->
 													</div>
-													<!--end::Item-->
-												   
+													<!--end::Col-->
 												</div>
-												<!--end::Timeline-->
+												<!--end::Input group-->
+												<!--begin::Input group-->
+												<div class="row mb-6">
+													<!--begin::Label-->
+													<label class="col-lg-4 col-form-label required fw-bold fs-6">Full Name</label>
+													<!--end::Label-->
+													<!--begin::Col-->
+													<div class="col-lg-8">
+														<!--begin::Row-->
+														<div class="row">
+															<!--begin::Col-->
+															<div class="col-lg-6 fv-row">
+																<input type="text" name="fname" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="First name" value="Max" />
+															</div>
+															<!--end::Col-->
+															<!--begin::Col-->
+															<div class="col-lg-6 fv-row">
+																<input type="text" name="lname" class="form-control form-control-lg form-control-solid" placeholder="Last name" value="Smith" />
+															</div>
+															<!--end::Col-->
+														</div>
+														<!--end::Row-->
+													</div>
+													<!--end::Col-->
+												</div>
+												<!--end::Input group-->
+												<!--begin::Input group-->
+												<div class="row mb-6">
+													<!--begin::Label-->
+													<label class="col-lg-4 col-form-label fw-bold fs-6">
+														<span class="required">Contact Phone</span>
+														<i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="Phone number must be active"></i>
+													</label>
+													<!--end::Label-->
+													<!--begin::Col-->
+													<div class="col-lg-8 fv-row">
+														<input type="tel" name="phone" class="form-control form-control-lg form-control-solid" placeholder="Phone number" value="044 3276 454 935" />
+													</div>
+													<!--end::Col-->
+												</div>
+												<!--end::Input group-->
 											</div>
-											<!--end: Card Body-->
-										</div>
-										<!--end: List Widget 5-->
+											<!--end::Card body-->
+											<!--begin::Actions-->
+											<div class="card-footer d-flex justify-content-end py-6 px-9">
+												<button type="reset" class="btn btn-light btn-active-light-primary me-2">Discard</button>
+												<button type="submit" class="btn btn-primary" id="kt_account_profile_details_submit">Save Changes</button>
+											</div>
+											<!--end::Actions-->
+										</form>
+										<!--end::Form-->
 									</div>
-									
-									
+									<!--end::Content-->
 								</div>
-								<!--end::Row-->
+								<!--end::Basic info-->
 							</div>
 							<!--end::Container-->
 						</div>
@@ -826,240 +848,7 @@
 		<!--end::Scrolltop-->
 		<!--begin::Modals-->
 		
-		<!--begin::Modal - Offer A Deal-->
-		<div class="modal fade" id="kt_modal_offer_a_deal" tabindex="-1" aria-hidden="true">
-			<!--begin::Modal dialog-->
-			<div class="modal-dialog modal-dialog-centered mw-1000px">
-				<!--begin::Modal content-->
-				<div class="modal-content">
-					<!--begin::Modal header-->
-					<div class="modal-header py-7 d-flex justify-content-between">
-						<!--begin::Modal title-->
-						<h2>Quick Box</h2>
-						<!--end::Modal title-->
-						<!--begin::Close-->
-						<div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
-							<!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
-							<span class="svg-icon svg-icon-1">
-								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-									<rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="black" />
-									<rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="black" />
-								</svg>
-							</span>
-							<!--end::Svg Icon-->
-						</div>
-						<!--end::Close-->
-					</div>
-					<!--begin::Modal header-->
-					<!--begin::Modal body-->
-					<div class="modal-body scroll-y m-5">
-						<!--begin::Stepper-->
-						<div class="stepper stepper-links d-flex flex-column" id="kt_modal_offer_a_deal_stepper">
-							<!--begin::Nav-->
-							<div class="stepper-nav justify-content-center py-2">
-								<!--begin::Step 1-->
-								<div class="stepper-item me-5 me-md-15 current" data-kt-stepper-element="nav">
-									<h3 class="stepper-title">Select Box</h3>
-								</div>
-								<!--end::Step 1-->
-								<!--begin::Step 2-->
-								<div class="stepper-item me-5 me-md-15" data-kt-stepper-element="nav">
-									<h3 class="stepper-title">Box Content</h3>
-								</div>
-								<!--end::Step 2-->
-								<!--begin::Step 3-->
-								<div class="stepper-item me-5 me-md-15" data-kt-stepper-element="nav">
-									<h3 class="stepper-title">Finish</h3>
-								</div>
-								<!--end::Step 3-->
-							</div>
-							<!--end::Nav-->
-
-
-
-							<!--begin::Form-->
-							<form class="mx-auto mw-500px w-100 pt-15 pb-10" novalidate="novalidate" id="kt_modal_offer_a_deal_form">
-								<!--begin::Type-->
-								<div class="current" data-kt-stepper-element="content">
-									<!--begin::Wrapper-->
-									<div class="w-100">
-										<!--begin::Heading-->
-										<div class="mb-13">
-											<!--begin::Description-->
-											<div class="text-muted fw-bold fs-5">If you need more info, please check out
-											<a href="#" class="link-primary fw-bolder">FAQ Page</a>.</div>
-											<!--end::Description-->
-										</div>
-										<!--end::Heading-->
-										<!--begin::Input group-->
-										<div class="fv-row mb-15" data-kt-buttons="true" id="label_div">
-											<!--begin::Option-->
-											<!-- <label class="btn btn-outline btn-outline-dashed btn-outline-default d-flex text-start p-6">
-												<input class="btn-check" type="radio" name="offer_type" value="2" />
-												<span class="d-flex">
-													<span class="svg-icon svg-icon-3hx">
-														<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-															<rect x="2" y="2" width="9" height="9" rx="2" fill="black" />
-															<rect opacity="0.3" x="13" y="2" width="9" height="9" rx="2" fill="black" />
-															<rect opacity="0.3" x="13" y="13" width="9" height="9" rx="2" fill="black" />
-															<rect opacity="0.3" x="2" y="13" width="9" height="9" rx="2" fill="black" />
-														</svg>
-													</span>
-													<span class="ms-4">
-														<span class="fs-3 fw-bolder text-gray-900 mb-2 d-block">Fruit Box</span>
-														<span class="fw-bold fs-4 text-muted">Create corporate account to manage users</span>
-													</span>
-												</span>
-											</label> -->
-											<!--end::Option-->
-
-											<!-- <div id="label"></div> -->
-										</div>
-										<!--end::Input group-->
-									</div>
-									<!--end::Wrapper-->
-								</div>
-								<!--end::Type-->
-								<!--begin::Details-->
-								<div data-kt-stepper-element="content">
-									<!--begin::Wrapper-->
-									<div class="w-100">
-										<!--begin::Heading-->
-										<!-- <div class="mb-13">
-											<div class="text-muted fw-bold fs-5">If you need more info, please check out
-											<a href="#" class="link-primary fw-bolder">FAQ Page</a>.</div>
-										</div> -->
-										<!--end::Heading-->
-
-										<!--begin::List widget 11-->
-										<!--begin::Body-->
-										<div class="card-body pt-4" id="detail_div">
-											<!--begin::Item-->
-											<!-- <div class="d-flex flex-stack">
-												<div class="d-flex align-items-center me-5">
-													<div class="symbol symbol-40px me-4">
-														<span class="symbol-label">
-															<i class="fonticon-ship fs-1 p-0 text-gray-600"></i>
-														</span>
-													</div>
-													<div class="me-5">
-														<a href="#" class="text-gray-800 fw-bolder text-hover-primary fs-6">Banana</a>
-													</div>
-												</div>
-												<div class="text-gray-400 fw-bolder fs-7 text-end">
-													<span class="text-gray-800 fw-bolder fs-6 d-block">2,345,500</span>
-													Remove
-												</div>
-											</div> -->
-											<!--end::Item-->
-
-											<!-- <div id="detail"></div> -->
-											
-											<!--begin::Separator-->
-											<div class="separator separator-dashed my-5"></div>
-											<!--end::Separator-->
-											<!--begin::Wrapper-->
-											<div class="text-gray-400 fw-bolder fs-7 text-end">
-												<!--begin::Number-->
-												<span class="text-gray-800 fw-bolder fs-6 d-block">2,345,500</span>
-												<!--end::Number-->
-											</div>
-											<!--end::Wrapper-->
-											
-										</div>
-										<!--end::Body-->
-										
-
-
-										<!--begin::Actions-->
-										<div class="d-flex flex-stack">
-											<button type="button" class="btn btn-lg btn-light me-3" data-kt-element="details-previous">Back</button>
-											<button type="button" class="btn btn-lg btn-primary" data-kt-element="details-next">
-												<span class="indicator-label">Next</span>
-												<span class="indicator-progress">Please wait...
-												<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
-											</button>
-										</div>
-										<!--end::Actions-->
-									</div>
-									<!--end::Wrapper-->
-								</div>
-								<!--end::Details-->
-								<!--begin::Budget-->
-								<div data-kt-stepper-element="content">
-									<!--begin::Wrapper-->
-									<div class="w-100">
-										<!--begin::Input group-->
-										<div class="fv-row mb-8">
-											<!--begin::Label-->
-											<label class="d-flex align-items-center fs-6 fw-bold mb-2">
-												<span class="required">Setup Delivery Date</span>
-											</label>
-											<!--end::Label-->
-											<!--begin::Dialer-->
-											<div class="position-relative w-lg-250px" >	
-												<!--begin::Input control-->
-												<input type="date" class="form-control form-control-solid border-0 ps-12" name="delivery_date"  />
-												<!--end::Input control-->
-											</div>
-											<!--end::Dialer-->
-										</div>
-										<!--end::Input group-->
-										<!--begin::Input group-->
-										<div class="fv-row mb-8">
-											<!--begin::Label-->
-											<label class="fs-6 fw-bold mb-2">Delivery Info</label>
-											<!--end::Label-->
-											<!--begin::Row-->
-											<div class="row g-9" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button='true']">
-												<!--begin::Col-->
-												<div class="col-md-12 col-lg-12 col-xxl-12">
-													<!--begin::Option-->
-													<label class="btn btn-outline btn-outline-dashed btn-outline-default active d-flex text-start p-6" data-kt-button="true">
-														<!--begin::Radio-->
-														<span class="form-check form-check-custom form-check-solid form-check-sm align-items-start mt-1">
-															<input class="form-check-input" type="radio" name="finance_usage" value="1" checked="checked" />
-														</span>
-														<!--end::Radio-->
-														<!--begin::Info-->
-														<span class="ms-5">
-															<span class="fs-4 fw-bolder text-gray-800 mb-2 d-block">Additional Information</span>
-															<span class="fw-bold fs-7 text-gray-600">Delivery will be done on your selected date of your choice. Do ensure to be available for your box pickup.</span>
-														</span>
-														<!--end::Info-->
-													</label>
-													<!--end::Option-->
-												</div>
-												<!--end::Col-->
-											</div>
-											<!--end::Row-->
-										</div>
-										<!--end::Input group-->
-										<!--begin::Actions-->
-										<div class="d-flex flex-stack">
-											<button type="button" class="btn btn-lg btn-light me-3" data-kt-element="finance-previous">Back</button>
-											<button type="submit" class="btn btn-lg btn-primary" data-kt-element="finance-next">
-												<span class="indicator-label">Place Order</span>
-												<span class="indicator-progress">Please wait...
-												<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
-											</button>
-										</div>
-										<!--end::Actions-->
-									</div>
-									<!--end::Wrapper-->
-								</div>
-								<!--end::Budget-->
-							</form>
-							<!--end::Form-->
-						</div>
-						<!--end::Stepper-->
-					</div>
-					<!--begin::Modal body-->
-				</div>
-			</div>
-		</div>
-		<!--end::Modal - Offer A Deal-->
-		<!--end::Modals-->
+	
 
 
 
@@ -1067,7 +856,7 @@
 		<!--begin::Javascript-->
 		<script>var hostUrl = "assets/";</script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-		<script src="../server/client/dashboard.js"></script>
+		<script src="../server/client/profile.js"></script>
 		<!--begin::Global Javascript Bundle(used by all pages)-->
 		<script src="assets/plugins/global/plugins.bundle.js"></script>
 		<script src="assets/js/scripts.bundle.js"></script>
