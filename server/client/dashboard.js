@@ -53,7 +53,4 @@ function box_details(boxid){
             $("#place-order").prop("disabled", false);
         }
     });
-    
-
-
 }

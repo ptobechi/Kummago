@@ -91,7 +91,7 @@ class Order extends Database{
     public function getDraftedOrder(){
         $email = $_SESSION["email"];
         $userid = $_SESSION["userid"];
-        $sql = "SELECT * FROM orders WHERE userid='$userid' AND email='$email' AND status != '0'  ";
+        $sql = "SELECT * FROM orders WHERE userid='$userid' AND email='$email' AND status = '0'  ";
         $query = $this->connect()->query($sql);
         $numRows = $query->num_rows;
         if($numRows > 0){

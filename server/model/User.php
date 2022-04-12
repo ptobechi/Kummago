@@ -106,38 +106,83 @@ class User extends Database{
         $numRows = $queries->num_rows;
         if($numRows > 0){
             while($row = $queries->fetch_assoc()){
-                $user[] = $row;
+                $user = "
+                        <div class='row mb-6'>
+                            <label class='col-lg-4 col-form-label required fw-bold fs-6'>Full Name</label>
+                            <div class='col-lg-8'>
+                                <div class='row'>
+                                    <div class='col-lg-6 fv-row'>
+                                        <input type='text' id='first_name' class='form-control form-control-lg form-control-solid mb-3 mb-lg-0' placeholder='First name' value='$row[firstname]' required/>
+                                    </div>
+                                    <div class='col-lg-6 fv-row'>
+                                        <input type='text' id='last_name' class='form-control form-control-lg form-control-solid' placeholder='Last name' value='$row[lastname]' required />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='row mb-6'>
+                            <label class='col-lg-4 col-form-label fw-bold fs-6'>
+                                <span class='required'>Contact Phone</span>
+                                <i class='fas fa-exclamation-circle ms-1 fs-7' data-bs-toggle='tooltip' title='Phone number must be active'></i>
+                            </label>
+                            <div class='col-lg-8 fv-row'>
+                                <input type='tel' id='phone_number' class='form-control form-control-lg form-control-solid' placeholder='Phone number' value='$row[phone]' required />
+                            </div>
+                        </div>
+
+                        <div class='row mb-6'>
+                            <label class='col-lg-4 col-form-label fw-bold fs-6'>
+                                <span class='required'>Home Address</span>
+                                <i class='fas fa-exclamation-circle ms-1 fs-7' data-bs-toggle='tooltip' title='This will be set to your delivery address upon box order'></i>
+                            </label>
+                            <div class='col-lg-8'>
+                                <div class='row'>
+                                    <div class='col-lg-6 fv-row'>
+                                        <input type='text' id='state' class='form-control form-control-lg form-control-solid mb-3 mb-lg-0' placeholder='State' value='$row[state]' required />
+                                    </div>
+                                    <div class='col-lg-6 fv-row'>
+                                        <input type='text' id='home_address' class='form-control form-control-lg form-control-solid' placeholder='Home Address' value='$row[address]' required />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                ";
             }
         }else{
 
-            $user[] = "";
+            $user = "";
         }
-        echo json_encode($user, true);
+
+        echo $user;
     }
 
-    public function UpdateProfile($fname, $phone, $address, $postal, $country, $wallet){
-        $this->fname = $fname;
+    public function updateProfile($firstname, $lastname, $phone, $address, $state){
+        $this->firstname = $firstname;
+        $this->lastname = $lastname;
         $this->phone = $phone;
         $this->address = $address;
-        $this->postal = $postal;
-        $this->country = $country;
-        $this->wallet = $wallet;
+        $this->state = $state;
         $userid = $_SESSION["userid"];
         $email = $_SESSION["email"];
 
-        $fname = mysqli_escape_string($this->connect(), $fname);
+        $firstname = mysqli_escape_string($this->connect(), $firstname);
+        $lastname = mysqli_escape_string($this->connect(), $lastname);
         $phone = mysqli_escape_string($this->connect(), $phone);
         $address = mysqli_escape_string($this->connect(), $address);
-        $postal = mysqli_escape_string($this->connect(), $postal);
-        $country = mysqli_escape_string($this->connect(), $country);
-        $wallet = mysqli_escape_string($this->connect(), $wallet);
+        $state = mysqli_escape_string($this->connect(), $state);
 
-        $sql = "UPDATE profile SET name='$fname', phone='$phone', address='$address', wallet='$wallet', postal='$postal', country='$country', status='1', date=NOW() WHERE userid='$userid' AND email='$email' ";
+        $sql = "UPDATE profile SET firstname='$firstname', lastname='$lastname', phone='$phone', address='$address', state='$state' WHERE userid='$userid' AND email='$email' ";
         $query = $this->connect()->query($sql);
         if($query){
-            echo "<script>alert('Your profile has been updated successfully'); history.back(); </script>";
+            $sql2 = "UPDATE register SET status='1', date = NOW() WHERE userid = '$userid' AND email = '$email' ";
+            $query2 = $this->connect()->query($sql2);
+            if($query){
+                echo "200";
+            }else{
+                echo "401";
+            }
         }else{
-            echo "<script>alert('Unable to update profile at the moment check network connection and try again later'); history.back(); </script>";
+            echo "501";
         }
     }
 

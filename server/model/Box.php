@@ -41,8 +41,8 @@ class Box extends Database{
         if($numRows > 0){
             while($rows = $query->fetch_array()){
                 $row[] = "
-                    <label class='btn btn-outline btn-outline-dashed btn-outline-default d-flex text-start p-6' >
-                        <input class='btn btn-check' data-kt-element='type-next' type='radio' value='$rows[id]' data-id='$rows[id]'/>
+                    <label class='btn btn-outline btn-outline-dashed btn-outline-default d-flex text-start p-6'>
+                        <input class='btn-check' type='radio' id='offer_type' value='$rows[id]' data-id='$rows[id]'/>
                         <span class='d-flex'>
                             <span class='svg-icon svg-icon-3hx'>
                                 <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'>
@@ -100,7 +100,9 @@ class Box extends Database{
                         <input type='number' placeholder='&#8358 ".$data[$i]["price"]."' value='".$data[$i]["price"]."' name='price' id='item_price$i'>
                         <span class='text-danger' onclick='removeItem(this.id)' id='$i'>Remove</span>
                     </div>
-                </div></div>";
+                </div>
+                <div class='separator separator-dashed my-5'></div>
+            ";
 
             // echo $data[$i]["item"]."====".$data[$i]['price'];
         }
