@@ -1,0 +1,247 @@
+<!-- Start Header section -->
+<%- include("include/_header")%>
+<!-- End header section -->
+
+
+
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Toolbar-->
+    <div class="toolbar" id="kt_toolbar">
+        <!--begin::Container-->
+        <div id="kt_toolbar_container" class="container-fluid d-flex flex-stack">
+            <!--begin::Page title-->
+            <div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
+                <!--begin::Title-->
+                <h1 class="d-flex text-dark fw-bolder fs-3 align-items-center my-1">Add Order</h1>
+                <!--end::Title-->
+                <!--begin::Separator-->
+                <span class="h-20px border-gray-300 border-start mx-4"></span>
+                <!--end::Separator-->
+                <!--begin::Breadcrumb-->
+                <ul class="breadcrumb breadcrumb-separatorless fw-bold fs-7 my-1">
+                    <!--begin::Item-->
+                    <li class="breadcrumb-item text-muted">
+                        <a href="../../demo1/dist/index.html" class="text-muted text-hover-primary">Home</a>
+                    </li>
+                    <!--end::Item-->
+                    <!--begin::Item-->
+                    <li class="breadcrumb-item">
+                        <span class="bullet bg-gray-300 w-5px h-2px"></span>
+                    </li>
+                    <!--end::Item-->
+                    <!--begin::Item-->
+                    <li class="breadcrumb-item text-muted">eCommerce</li>
+                    <!--end::Item-->
+                    <!--begin::Item-->
+                    <li class="breadcrumb-item">
+                        <span class="bullet bg-gray-300 w-5px h-2px"></span>
+                    </li>
+                    <!--end::Item-->
+                    <!--begin::Item-->
+                    <li class="breadcrumb-item text-muted">Sales</li>
+                    <!--end::Item-->
+                    <!--begin::Item-->
+                    <li class="breadcrumb-item">
+                        <span class="bullet bg-gray-300 w-5px h-2px"></span>
+                    </li>
+                    <!--end::Item-->
+                    <!--begin::Item-->
+                    <li class="breadcrumb-item text-dark">Update Order</li>
+                    <!--end::Item-->
+                </ul>
+                <!--end::Breadcrumb-->
+            </div>
+            <!--end::Page title-->
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Toolbar-->
+    <!--begin::Post-->
+    <div class="post d-flex flex-column-fluid" id="kt_post">
+        <!--begin::Container-->
+        <div id="kt_content_container" class="container-xxl">
+            <!--begin::Form-->
+            <form id="edit_order_form" class="form d-flex flex-column flex-lg-row"  >
+                <input type="hidden" id="box_id" name="id" value="<%= products._id %> ">
+                <!--begin::Aside column-->
+                <div class="w-100 flex-lg-row-auto w-lg-300px mb-7 me-7 me-lg-10">
+                    <!--begin::Order details-->
+                    <div class="card card-flush py-4">
+                        <!--begin::Card header-->
+                        <div class="card-header">
+                            <div class="card-title">
+                                <h2>Box Details</h2>
+                            </div>
+                        </div>
+                        <!--end::Card header-->
+                        <!--begin::Card body-->
+                        <div class="card-body pt-0">
+                            <div class="d-flex flex-column gap-10">
+                                <!--begin::Input group-->
+                                <div class="fv-row">
+                                    <!--begin::Label-->
+                                    <label class="required form-label">Box Name</label>
+                                    <!--end::Label-->
+                                    <!--begin::Select2-->
+                                    <input type="text" class="form-control" id="box_name" name="box_name" value="<%= products.box %> ">
+                                    <!--end::Select2-->
+                                </div>
+                                <!--end::Input group-->
+                                <!--begin::Input group-->
+                                <div class="fv-row">
+                                    <!--begin::Label-->
+                                    <label class="required form-label">Box Description</label>
+                                    <!--end::Label-->
+                                    <!--begin::Select2-->
+                                    <input type="text" class="form-control" id="box_description" name="box_description" value="<%= products.description %> " >
+                                    <!--end::Select2-->
+                                </div>
+                                <!--end::Input group-->
+                            </div>
+                        </div>
+                        <!--end::Card header-->
+                    </div>
+                    <!--end::Order details-->
+                </div>
+                <!--end::Aside column-->
+                <!--begin::Main column-->
+                <div class="d-flex flex-column flex-lg-row-fluid gap-7 gap-lg-10">
+                    <!--begin::Order details-->
+                    <div class="card card-flush py-4">
+                        <div class="card-header">
+                            <!--begin::Modal title-->
+                            <h2>Add Items to your Box</h2>
+                            <!--end::Modal title-->
+                        </div>
+                        <!--end::Modal header-->
+                        <!--begin::Card body-->
+                        <div class="card-body pt-0">
+                            <div class="d-flex flex-column gap-10">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <!--begin::Input group-->
+                                        <div class="fv-row">
+                                            <!--begin::Label-->
+                                            <label class="required form-label">Product</label>
+                                            <!--end::Label-->
+                                            <!--begin::Select2-->
+                                            <input type="text" class="form-control" id="item" >
+                                            <!--end::Select2-->
+                                        </div>
+                                        <!--end::Input group-->
+                                    </div>
+                                    <div class="col-6">
+                                        <!--begin::Input group-->
+                                        <div class="fv-row">
+                                            <!--begin::Label-->
+                                            <label class="required form-label">Price</label>
+                                            <!--end::Label-->
+                                            <!--begin::Select2-->
+                                            <input type="number" class="form-control" id="price" >
+                                            <!--end::Select2-->
+                                        </div>
+                                        <!--end::Input group-->
+                                    </div>
+                                    <!--begin::Input group-->
+                                    <div class="fv-row d-flex justify-content-end mt-2">
+                                        <!--begin::Button-->
+                                        <span id="kt_ecommerce_add_order_submit" class="btn btn-primary">
+                                            Add
+                                        </span>
+                                        <!--end::Button-->
+                                    </div>
+                                    <!--end::Input group-->
+                                </div>
+                                
+                                <!--begin::Input group-->
+                                <div>
+                                    <!--begin::Selected products-->
+                                    <!--begin::Total price-->
+                                    <div class="fw-bolder fs-4">Total Cost:  &#8358;
+                                        <span id="kt_ecommerce_edit_order_total_price"><%= products.total_sum %> </span>
+                                        <input type="hidden" id="total_price" name="total_price" value="<%= products.total_sum %> ">
+                                    </div>
+                                    <!--end::Total price-->
+                                </div>
+                                <!--end::Input group-->
+                                <!--begin::Separator-->
+                                <div class="separator"></div>
+                                <!--end::Separator-->
+                                <!--begin::Table-->
+                                <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_ecommerce_edit_order_product_table">
+                                    <!--begin::Table head-->
+                                    <thead>
+                                        <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
+                                            <th class="min-w-200px">Product</th>
+                                            <th class="min-w-100px text-end pe-5">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <!--end::Table head-->
+
+                                    <!--begin::Table body-->
+                                    <tbody class="fw-bold text-gray-600" id="cart">
+                                        <% for(var i=0; i<products.items.length; i++){ %>
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center" data-kt-ecommerce-edit-order-filter="product" data-kt-ecommerce-edit-order-id="product_30">
+                                                        <div class="ms-5">
+                                                            <a class="text-gray-800 text-hover-primary fs-5 fw-bolder"><%= products.items[i].item %></a>
+                                                            <!-- <input type='hidden' value='${items.item}' name='item[]' /> -->
+                                                            <div class="fw-bold fs-7">Price: &#8358;
+                                                                <span class="item-price" data-kt-ecommerce-edit-order-filter="price"><%= products.items[i].price %></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="text-end pe-5" data-order="22">
+                                                Price: &#8358;
+                                                <input type='hidden' value='<%= products.items[i].item %>' name='item[]' class="box_items" />
+                                                <input type='text' value='<%= products.items[i].price %>' name='price[]' class="box_items_price" />
+                                                    <span class="fw-bolder text-danger ms-3">Remove</span>
+                                                </td>
+                                            </tr>
+
+                                        <!--begin::Table row-->
+                                        <tr id="total_price_container"></tr>
+                                        <!--end::Table row-->
+                                        <% } %>
+
+                                    </tbody>
+                                    <!--end::Table body-->
+                                </table>
+                                <!--end::Table-->
+                            </div>
+                        </div>
+                        <!--end::Card header-->
+                    </div>
+                    <!--end::Order details-->
+                    
+                    <div class="d-flex justify-content-end">
+                        <!--begin::Button-->
+                        <a href="" id="kt_ecommerce_edit_order_cancel" class="btn btn-light me-5">Cancel</a>
+                        <!--end::Button-->
+                        <!--begin::Button-->
+                        <button type="submit" id="kt_ecommerce_edit_order_submit" class="btn btn-primary">
+                            <span class="indicator-label">Save Changes</span>
+                            <span class="indicator-progress">Please wait...
+                            <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                        </button>
+                        <!--end::Button-->
+                    </div>
+                </div>
+                <!--end::Main column-->
+            </form>
+            <!--end::Form-->
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Post-->
+</div>
+<!--end::Content-->
+
+
+
+<!-- Start Header section -->
+<%- include("include/_footer")%>
+<!-- End header section -->

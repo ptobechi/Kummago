@@ -1,0 +1,19 @@
+<% for(let i=0; i<products.length; i++){ %>
+
+<tr>
+    <td>
+        <a href="#" class="text-dark fw-bolder text-hover-primary fs-6"><%= i + 1 %></a>
+    </td>
+    <td>
+        <a href="#" class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6"><%= products[i].box %></a>
+    </td>
+    <td>
+        <a href="#" class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6"><%= products[i].description %></a>
+    </td>
+    <td class="text-dark fw-bolder text-hover-primary fs-6"><%= products[i].total_sum %></td>
+    <td class="text-end">
+        <a class="btn btn-bg-light btn-danger delete btn-sm px-4 me-2" id="delete" data-id="<%= products[i]._id %>">Delete</a>
+        <a href="/update_box?id=<%= products[i]._id %>" class="btn btn-bg-light btn-primary btn-sm px-4">Edit</a>
+    </td>
+</tr>
+<% } %>

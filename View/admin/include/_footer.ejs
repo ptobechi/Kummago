@@ -1,0 +1,214 @@
+<!--begin::Footer-->
+<div class="footer py-4 d-flex flex-lg-column" id="kt_footer">
+    <!--begin::Container-->
+    <div class="container-fluid d-flex flex-column flex-md-row align-items-center justify-content-between">
+        <!--begin::Copyright-->
+        <div class="text-dark order-2 order-md-1">
+            <span class="text-muted fw-bold me-1">2022©</span>
+            <a href="https://keenthemes.com" target="_blank" class="text-gray-800 text-hover-primary">Keenthemes</a>
+        </div>
+        <!--end::Copyright-->
+        <!--begin::Menu-->
+        <ul class="menu menu-gray-600 menu-hover-primary fw-bold order-1">
+            <li class="menu-item">
+                <a href="https://keenthemes.com" target="_blank" class="menu-link px-2">About</a>
+            </li>
+            <li class="menu-item">
+                <a href="https://devs.keenthemes.com" target="_blank" class="menu-link px-2">Support</a>
+            </li>
+            <li class="menu-item">
+                <a href="https://1.envato.market/EA4JP" target="_blank" class="menu-link px-2">Purchase</a>
+            </li>
+        </ul>
+        <!--end::Menu-->
+    </div>
+    <!--end::Container-->
+</div>
+<!--end::Footer-->
+</div>
+<!--end::Wrapper-->
+</div>
+<!--end::Page-->
+</div>
+<!--end::Root-->
+<!--begin::Drawers-->
+<!--end::Drawers-->
+<!--end::Main-->
+<!--begin::Modal - Create App-->
+<div class="modal fade" id="kt_modal_create_app" tabindex="-1" aria-hidden="true">
+    <!--begin::Modal dialog-->
+    <div class="modal-dialog modal-dialog-centered mw-900px">
+        <!--begin::Modal content-->
+        <div class="modal-content">
+            <!--begin::Modal header-->
+            <div class="modal-header">
+                <!--begin::Modal title-->
+                <h2>Upload Products</h2>
+                <!--end::Modal title-->
+                <!--begin::Close-->
+                <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                    <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
+                    <span class="svg-icon svg-icon-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="black" />
+                            <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="black" />
+                        </svg>
+                    </span>
+                    <!--end::Svg Icon-->
+                </div>
+                <!--end::Close-->
+            </div>
+            <!--end::Modal header-->
+            <!--begin::Modal body-->
+            <div class="modal-body py-lg-10 px-lg-10">
+                <!--begin::Stepper-->
+                <div class="stepper stepper-pills stepper-column d-flex flex-column flex-xl-row flex-row-fluid" id="kt_modal_create_app_stepper">
+                    <!--begin::Aside-->
+                    <div class="d-flex justify-content-center justify-content-xl-start flex-row-auto w-100 w-xl-300px">
+                        <!--begin::Nav-->
+                        <div class="stepper-nav ps-lg-10">
+                            <!--begin::Step 1-->
+                            <div class="stepper-item current" data-kt-stepper-element="nav">
+                                <!--begin::Line-->
+                                <div class="stepper-line w-40px"></div>
+                                <!--end::Line-->
+                                <!--begin::Icon-->
+                                <div class="stepper-icon w-40px h-40px">
+                                    <i class="stepper-check fas fa-check"></i>
+                                    <span class="stepper-number">1</span>
+                                </div>
+                                <!--end::Icon-->
+                                <!--begin::Label-->
+                                <div class="stepper-label">
+                                    <h3 class="stepper-title">Details</h3>
+                                    <div class="stepper-desc">Name your Product</div>
+                                </div>
+                                <!--end::Label-->
+                            </div>
+                            <!--end::Step 1-->
+                        </div>
+                        <!--end::Nav-->
+                    </div>
+                    <!--begin::Aside-->
+                    <!--begin::Content-->
+                    <div class="flex-row-fluid py-lg-5 px-lg-15">
+                        <!--begin::Form-->
+                        <form class="form" novalidate="novalidate" id="kt_modal_create_app_form" action="/api/upload/product" method="POST" >
+                            <!--begin::Step 1-->
+                            <div class="current" data-kt-stepper-element="content">
+                                <div class="w-100">
+                                    <!--begin::Input group-->
+                                    <div class="fv-row mb-10">
+                                        <!--begin::Label-->
+                                        <label class="d-flex align-items-center fs-5 fw-bold mb-2">
+                                            <span class="required">App Name</span>
+                                            <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Specify your product name"></i>
+                                        </label>
+                                        <!--end::Label-->
+                                        <!--begin::Input-->
+                                        <input type="text" class="form-control form-control-lg form-control-solid" name="product" placeholder="" value="" />
+                                        <!--end::Input-->
+                                    </div>
+                                    <!--end::Input group-->
+                                </div>
+                            </div>
+                            <!--end::Step 1-->
+                            <!--begin::Actions-->
+                            <div class="d-flex flex-stack pt-10">
+                                <!--begin::Wrapper-->
+                                <button type="submit" class="btn btn-lg btn-primary">Upload</button>
+                                <!--end::Wrapper-->
+                            </div>
+                            <!--end::Actions-->
+                        </form>
+                        <!--end::Form-->
+                    </div>
+                    <!--end::Content-->
+                </div>
+                <!--end::Stepper-->
+            </div>
+            <!--end::Modal body-->
+        </div>
+        <!--end::Modal content-->
+    </div>
+    <!--end::Modal dialog-->
+</div>
+<!--end::Modal - Create App-->
+
+
+
+<!--begin::Scrolltop-->
+<div id="kt_scrolltop" class="scrolltop" data-kt-scrolltop="true">
+<!--begin::Svg Icon | path: icons/duotune/arrows/arr066.svg-->
+<span class="svg-icon">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+<rect opacity="0.5" x="13" y="6" width="13" height="2" rx="1" transform="rotate(90 13 6)" fill="black" />
+<path d="M12.5657 8.56569L16.75 12.75C17.1642 13.1642 17.8358 13.1642 18.25 12.75C18.6642 12.3358 18.6642 11.6642 18.25 11.25L12.7071 5.70711C12.3166 5.31658 11.6834 5.31658 11.2929 5.70711L5.75 11.25C5.33579 11.6642 5.33579 12.3358 5.75 12.75C6.16421 13.1642 6.83579 13.1642 7.25 12.75L11.4343 8.56569C11.7467 8.25327 12.2533 8.25327 12.5657 8.56569Z" fill="black" />
+</svg>
+</span>
+<!--end::Svg Icon-->
+</div>
+<!--end::Scrolltop-->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<!--begin::application javascript-->
+<script src="js/carting.js"></script>
+<script src="js/application.js"></script>
+
+<!--end::application javascript-->
+
+
+
+<script>var hostUrl = "assets/";</script>
+<!--begin::Global Javascript Bundle(used by all pages)-->
+<script src="plugins/global/plugins.bundle.js"></script>
+<script src="js/scripts.bundle.js"></script>
+<!--end::Global Javascript Bundle-->
+<!--begin::Javascript-->
+<!--begin::Global Javascript Bundle(used by all pages)-->
+<script src="plugins/global/plugins.bundle.js"></script>
+<script src="js/scripts.bundle.js"></script>
+<!--end::Global Javascript Bundle-->
+<!--begin::Page Vendors Javascript(used by this page)-->
+<script src="plugins/custom/datatables/datatables.bundle.js"></script>
+<script src="plugins/custom/vis-timeline/vis-timeline.bundle.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/map.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/geodata/worldLow.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/geodata/continentsLow.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/geodata/usaLow.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/geodata/worldTimeZonesLow.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/geodata/worldTimeZoneAreasLow.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/percent.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/radar.js"></script>
+<!--end::Page Vendors Javascript-->
+<!--begin::Page Custom Javascript(used by this page)-->
+<script src="js/widgets.bundle.js"></script>
+<script src="js/custom/widgets.js"></script>
+<script src="js/custom/apps/chat/chat.js"></script>
+<script src="js/custom/utilities/modals/upgrade-plan.js"></script>
+<script src="js/custom/utilities/modals/offer-a-deal/type.js"></script>
+<script src="js/custom/utilities/modals/offer-a-deal/details.js"></script>
+<script src="js/custom/utilities/modals/offer-a-deal/finance.js"></script>
+<script src="js/custom/utilities/modals/offer-a-deal/complete.js"></script>
+<script src="js/custom/utilities/modals/offer-a-deal/main.js"></script>
+<script src="js/custom/utilities/modals/users-search.js"></script>
+		<!--begin::Page Custom Javascript(used by this page)-->
+		<script src="jscustom/utilities/modals/create-app.js"></script>
+		<script src="jscustom/utilities/modals/create-campaign.js"></script>
+		<script src="jscustom/utilities/modals/create-project/type.js"></script>
+		<script src="jscustom/utilities/modals/create-project/budget.js"></script>
+		<script src="jscustom/utilities/modals/create-project/settings.js"></script>
+		<script src="jscustom/utilities/modals/create-project/team.js"></script>
+		<script src="jscustom/utilities/modals/create-project/targets.js"></script>
+		<script src="jscustom/utilities/modals/create-project/files.js"></script>
+		<script src="jscustom/utilities/modals/create-project/complete.js"></script>
+		<script src="jscustom/utilities/modals/create-project/main.js"></script>
+<!--end::Page Custom Javascript-->
+<!--end::Javascript-->
+</body>
+<!--end::Body-->
+</html>

@@ -108,8 +108,16 @@ class Database{
         )ENGINE = InnoDB;");
         $create = $this->connect()->query($create_table);
 
-       
-
+        $create_table = ("CREATE TABLE IF NOT EXISTS products ( 
+            `id` INT NOT NULL AUTO_INCREMENT ,
+            `productid` INT(11) NOT NULL , 
+            `category` VARCHAR(255) NOT NULL , 
+            `product` VARCHAR(255) NOT NULL , 
+            `status` INT(11) NOT NULL ,  
+            `date` DATETIME NOT NULL ,  
+            PRIMARY KEY  (`id`)
+        )ENGINE = InnoDB;");
+        $create = $this->connect()->query($create_table);
    
     }
 

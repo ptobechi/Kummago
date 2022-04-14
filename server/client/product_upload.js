@@ -1,27 +1,22 @@
 
-$("#sign_up_form").submit(function(event){
+$("#create_product").submit(function(event){
     event.preventDefault();
 
     //initialize form variables
-    let first_name = document.getElementById("first_name").value;
-    let last_name = document.getElementById("last_name").value;
-    let email = document.getElementById("email").value;
-    let password = document.getElementById("password").value;
-    let confirm_password = document.getElementById("confirm_password").value;
+    let product = document.getElementById("product").value;
+    let category = document.getElementById("category").value;
 
     let data = {
-        firstname: first_name,
-        lastname: last_name,
-        email : email,
-        password : password,
-        action: "register"
+        product: product,
+        category: category,
+        action: "upload_product"
     }      
 
      // disabled the submit button
-    $("#sign_up_submit").prop("disabled", true);
+    $("#upload_product_btn").prop("disabled", true);
 
     $.ajax({
-        url: "../server/controller/user.php",
+        url: "../server/controller/product.php",
         method: "POST",
         enctype: 'multipart/form-data',
         data: data,
@@ -30,15 +25,19 @@ $("#sign_up_form").submit(function(event){
             // console.log("SUCCESS : ", data);
             // $("#sign_up_submit").prop("disabled", false);
             if(data == 201){
-                window.location.href = "sign-in.html";
+                alert("Upload Done");
+                $("#create_product")[0].reset()
+                $("#upload_product_btn").prop("disabled", false);
             }else{
-                alert("Registration Failed");
+                alert("Upload Failed");
+                console.log(data)
+                $("#upload_product_btn").prop("disabled", false);
             }
         },
         error: function (e) {
             $("#output").text(e.responseText);
             console.log("ERROR : ", e);
-            $("#sign_up_submit").prop("disabled", false);
+            $("#upload_product_btn").prop("disabled", false);
 
         }
     });

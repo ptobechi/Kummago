@@ -1,0 +1,217 @@
+
+		<!--begin::Modal - Offer A Deal-->
+		<div class="modal fade" id="kt_modal_offer_a_deal" tabindex="-1" aria-hidden="true">
+			<!--begin::Modal dialog-->
+			<div class="modal-dialog modal-dialog-centered mw-1000px">
+				<!--begin::Modal content-->
+				<div class="modal-content">
+					<!--begin::Modal header-->
+					<div class="modal-header py-7 d-flex justify-content-between">
+						<!--begin::Modal title-->
+						<h2>Create a Box</h2>
+						<!--end::Modal title-->
+						<!--begin::Close-->
+						<div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+							<!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
+							<span class="svg-icon svg-icon-1">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+									<rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="black" />
+									<rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="black" />
+								</svg>
+							</span>
+							<!--end::Svg Icon-->
+						</div>
+						<!--end::Close-->
+					</div>
+					<!--begin::Modal header-->
+					<!--begin::Modal body-->
+					<div class="modal-body scroll-y m-5">
+						<!--begin::Stepper-->
+						<div class="stepper stepper-links d-flex flex-column" id="kt_modal_offer_a_deal_stepper">
+							<!--begin::Nav-->
+							<div class="stepper-nav justify-content-center py-2">
+								<!--begin::Step 1-->
+								<div class="stepper-item me-5 me-md-15 current" data-kt-stepper-element="nav">
+									<h3 class="stepper-title">Box Type</h3>
+								</div>
+								<!--end::Step 1-->
+								<!--begin::Step 2-->
+								<div class="stepper-item me-5 me-md-15" data-kt-stepper-element="nav">
+									<h3 class="stepper-title">Box Details</h3>
+								</div>
+								<!--end::Step 2-->
+								<!--begin::Step 3-->
+								<div class="stepper-item me-5 me-md-15" data-kt-stepper-element="nav">
+									<h3 class="stepper-title">Delivery Detail</h3>
+								</div>
+								<!--end::Step 3-->
+							</div>
+							<!--end::Nav-->
+							<!--begin::Form-->
+							<form class="mx-auto mw-500px w-100 pt-15 pb-10" novalidate="novalidate" id="kt_modal_offer_a_deal_form">
+								<!--begin::Type-->
+								<div class="current" data-kt-stepper-element="content">
+									<!--begin::Wrapper-->
+									<div class="w-100">
+										<!--begin::Input group-->
+										<div class="fv-row mb-15" data-kt-buttons="true" >
+											<!--begin::Option-->
+											<% for(var i=0; i<products.length; i++){ %>
+											<label class="btn btn-outline btn-outline-dashed btn-outline-default d-flex text-start p-6 mb-6">
+												<!--begin::Input-->
+												<input class="btn-check" id="box_details" data-kt-element="type-next" type="radio" name="offer_type" value="<%= products[i]._id %>" data-id="<%= products[i]._id %>"/>
+												<!--end::Input-->
+												<!--begin::Label-->
+												<span class="d-flex">
+													<!--begin::Info-->
+													<span class="ms-4">
+														<span class="fs-3 fw-bolder text-gray-900 mb-2 d-block"><%= products[i].box %></span>
+														<span class="fw-bold fs-4 text-muted"><%= products[i].description %></span>
+													</span>
+													<!--end::Info-->
+												</span>
+												<!--end::Label-->
+											</label>
+											<% } %> 
+											<!--end::Option-->
+										</div>
+										<!--end::Input group-->
+									</div>
+									<!--end::Wrapper-->
+								</div>
+								<!--end::Type-->
+								<!--begin::Details-->
+								<div data-kt-stepper-element="content">
+									<!--begin::Wrapper-->
+									<div class="w-100">
+										<!--begin::List widget 11-->
+										<!--begin::Body-->
+										<div class="card-body pt-4">
+											<!--begin::Item-->
+											<div class="d-flex flex-stack">
+												<!--begin::Section-->
+												<div class="d-flex align-items-center me-5">
+													<!--begin::Content-->
+													<div class="me-5">
+														<!--begin::Title-->
+														<a id="item_name" class="text-gray-800 fw-bolder text-hover-primary fs-6">Rice</a>
+														<!--end::Title-->
+													</div>
+													<!--end::Content-->
+												</div>
+												<!--end::Section-->
+												<!--begin::Wrapper-->
+												<div class="text-gray-400 fw-bolder fs-7 text-end">
+													<!--begin::Number-->
+													<input type="number" placeholder="&#8358 2,345,500" name="price">
+													<span class="text-danger">Remove</span>
+													<!--end::Number-->
+												</div>
+												<!--end::Wrapper-->
+											</div>
+											<!--end::Item-->
+											
+											<!--begin::Separator-->
+											<div class="separator separator-dashed my-5"></div>
+											<!--end::Separator-->
+											<!--begin::Wrapper-->
+											<div class="text-gray-400 fw-bolder fs-7 text-end">
+												<!--begin::Number-->
+												<span class="text-gray-800 fw-bolder fs-6 d-block">&#8358; <span id="total_sum">2,345,500</span></span>
+												<!--end::Number-->
+											</div>
+											<!--end::Wrapper-->
+											
+										</div>
+										<!--end::Body-->
+										
+
+
+										<!--begin::Actions-->
+										<div class="d-flex flex-stack">
+											<button type="button" class="btn btn-lg btn-light me-3" data-kt-element="details-previous">Back</button>
+											<button type="button" class="btn btn-lg btn-primary" data-kt-element="details-next">
+												<span class="indicator-label">Next</span>
+												<span class="indicator-progress">Please wait...
+												<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+											</button>
+										</div>
+										<!--end::Actions-->
+									</div>
+									<!--end::Wrapper-->
+								</div>
+								<!--end::Details-->
+								<!--begin::Budget-->
+								<div data-kt-stepper-element="content">
+									<!--begin::Wrapper-->
+									<div class="w-100">
+										<!--begin::Input group-->
+										<div class="fv-row mb-8">
+											<!--begin::Label-->
+											<label class="d-flex align-items-center fs-6 fw-bold mb-2">
+												<span class="required">Setup Delivery Date</span>
+											</label>
+											<!--end::Label-->
+											<!--begin::Dialer-->
+											<div class="position-relative w-lg-250px" id="kt_modal_finance_setup" data-kt-dialer="true" data-kt-dialer-min="50" data-kt-dialer-max="50000" data-kt-dialer-step="100" data-kt-dialer-prefix="$" data-kt-dialer-decimals="2">	
+												<!--begin::Input control-->
+												<input type="date" class="form-control form-control-solid border-0 ps-12" name="finance_setup"  />
+												<!--end::Input control-->
+											</div>
+											<!--end::Dialer-->
+										</div>
+										<!--end::Input group-->
+										<!--begin::Input group-->
+										<div class="fv-row mb-8">
+											<!--begin::Label-->
+											<label class="fs-6 fw-bold mb-2">Budget Usage</label>
+											<!--end::Label-->
+											<!--begin::Row-->
+											<div class="row g-9" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button='true']">
+												<!--begin::Col-->
+												<div class="col-md-12 col-lg-12 col-xxl-12">
+													<!--begin::Option-->
+													<label class="btn btn-outline btn-outline-dashed btn-outline-default active d-flex text-start p-6" data-kt-button="true">
+														<!--begin::Radio-->
+														<span class="form-check form-check-custom form-check-solid form-check-sm align-items-start mt-1">
+															<input class="form-check-input" type="radio" name="finance_usage" value="1" checked="checked" />
+														</span>
+														<!--end::Radio-->
+														<!--begin::Info-->
+														<span class="ms-5">
+															<span class="fs-4 fw-bolder text-gray-800 mb-2 d-block">Precise Usage</span>
+															<span class="fw-bold fs-7 text-gray-600">Withdraw money to your bank account per transaction under $50,000 budget</span>
+														</span>
+														<!--end::Info-->
+													</label>
+													<!--end::Option-->
+												</div>
+												<!--end::Col-->
+											</div>
+											<!--end::Row-->
+										</div>
+										<!--end::Input group-->
+										<!--begin::Actions-->
+										<div class="d-flex flex-stack">
+											<button type="button" class="btn btn-lg btn-light me-3" data-kt-element="finance-previous">Back</button>
+											<button type="button" class="btn btn-lg btn-primary" data-kt-element="finance-next">
+												<span class="indicator-label">Place Order</span>
+												<span class="indicator-progress">Please wait...
+												<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+											</button>
+										</div>
+										<!--end::Actions-->
+									</div>
+									<!--end::Wrapper-->
+								</div>
+								<!--end::Budget-->
+							</form>
+							<!--end::Form-->
+						</div>
+						<!--end::Stepper-->
+					</div>
+					<!--begin::Modal body-->
+				</div>
+			</div>
+		</div>
+		<!--end::Modal - Offer A Deal-->

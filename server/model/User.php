@@ -70,23 +70,28 @@ class User extends Database{
                 $_SESSION["email"] = $row["email"];
                 $_SESSION["userid"] = $row["userid"];
 
-                if($row["status"] == "2"){
-                    // $code = random_int(100000, 999999);
+                // if($row["status"] == "2" AND $row["role"] == "2"){
+                //     // $code = random_int(100000, 999999);
 
-                    // $this->TwoFactorAuthentication($code);
+                //     // $this->TwoFactorAuthentication($code);
 
-                    echo "101";
+                //     echo "101";
 
-                }elseif($row["status"] == "4"){
-                    echo "401";
-                    exit;
-                }elseif($row["status"] == "x"){
-                    // $this->WelcomeMessage($email, $fname);
-                    echo "404";
-                    exit;
+                // }elseif($row["status"] == "4"){
+                //     echo "401";
+                //     exit;
+                // }elseif($row["status"] == "x"){
+                //     // $this->WelcomeMessage($email, $fname);
+                //     echo "404";
+                //     exit;
+                // }
+                if($row["role"] == "user"){
+                    echo "user";
+                }else{
+                    echo "admin";
                 }
 
-                echo "200";
+                // echo "200";
             }
         }else{
             echo "404";
@@ -223,43 +228,6 @@ class User extends Database{
             echo "<script>alert('An unknown error occurred. Contact Support'); history.back(); </script>";
             die();
         }
-    }
-
-    public function GetPaymentAddress($name, $amount, $investmentid){
-        $this->name = $name;
-        $this->amount = $amount;
-        $this->investmentid = $investmentid;
-
-        $sql = "SELECT * FROM wallet_address WHERE currency='$name' ORDER BY RAND() LIMIT 1";
-        $query = $this->connect()->query($sql);
-        $num = $query->num_rows;
-        if($num > 0){
-            while($row = $query->fetch_assoc()){
-                $address = $row['address'];
-
-                $send = "UPDATE portfolio SET wallet_address='$address' WHERE crypto_id='{$investmentid}' ";
-                $a = $this->connect()->query($send);
-                if($a){
-                    echo "<script type='text/javascript'>
-                        alert('Proceed to completing your deposit');
-                        window.location='../$/make_payment.php?crypto=$name&&deposit=$address&&iqw=$amount&&qrcode=$row[img]&&id=$investmentid' ;
-                    </script>";   
-                    die();          
-                }else{
-                    echo "<script>alert('Unable to complete deposit at the moment check your network connection and try again later');
-                        history.back(); 
-                    </script> ";
-                    die();
-                }
-                 
-            }
-        }else{
-            echo "<script>alert('Selected crypto address is not available at the moment try again later');
-                    history.back(); 
-                </script> ";
-            die();
-        }
-
     }
 
     public function auth(){
@@ -418,60 +386,6 @@ class User extends Database{
             echo "<script>alert('Email does not exist. Contact Support'); history.back();</script>";
             die();
         }
-    }
-
-    public function DepositCurrency($name, $amount, $crypto_amount, $plan){
-        $this->name = $name;
-        $this->amount = $amount;
-        $this->plan = $plan;
-        $this->crypto_amount = $crypto_amount;
-        $userid = $_SESSION["userid"];
-        $email = $_SESSION["email"];
-        $table = "portfolio";
-        $investmentid = $this->IdGenerator($table);
-        $bonus = $this->IdGenerator($table="bonus");
-        $ref_bonus = (10/100) * $amount;
-
-        $this->CreateDataTables();
-
-        $name = mysqli_escape_string($this->connect(), $name);
-        $amount = mysqli_escape_string($this->connect(), $amount);
-        $crypto_amount = mysqli_escape_string($this->connect(), $crypto_amount);
-        $plan = mysqli_escape_string($this->connect(), $plan);
-
-        $sql = "SELECT name, referral_code FROM profile WHERE userid='$userid' AND email='$email' ";
-        $query = $this->connect()->query($sql);
-        $numRows = $query->num_rows;
-        if($numRows > 0){
-            while($row = mysqli_fetch_assoc($query)){
-                $fname = $row["name"];
-                $fetch_sql = "INSERT INTO portfolio SET userid='$userid', crypto_id='$investmentid', crypto_name='$name', plan='$plan', email='$email', name='$row[name]', amount='$amount', profit='$amount', crypto_amount='$crypto_amount', status='1', date=NOW() ";
-                $send_query = $this->connect()->query($fetch_sql);
-                if($send_query){
-                    $this->AdminDepositAlert($email, $crypto_name, $crypto_amount);
-                    $sql = "INSERT INTO bonus SET userid='$row[referral_code]', bonusid='$bonus', bonus='Referral Bonus', investmentid='$investmentid', investor='$row[name]', amount='$ref_bonus', action='Bonus', status='0', date=NOW(), investment_date=NOW() ";
-                    $send_query2 = $this->connect()->query($sql);
-                    if($send_query2){
-                        $this->GetPaymentAddress($name, $amount, $investmentid);
-                    }else{
-                        $this->GetPaymentAddress($name, $amount, $investmentid);
-                    }
-                }else{
-                    echo "<script>alert('Unable to complete deposit at the moment check your network connection and try again later');
-                        history.back(); 
-                    </script> ";
-                    die();
-                }
-            }
-        }else{
-            echo "<script>alert('Unable to complete deposit at the moment check your networ connection and try again later');
-                history.back(); 
-            </script> ";
-            die();
-
-        }
-
-
     }
 
     public function TwoFactorAuthentication($code){
