@@ -7,7 +7,6 @@
         //get items and price 
         let item = document.getElementById("item").innerHTML;
         let price = document.getElementById("price").innerHTML;
-        console.log(item)
 
         //set price for each item and add to an array
         items.item = item;
@@ -22,15 +21,13 @@
                     <div class="ms-5">
                         <a class="text-gray-800 text-hover-primary fs-5 fw-bolder">${items.item.toUpperCase()}</a>
                         <input type='hidden' value='${items.item}' name='item[]' class='box_items' />
-                        <div class="fw-bold fs-7">Price: &#8358;
-                            <span class="item-price" data-kt-ecommerce-edit-order-filter="price">${items.price}</span>
-                        </div>
                     </div>
                 </div>
             </td>
             <td class="text-end pe-5" data-order="22">
             Price: &#8358;
-                <input type='text' value='${items.price}' name='price[]' class='box_items_price' />
+                <span class="item-price" data-kt-ecommerce-edit-order-filter="price">${items.price}</span>
+                <input type='hidden' value='${items.price}' name='price[]' class='box_items_price' />
                 <span class="fw-bolder text-danger ms-3">Remove</span>
             </td>
         </tr>
@@ -105,7 +102,6 @@ function removeItem(id){
 
 
 }
-// alert("ghh")
 
 
 

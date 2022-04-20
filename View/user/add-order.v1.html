@@ -322,16 +322,79 @@
 											<div class="card-body pt-0">
 												<div class="d-flex flex-column gap-10">
 													<!--begin::Input group-->
+													<div class="fv-row">
+														<!--begin::Label-->
+														<label class="required form-label">Box Name</label>
+														<!--end::Label-->
+														<!--begin::Select2-->
+														<input type="text" class="form-control" id="box_name">
+														<!--end::Select2-->
+													</div>
+													<!--end::Input group-->
+													<!--begin::Input group-->
+													<div class="fv-row">
+														<!--begin::Label-->
+														<label class="required form-label">Box Description</label>
+														<!--end::Label-->
+														<!--begin::Select2-->
+														<input type="text" class="form-control" id="box_description" >
+														<!--end::Select2-->
+													</div>
+													<!--end::Input group-->
+													<!--begin::Input group-->
+													<div class="fv-row">
+														<!--begin::Label-->
+														<label class="required form-label">Set Delivery Date</label>
+														<!--end::Label-->
+														<!--begin::Select2-->
+														<input type="date" class="form-control" id="delivery_date" >
+														<!--end::Select2-->
+													</div>
+													<!--end::Input group-->
+												</div>
+											</div>
+											<!--end::Card header-->
+										</div>
+										<!--end::Order details-->
+									</div>
+									<!--end::Aside column-->
+
+
+
+
+									<!--begin::Main column-->
+									<div class="d-flex flex-column flex-lg-row-fluid gap-7 gap-lg-10">
+										<!--begin::Order details-->
+										<div class="card card-flush py-4">
+											<!--begin::Card header-->
+											<div class="card-header">
+												<div class="card-title">
+													<h2>Select Box Content</h2>
+												</div>
+											</div>
+											<!--end::Card header-->
+											<!--begin::Card body-->
+											<div class="card-body pt-0">
+												<div class="d-flex flex-column gap-10">
+													<!--begin::Input group-->
 													<div>
 														<!--begin::Selected products-->
-														<div class="row row-cols-1 row-cols-xl-3 row-cols-md-2 border border-dashed rounded pt-3 pb-1 px-2 mh-300px overflow-scroll" >
+														<div class="row row-cols-1 row-cols-xl-3 row-cols-md-2 border border-dashed rounded pt-3 pb-1 px-2 mb-5 mh-300px overflow-scroll" id="kt_ecommerce_edit_order_selected_products">
 															<!--begin::Empty message-->
 															<span class="w-100 text-muted">Select one or more products from the search result.</span>
 															<!--end::Empty message-->
 														</div>
+														<!--begin::Selected products-->
+														<!--begin::Total price-->
+														<div class="fw-bolder fs-4">Total Cost: $
+														<span id="kt_ecommerce_edit_order_total_price">0.00</span></div>
+														<input type="hidden" id="total_price" name="total_price">
+														<!--end::Total price-->
 													</div>
 													<!--end::Input group-->
-													
+													<!--begin::Separator-->
+													<div class="separator"></div>
+													<!--end::Separator-->
 													<!--begin::Search products-->
 													<div class="d-flex align-items-center position-relative mb-n7">
 														<!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
@@ -343,58 +406,24 @@
 														</span>
 														<!--end::Svg Icon-->
 														<!-- <input type="text" data-kt-ecommerce-edit-order-filter="search" class="form-control form-control-solid w-100 w-lg-50 ps-14" placeholder="Search Products" /> -->
-														<input type="text" id="search_item" class="form-control form-control-solid w-100 w-lg-100 ps-14" placeholder="Search Products" />
+														<input type="text" id="item" class="form-control form-control-solid w-100 w-lg-50 ps-10" placeholder="Search Products" />
+														<input type="number" id="price" class="form-control form-control-solid w-100 w-lg-50" placeholder="Set Price" />
+														<button type="button" id="kt_ecommerce_add_order_submit" class="btn btn-primary">Add</button>
 													</div>
 													<!--end::Search products-->
-													<!--begin::Separator-->
-													<div class="separator"></div>
-													<!--end::Separator-->
-
-													<div id="display_result">
-														<!--begin::Item-->
-														<div class="d-flex align-items-center m-3" id="kt_ecommerce_add_order_submit">
-															<span class="bullet bullet-vertical h-20px bg-success"></span>
-															<div class="flex-grow-1 mx-5">
-																<span id="item" class="text-gray-800 text-hover-primary fw-bolder fs-6">Rice</span>
-																<!-- <span id="price" class="text-muted fw-bold d-block">Due in 2 Days</span> -->
-															</div>
-															<span class="badge badge-light-success fs-8 fw-bolder"> &#x20A6 <span id="price">250</span> </span>
-														</div>
-														<!--end:Item-->
-													</div>
-
-												</div>
-											</div>
-											<!--end::Card header-->
-										</div>
-										<!--end::Order details-->
-									</div>
-									<!--end::Aside column-->
-
-									
-
-									<!--begin::Main column-->
-									<div class="d-flex flex-column flex-lg-row-fluid gap-7 gap-lg-10">
-										<!--begin::Order details-->
-										<div class="card card-flush py-4">
-											<!--begin::Card body-->
-											<div class="card-body pt-0">
-												<div class="d-flex flex-column gap-10">
 													<!--begin::Table-->
 													<table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_ecommerce_edit_order_product_table">
 														<!--begin::Table head-->
 														<thead>
 															<tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
-																<th class="min-w-100px">Product</th>
-																<th class="min-w-70px">Quantity</th>
-																<th class="min-w-70px">Price</th>
-																<th class="min-w-30px text-end pe-5">Action</th>
+																<th class="min-w-200px">Product</th>
+																<th class="min-w-100px text-end pe-5">Action</th>
 															</tr>
 														</thead>
 														<!--end::Table head-->
 
 														<!--begin::Table body-->
-														<tbody class="fw-bold text-gray-600 product-container" id="cart">
+														<tbody class="fw-bold text-gray-600" id="cart">
 															<!--begin::Table row-->
 															<tr id="total_price_container"></tr>
 															<!--end::Table row-->
@@ -402,18 +431,6 @@
 														<!--end::Table body-->
 													</table>
 													<!--end::Table-->
-													<!--begin::Separator-->
-													<div class="separator"></div>
-													<!--end::Separator-->
-													<!--begin::Input group-->
-													<!--begin::Total price-->
-													<div class="fw-bolder fs-4">
-														Total Cost: &#8358;<span id="kt_ecommerce_edit_order_total_price">0.00</span>
-													</div>
-													<input type="hidden" id="total_price" name="total_price">
-													<!--end::Total price-->
-													<!--end::Input group-->
-													
 												</div>
 											</div>
 											<!--end::Card header-->
@@ -861,11 +878,9 @@
 		<!--end::Modals-->
 		<!--begin::Javascript-->
 		<script>var hostUrl = "assets/";</script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/6.0.1/esm/ionicons.min.js" integrity="sha512-EmbXlzmS4lTfNxBz7xWacOcWYBw42KAzHTbtuVQvCPrR+fTeHHMB2dnxKqxhwqSqrK8foPW/LZOnHof4DCDHMw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 		<script src="../server/client/order.js"></script>
 		<script src="assets/js/carting.js"></script>
-		<script src="../server/client/searchdb.js"></script>
 		<!--begin::Global Javascript Bundle(used by all pages)-->
 		<script src="assets/plugins/global/plugins.bundle.js"></script>
 		<script src="assets/js/scripts.bundle.js"></script>

@@ -74,7 +74,7 @@ $("#sign_in_form").submit(function(event){
             }if(data == "admin"){
                 window.location.href = "admin/";
             }else{
-                alert("Login Failed");
+                // alert("Login Failed");
                 $("#sign_in_submit").prop("disabled", false);
             }
         },

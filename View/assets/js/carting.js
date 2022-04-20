@@ -1,110 +1,91 @@
-(function () {
-    btn = document.getElementById("kt_ecommerce_add_order_submit");
-    btn.addEventListener("click", function(){
-        //set array (box) to hold all products
-        let items = [];
-
-        //get items and price 
-        let item = document.getElementById("item").value;
-        let price = document.getElementById("price").value;
-
-        //set price for each item and add to an array
-        items.item = item;
-        items.price = price;
-
-        setItems(items);
-
-        const itemBox = document.createElement("tr");
-        itemBox.innerHTML =`
-            <td>
-                <div class="d-flex align-items-center" data-kt-ecommerce-edit-order-filter="product" data-kt-ecommerce-edit-order-id="product_30">
-                    <div class="ms-5">
-                        <a class="text-gray-800 text-hover-primary fs-5 fw-bolder">${items.item.toUpperCase()}</a>
-                        <input type='hidden' value='${items.item}' name='item[]' class='box_items' />
-                        <div class="fw-bold fs-7">Price: &#8358;
-                            <span class="item-price" data-kt-ecommerce-edit-order-filter="price">${items.price}</span>
-                        </div>
-                    </div>
-                </div>
-            </td>
-            <td class="text-end pe-5" data-order="22">
-            Price: &#8358;
-                <input type='text' value='${items.price}' name='price[]' class='box_items_price' />
-                <span class="fw-bolder text-danger ms-3">Remove</span>
-            </td>
-        </tr>
-        `;
-        const cart = document.getElementById("cart");
-        const total = document.getElementById("total_price_container");
-        cart.insertBefore(itemBox, total);
-        showTotals();
-    });
-
-    //sum total item in a box
-    function showTotals(){
-        const total = [];
-        const prices = document.querySelectorAll(".item-price");
-
-        prices.forEach(function(price){
-            total.push(parseFloat(price.textContent));
-        });
-
-        const totalSum = total.reduce(function(total,price){
-            total += price;
-            return total;
-        },0);
-        const sum = totalSum.toFixed(2);
-        document.getElementById("kt_ecommerce_edit_order_total_price").textContent = sum;
-        document.getElementById("total_price").value = sum;
-
-    }
-
-    function setItems(items){
-        let cartItems = localStorage.getItem("product");
-        cartItems = JSON.parse(cartItems);
-        if(cartItems != null){
-            cartItems = {
-                ...cartItems,
-                "item": items
-            }
-        }else{
-            cartItems = {
-                "item": items.item,
-                "price": items.price
-            }
-        }
-        
-
-        localStorage.setItem("product", JSON.stringify(cartItems))
-    }
+function addItem(e){
+    // alert(e)
+    let item = e.split("-");
     
-})();
+    let products = {
+        name: item[0],
+        price: item[1],
+        inCart: 0
+    };
 
-
-
-function removeItem(id){
-    let list = document.getElementById(`list${id}`);
-    let price = document.getElementById(`item_price${id}`);
-    let itemprice = document.getElementById(`item_price${id}`).value;
-    let itemName = document.getElementById(`item_name${id}`);
-    let btn = document.getElementById(`${id}`)
-    let total_price = document.getElementById("total_sum").textContent
-    let updated_price = document.getElementById("total_sum")
-
-    let sum = total_price - itemprice;
-    updated_price.textContent = sum;
-    document.getElementById("total_sum_input").value = sum;
-    console.log(sum)
-
-    list.disabled = "true"
-    price.disabled = "true"
-    price.style.display = "none"
-    btn.style.display = "none"
-    itemName.style.display = "none"
+    setItems(products);
+    setPrice(products);
+    displayResult();
 
 
 }
 
+function setItems(product){
+    let cartItems = localStorage.getItem("productsInCart");
+    cartItems = JSON.parse(cartItems);
 
+    if(cartItems != null){
+        if(cartItems[product.name] == undefined){
+            cartItems = {
+                ...cartItems,
+                [product.name]: product
+            }
+        }
 
+        cartItems[product.name].inCart += 1;
+    }else{
+        product.inCart = 1;
+        cartItems = {
+            [product.name]: product
+        }
+    }
+    
+    localStorage.setItem("productsInCart", JSON.stringify(cartItems))
+}
 
+function setPrice(product){
+    let totalCost = localStorage.getItem("totalCost");
+    
+    if(totalCost != null){
+        totalCost = parseInt(totalCost);
+        localStorage.setItem("totalCost", totalCost + parseInt(product.price));
+    }else{
+        localStorage.setItem("totalCost", product.price);
+    }
+}
+
+function displayResult(){
+    let cartItems = localStorage.getItem("productsInCart");
+    let sum = localStorage.getItem("totalCost")
+    cartItems = JSON.parse(cartItems);
+    let productContainer = document.getElementById("cart");
+    if(cartItems && productContainer){
+        productContainer.innerHTML = '';
+        Object.values(cartItems).map(item => {
+            productContainer.innerHTML += `
+                <tr>
+                    <td>
+                        <div class="d-flex align-items-center" data-kt-ecommerce-edit-order-filter="product" data-kt-ecommerce-edit-order-id="product_30">
+                            <div class="ms-5">
+                                <a class="text-gray-800 text-hover-primary fs-5 fw-bolder">${item.name.toUpperCase()}</a>
+                                <input type='hidden' value='${item.price}' name='item[]' class='box_items' />
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <icon class='fa fa-minus-circle' name="remove-circle-outline"></icon>
+                         <span class='fs-5'>${item.inCart}</span>
+                        <icon class='fa fa-plus-circle' name="add-circle-outline"></icon>
+                    </td>
+                    <td> 
+                        &#8358;
+                        <span class="item-price" data-kt-ecommerce-edit-order-filter="price">${item.price * item.inCart}</span>
+                        <input type='hidden' value='${item.price}' name='price[]' class='box_items_price' />
+                    </td>
+                    <td class="text-end pe-5" data-order="22"><icon class='fa fa-times-circle' name="add-circle-outline"></icon></td>
+                </tr>
+            
+            `
+        });
+        document.getElementById("kt_ecommerce_edit_order_total_price").textContent = sum;
+        document.getElementById("total_price").value = sum;
+        // productCost.textContent = totalCost;
+    }
+    
+}
+displayResult();

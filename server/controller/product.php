@@ -7,4 +7,9 @@ if($_POST["action"] == "upload_product"){
     $product = $_POST["product"];
 
     $obj->uploadProduct($category, $product);
+}elseif($_POST["action"] == "searchproduct"){
+    $input = $_POST["input"];
+
+    $obj->searchProducts($input);
 }
+

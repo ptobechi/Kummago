@@ -30,6 +30,29 @@ class Product extends Database{
 
     }
 
+    function searchProducts($input){
+        $sql = "SELECT * FROM products WHERE product LIKE '%$input%' LIMIT 5";
+        $query = $this->connect()->query($sql);
+        $numRows = $query->num_rows;
+        if($numRows > 0){
+            while($rows = $query->fetch_assoc()){
+                echo "
+                    <div class='d-flex align-items-center m-3' id='$rows[product]-$rows[price]' onclick='addItem(this.id)'>
+                        <span class='bullet bullet-vertical h-20px bg-success'></span>
+                        <div class='flex-grow-1 mx-5' onclick='Paste(this.id)'>
+                            <span id='item' class='text-gray-800 text-hover-primary fw-bolder fs-6'>$rows[product]</span>
+                        </div>
+                        <span class='badge badge-light-success fs-8 fw-bolder'> &#x20A6 <span>$rows[price]</span></span>
+                    </div>
+                    <div class='separator'></div>
+                ";   
+            }
+        }else{
+            echo "No result found";
+        }
+        
+    }
+
     public function getBox(){
         $sql = "SELECT * FROM box ";
         $query = $this->connect()->query($sql);
