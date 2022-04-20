@@ -38,19 +38,22 @@ $("#order_form").submit(function(event){
     let delivery_date = document.getElementById("delivery_date").value;
     let items = document.querySelectorAll(".box_items");
     let prices = document.querySelectorAll(".box_items_price");
+    let quantity = document.querySelectorAll(".box_items_qty");
     let box_item = [];
     
     for(let i=0; i<items.length; i++){
-        box_item.push({"item":items[i].value, "price":prices[i].value});        
+        box_item.push({"item":items[i].value, "price":prices[i].value, "qty":quantity[i].value});        
     }
+
+    // console.log(box_item)
 
     let data = {
         total_price : total_price,
         delivery_date: delivery_date,
         orderStatus: orderStatus,
         basket : {
-            box_name: box_name,
-            desc: box_description,
+            box_name: "New Order",
+            desc: "Description ",
             items: box_item
         },
         action: "place_order"

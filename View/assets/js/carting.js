@@ -38,6 +38,41 @@ function setItems(product){
     localStorage.setItem("productsInCart", JSON.stringify(cartItems))
 }
 
+function increaseinCart(product){
+    let cartItems = localStorage.getItem("productsInCart");
+    let sum = localStorage.getItem("totalCost")
+    cartItems = JSON.parse(cartItems);
+
+    for(let i=0; i<Object.keys(cartItems).length; i++){
+        if(Object.keys(cartItems)[i] == product){
+            setPrice(cartItems[product].price)
+            cartItems[product].inCart += 1;
+            localStorage.setItem("totalCost", parseInt(sum) + parseInt(cartItems[product].price) );
+            localStorage.setItem("productsInCart", JSON.stringify(cartItems));
+        }
+    }
+    displayResult();
+}
+
+function reduceinCart(product){
+    let cartItems = localStorage.getItem("productsInCart");
+    let sum = localStorage.getItem("totalCost")
+    cartItems = JSON.parse(cartItems);
+
+    for(let i=0; i<Object.keys(cartItems).length; i++){
+        if(Object.keys(cartItems)[i] == product){
+            if(cartItems[product].inCart > 0){
+                setNewPrice(cartItems[product].price)
+                cartItems[product].inCart -= 1;
+                localStorage.setItem("totalCost", parseInt(sum) - parseInt(cartItems[product].price) );
+                localStorage.setItem("productsInCart", JSON.stringify(cartItems));
+            }
+            
+        }
+    }
+    displayResult();
+}
+
 function setPrice(product){
     let totalCost = localStorage.getItem("totalCost");
     
@@ -45,8 +80,34 @@ function setPrice(product){
         totalCost = parseInt(totalCost);
         localStorage.setItem("totalCost", totalCost + parseInt(product.price));
     }else{
-        localStorage.setItem("totalCost", product.price);
+        localStorage.setItem("totalCost", parseInt(product.price));
     }
+}
+
+function setNewPrice(price){
+    let totalCost = localStorage.getItem("totalCost");
+    
+    if(totalCost != null){
+        totalCost = parseInt(totalCost);
+        localStorage.setItem("totalCost", totalCost - parseInt(price));
+    }else{
+        localStorage.setItem("totalCost", 0);
+    }
+}
+
+function removeProduct(product){
+    let cartItems = localStorage.getItem("productsInCart");
+    cartItems = JSON.parse(cartItems);
+    
+    for(let i=0; i<Object.keys(cartItems).length; i++){
+        if(Object.keys(cartItems)[i] == product){
+            setNewPrice(cartItems[product].price)
+            delete cartItems[product]
+            localStorage.setItem("productsInCart", JSON.stringify(cartItems))
+            // console.log(cartItems[product].price)
+        }
+    }
+    displayResult()
 }
 
 function displayResult(){
@@ -63,21 +124,22 @@ function displayResult(){
                         <div class="d-flex align-items-center" data-kt-ecommerce-edit-order-filter="product" data-kt-ecommerce-edit-order-id="product_30">
                             <div class="ms-5">
                                 <a class="text-gray-800 text-hover-primary fs-5 fw-bolder">${item.name.toUpperCase()}</a>
-                                <input type='hidden' value='${item.price}' name='item[]' class='box_items' />
+                                <input type='hidden' value='${item.name}' name='item[]' class='box_items' />
                             </div>
                         </div>
                     </td>
                     <td>
-                        <icon class='fa fa-minus-circle' name="remove-circle-outline"></icon>
+                        <icon class='fa fa-minus-circle' id='${item.name}' onclick="reduceinCart(this.id)"></icon>
                          <span class='fs-5'>${item.inCart}</span>
-                        <icon class='fa fa-plus-circle' name="add-circle-outline"></icon>
+                        <icon class='fa fa-plus-circle' id='${item.name}' onclick="increaseinCart(this.id)"></icon>
                     </td>
                     <td> 
                         &#8358;
                         <span class="item-price" data-kt-ecommerce-edit-order-filter="price">${item.price * item.inCart}</span>
                         <input type='hidden' value='${item.price}' name='price[]' class='box_items_price' />
+                        <input type='hidden' value='${item.inCart}' name='quantity[]' class='box_items_qty' />
                     </td>
-                    <td class="text-end pe-5" data-order="22"><icon class='fa fa-times-circle' name="add-circle-outline"></icon></td>
+                    <td class="text-end pe-5" data-order="22"><icon class='fa fa-times-circle' id='${item.name}' onclick="removeProduct(this.id)"></icon></td>
                 </tr>
             
             `
@@ -88,4 +150,5 @@ function displayResult(){
     }
     
 }
+
 displayResult();
