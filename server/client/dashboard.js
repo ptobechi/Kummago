@@ -43,9 +43,30 @@ function box_details(boxid){
         method: "POST",
         data:{action:"getBoxDetails", id:boxid},
         success: function (data) {
-            console.log(data)
+            // console.log(data)
             const label_div = document.getElementById("detail_div");
-            label_div.innerHTML += data;            
+            label_div.innerHTML += data;
+            boxTotalCost(boxid)
+            let check = $("*#offer_type").prop('checked',false);
+            // console.log(check.length);
+        },
+        error: function (e) {
+            $("#output").text(e.responseText);
+            console.log("ERROR : ", e);
+            $("#place-order").prop("disabled", false);
+        }
+    });
+}
+
+function boxTotalCost(boxid){
+    
+    $.ajax({
+        url: "../server/controller/box.php",
+        method: "POST",
+        data:{action:"getTotalCost", id:boxid},
+        success: function (data) {
+            document.getElementById("totalCost").textContent = data;
+            document.getElementById("total_price").value = data;
         },
         error: function (e) {
             $("#output").text(e.responseText);

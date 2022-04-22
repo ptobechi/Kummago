@@ -23,3 +23,9 @@ if($_POST["action"] == "getBoxDetails"){
 
     $box->getBoxDetails($id);
 }
+
+if($_POST["action"] == "getTotalCost"){
+    $id = $_POST["id"];
+
+    $box->getTotalCost($id);
+}

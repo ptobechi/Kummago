@@ -10,8 +10,9 @@
             }),
             e.addEventListener("click", function(o){
                 // console.log(document.getElementById("offer_type"))
-                console.log($('input[type=radio]:checked').val())
+                // console.log($('input[type=radio]:checked').val())
                 boxid = $('input[type=radio]:checked').val();
+
                 o.preventDefault(), e.disabled = !0, t && t.validate().then((function (t) {
                     console.log("validated!"),
                     console.log(t),

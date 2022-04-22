@@ -88,51 +88,22 @@ class Box extends Database{
         $count = sizeof($data);
         // print_r($data[0]);
         for($i=0; $i < $count; $i++){
-            echo ` 
-                <tr>
-                    <td>
-                        <div class="d-flex align-items-center" data-kt-ecommerce-edit-order-filter="product" data-kt-ecommerce-edit-order-id="product_30">
-                            <div class="ms-5">
-                                <a class="text-gray-800 text-hover-primary fs-5 fw-bolder">$data[$i]["item"].toUpperCase()</a>
-                                <input type='hidden' value='".$data[$i]["item"]."' name='item[]' class='box_items' />
-                            </div>
+            echo " 
+                <div class='d-flex flex-stack my-5'>
+                    <div class='d-flex align-items-center me-5'>
+                        <div class='me-5'>
+                            <a href='#' class='text-gray-800 fw-bolder text-hover-primary fs-6'>".$data[$i]["item"]."</a>
+                            <input type='hidden'  id='list$i' name='item[]' value='".$data[$i]["item"]."'>
                         </div>
-                    </td>
-                    <td>
-                        <icon class='fa fa-minus-circle' id='${item.name}' onclick="reduceinCart(this.id)"></icon>
-                         <span class='fs-5'>${item.inCart}</span>
-                         <input type='hidden' class='box_items_qty' id='qty$i' id='qty[]' value='1'>
-                        <icon class='fa fa-plus-circle' id='${item.name}' onclick="increaseinCart(this.id)"></icon>
-                    </td>
-                    <td> 
-                        &#8358;
-                        <span class="item-price" data-kt-ecommerce-edit-order-filter="price">&#8358 ".$data[$i]["price"]."</span>
-                        <input type='hidden' class='box_items_price' placeholder='&#8358 ".$data[$i]["price"]."' value='".$data[$i]["price"]."' name='price' id='item_price$i'>
-                        <input type='hidden' value='${item.price}' name='price[]' class='box_items_price' />
-                        <input type='hidden' value='${item.inCart}' name='quantity[]' class='box_items_qty' />
-                    </td>
-                    <td class="text-end pe-5" data-order="22"><icon class='fa fa-times-circle' id='${item.name}' onclick="removeProduct(this.id)"></icon></td>
-                </tr>
-            `;
+                    </div>
+                    <div class='text-gray-400 fw-bolder fs-7 text-end'>
+                        <input type='number' placeholder='&#8358 ".$data[$i]["price"]."' value='".$data[$i]["price"]."' name='price' id='item_price$i'>
+                        <span class='text-danger' onclick='removeItem(this.id)' id='$i'>Remove</span>
+                    </div>
+                </div>
+                <div class='separator separator-dashed my-5'></div>
+            ";
         }
-        
-       
-
-    }
-
-    public function getTotalCost($id){
-        $sql = "SELECT * FROM box WHERE id='$id' ";
-        $query = $this->connect()->query($sql);
-        $numRows = $query->num_rows;
-        if($numRows > 0){
-            while($rows = $query->fetch_assoc()){
-                echo $rows["total_sum"];
-            }
-        }else{
-            echo null;
-            exit;
-        }
-      
         
        
 
