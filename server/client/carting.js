@@ -81,8 +81,6 @@
     
 })();
 
-
-
 function removeItem(id){
     let list = document.getElementById(`list${id}`);
     let price = document.getElementById(`item_price${id}`);

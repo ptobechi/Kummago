@@ -19,6 +19,25 @@
         }
     });
 
+    $.ajax({
+        url: "../server/controller/user.php",
+        method: "POST",
+        data:{action:"getProfilePics"},
+        success: function (data) {
+            if(data != ""){
+                document.getElementById("profile_img").style.backgroundImage  = 'url(../server/avatars/'+data+')';
+                // console.log(data)
+            }else{
+                document.getElementById("profile_img").style.backgroundImage  = 'url(assets/media/avatars/300-1.jpg)';
+            }
+        },
+        error: function (e) {
+            $("#output").text(e.responseText);
+            console.log("ERROR : ", e);
+            $("#place-order").prop("disabled", false);
+        }
+    });
+
     
 })();
 
@@ -70,3 +89,29 @@ $("#submit_form").submit(function(event){
 
 });
 
+$(document).ready(function () {
+    $('#avater_holder').change(function () {
+        // alert("Okay")
+        var file_data = $('#avater_holder').prop('files')[0];
+        var form_data = new FormData();
+        form_data.append('avatar', file_data);
+        console.log(form_data.append('file', file_data));
+        // console.log(form_data.getAll("avatar"))
+        $.ajax({
+            url: '../server/controller/user.php', // point to server-side controller method
+            method: 'POST',
+            enctype: 'multipart/form-data',
+            processData: false,
+            cache: false,
+            contentType: false,
+            data: form_data,
+            success: function (response) {
+                $('#msg').html(response); // display success response from the server
+                console.log(response)
+            },
+            error: function (response) {
+                $('#msg').html(response); // display error response from the server
+            }
+        });
+    });
+});

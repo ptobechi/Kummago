@@ -121,10 +121,11 @@ class Database{
    
     }
 
-    public function uploadProfile($id, $receipt){
-        $this->id = $id;
+    public function uploadProfile($receipt){
+        $userid = $_SESSION["userid"];
+        $email = $_SESSION["email"];
 
-        $id = mysqli_real_escape_string($this->connect(), $id);
+        // $id = mysqli_real_escape_string($this->connect(), $id);
         
         $fileName = $_FILES['file']['name'];
         $fileTmpName = $_FILES['file']['tmp_name'];
@@ -139,25 +140,19 @@ class Database{
         if(in_array($fileActualExt,$allowed)){
             if($fileError == 0){
                 if($fileSize < 5000000){
-                    $fileNameNew = $id.$fileName;
-                    $fileDestination = "../File Manager/";
+                    $fileNameNew = $userid.$fileName;
+                    $fileDestination = "../avatars/";
             
-                    $move = move_uploaded_file($fileTmpName, "../File Manager/".$fileNameNew);
+                    $move = move_uploaded_file($fileTmpName, "../avatars/".$fileNameNew);
                     
                     if($move){
-                        $sql = "UPDATE portfolio SET receipt='$fileNameNew', status='1' WHERE crypto_id={$id} ";
+                        $sql = "UPDATE profile SET image='$fileNameNew' WHERE userid='$userid' AND email='$email'";
                         $queryy = $this->connect()->query($sql);
                         if($queryy){
-                            echo "<script>
-                                alert('Reciept Uploaded Successfully, account under review. Your account status will be updated ');
-                                    window.location='../$';
-                            </script>";
+                            echo "201";
                             die();
                         }else{
-                            echo "<script>
-                                    alert('Failed to upload receipt pls try again');
-                                    history.back();
-                            </script>";                                    
+                            echo "401";                                    
                         }
 
                   
@@ -165,20 +160,14 @@ class Database{
 
 
                 }else{
-                echo "<script>alert('File Size is too large.. Try Again!!');
-                    history.back();
-                </script>";
+                echo "404";
 
                 }
             }else{
-                echo "<script>alert('Error Occured Uploading File.. Try Again!!');
-                    history.back();
-                </script>";
+                echo "404";
             }
         }else{
-            echo "<script>alert('Error Occured Uploading File.. Try Again!!');
-                history.back();
-            </script>";
+            echo "404";
         }
     }
     

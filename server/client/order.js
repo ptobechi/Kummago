@@ -28,9 +28,40 @@
         method: "POST",
         data:{action:"getDraftedOrderDetails", id:id},
         success: function (data) {
-            // console.log(data)
+            // console.log(data);
             const tr_div = document.getElementById("todo_cart");
-            tr_div.innerHTML += data;
+            cartItems = JSON.parse(data);
+            console.log(cartItems["items"] )
+    
+            for(let i=0; i < Object.keys(cartItems["items"]).length; i++){
+                console.log(cartItems["items"][i].item );
+                tr_div.innerHTML += `
+                    <tr>
+                        <td>
+                            <div class="d-flex align-items-center" data-kt-ecommerce-edit-order-filter="product" data-kt-ecommerce-edit-order-id="product_30">
+                                <div class="ms-5">
+                                    <a class="text-gray-800 text-hover-primary fs-5 fw-bolder">${cartItems["items"][i].item.toUpperCase()}</a>
+                                    <input type='hidden' value='${cartItems["items"][i].item}' name='item[]' class='box_items' />
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <icon class='fa fa-minus-circle' id='${cartItems["items"][i].item}' onclick="reduceinCart(this.id)"></icon>
+                            <span class='fs-5'>${cartItems["items"][i].qty}</span>
+                            <icon class='fa fa-plus-circle' id='${cartItems["items"][i].item}' onclick="increaseinCart(this.id)"></icon>
+                        </td>
+                        <td> 
+                            &#8358;
+                            <span class="item-price" data-kt-ecommerce-edit-order-filter="price">${cartItems["items"][i].price * cartItems["items"][i].qty}</span>
+                            <input type='hidden' value='${cartItems["items"][i].price}' name='price[]' class='box_items_price' />
+                            <input type='hidden' value='${cartItems["items"][i].qty}' name='quantity[]' class='box_items_qty' />
+                        </td>
+                        <td class="text-end pe-5" data-order="22"><icon class='fa fa-times-circle' id='${cartItems["items"][i].item}' onclick="removeProduct(this.id)"></icon></td>
+                    </tr>
+                
+                `;
+            }
+            
         },
         error: function (e) {
             $("#output").text(e.responseText);

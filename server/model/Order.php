@@ -62,19 +62,21 @@ class Order extends Database{
             while($rows = $query->fetch_assoc()){
                 $data = json_decode($rows["basket"], true);
                 $count = sizeof($data);
-                // for($i=0; $i < $count; $i++){
-                    // $dat
+                    $d = $rows["delivery_date"];
+                    $explode = explode(" ", $d);
+                    $date = $explode[0];
+
                     if($rows["status"] == "1"){
                         $status = "Processing";
                     }
                 $rowa[] = "
                     <tr>
+                        <td class='text-dark fw-bolder text-hover-primary fs-6'>".$date."</td>
                         <td class='text-dark fw-bolder text-hover-primary fs-6'>".$data["box_name"]."</td>
                         <td class='text-dark fw-bolder text-hover-primary fs-6'>$rows[total_sum]</td>
                         <td class='text-dark fw-bolder text-hover-primary fs-6'>$status</td>
                     </tr>    
                 ";
-            // }
 
             }
         }else{
@@ -83,7 +85,7 @@ class Order extends Database{
         }
 
          foreach($rowa as $data){
-            echo $data ."<br/>";
+            echo $data ."";
 
         }
     }
@@ -166,31 +168,14 @@ class Order extends Database{
         if($numRows > 0){
             while($rows = $query->fetch_assoc()){
                 $data = json_decode($rows["basket"], true);
+
+                echo $rows["basket"];
             }
         }else{
             return null;
             exit;
         }
-        // $data[$i]["item"]
-        $count = sizeof($data);
-        // print_r($data[0]);
-        for($i=0; $i < $count; $i++){
-            echo " 
-                <div class='d-flex flex-stack my-5'>
-                    <div class='d-flex align-items-center me-5'>
-                        <div class='me-5'>
-                            <a href='#' class='text-gray-800 fw-bolder text-hover-primary fs-6'>".$data["box_name"][12]."</a>
-                            <input type='hidden'  id='list$i' name='item[]' value='".$data[$i]["item"]."'>
-                        </div>
-                    </div>
-                    <div class='text-gray-400 fw-bolder fs-7 text-end'>
-                        <input type='number' placeholder='&#8358 ".$data[$i]["price"]."' value='".$data[$i]["price"]."' name='price' id='item_price$i'>
-                        <span class='text-danger' onclick='removeItem(this.id)' id='$i'>Remove</span>
-                    </div>
-                </div></div>";
-
-            // echo $data[$i]["item"]."====".$data[$i]['price'];
-        }
+        
         
        
 

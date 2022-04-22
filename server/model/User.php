@@ -3,6 +3,24 @@ require "../config/connection.php";
 
 class User extends Database{
 
+    public function authusers(){
+        $userid = $_SESSION["userid"];
+        $email = $_SESSION["email"];
+
+        //Check if account is logged in
+        $sql = "SELECT * FROM profile WHERE userid='$userid' AND email='$email' ";
+        $query = $this->connect()->query($sql);
+        $Logged_user = $query->num_rows;
+        if($Logged_user > 0){
+           
+        }else{
+            echo "<script>alert('Login required'); window.location='../login.html'; </script>";
+            die();
+        }
+        
+        // return $users;
+    }
+    
     public function userRegistration($firstname, $lastname, $email, $password){
         $this->firstname = $firstname;
         $this->lastname = $lastname;
@@ -161,6 +179,28 @@ class User extends Database{
         echo $user;
     }
 
+    public function retrieveProfilePics(){
+        $userid = $_SESSION["userid"];
+        $email = $_SESSION["email"];
+
+        $userid = mysqli_real_escape_string($this->connect(), $userid);
+        $email = mysqli_real_escape_string($this->connect(), $email);
+
+        $sql = "SELECT * FROM profile WHERE userid='$userid' AND email='$email' ";
+        $queries = $this->connect()->query($sql);
+        $numRows = $queries->num_rows;
+        if($numRows > 0){
+            while($row = $queries->fetch_assoc()){
+                $user = $row["image"];
+            }
+        }else{
+
+            $user = "";
+        }
+
+        echo $user;
+    }
+
     public function updateProfile($firstname, $lastname, $phone, $address, $state){
         $this->firstname = $firstname;
         $this->lastname = $lastname;
@@ -228,75 +268,6 @@ class User extends Database{
             echo "<script>alert('An unknown error occurred. Contact Support'); history.back(); </script>";
             die();
         }
-    }
-
-    public function auth(){
-        $userid = $_SESSION["userid"];
-        $email = $_SESSION["email"];
-
-        //Check if account is logged in
-        $sql = "SELECT * FROM profile WHERE userid='$userid' AND email='$email' ";
-        $query = $this->connect()->query($sql);
-        $Logged_user = $query->num_rows;
-        if($Logged_user > 0){
-            $select = "SELECT * FROM portfolio WHERE userid='$userid' AND status=2 ";
-            $send = $this->connect()->query($select);
-            $numRows = $send->num_rows;
-            if($numRows > 0){
-                while($row = $send->fetch_assoc()){
-                    $bal = $row["profit"];
-                    $amount = $row['amount'];
-                    $id = $row["crypto_id"];
-                    $invested_date = $row["date"];
-
-                    $today = time();
-                    $before = strtotime($invested_date);
-                    $date = abs($today - $before);
-                    $day = floor($date/86400);
-
-                    //Check Investment Period 
-                    if($amount > "99" && $amount < "5000"){
-                        if($day < 6){
-                            $profit = (((4.5/100) * $amount) * $day) + $amount;
-                        }else{
-                            $profit = (((4.5/100) * $amount) * 5) + $amount;
-                        }
-                        
-                        $insert = "UPDATE portfolio SET profit='$profit' WHERE crypto_id='$id' AND status=2";
-                        $update_query = $this->connect()->query($insert);
-
-                    }elseif($amount > "4999" && $amount < "20000"){
-                        if($day < 6){
-                            $profit = (((5.5/100) * $amount) * $day) + $amount;
-                        }else{
-                            $profit = (((5.5/100) * $amount) * 5) + $amount;
-                        }
-                        $insert = "UPDATE portfolio SET profit='$profit'  WHERE crypto_id='$id' AND status=2";
-                        $update_query = $this->connect()->query($insert);
-                    }
-                    elseif($amount > "19999" ){
-                        if($day < 6){
-                            $profit = (((6.5/100) * $amount) * $day) + $amount;
-                        }else{
-                            $profit = (((6.5/100) * $amount) * 5) + $amount;
-                        }
-                        $insert = "UPDATE portfolio SET profit='$profit'  WHERE crypto_id='$id' AND status=2";
-                        $update_query = $this->connect()->query($insert);
-                    }
-
-                }
-            }
-
-            foreach($this->RetrieveProfile() as $user){
-                $users[] = $user;
-            }
-        }else{
-            echo "<script>alert('Login required'); window.location='../login.html'; </script>";
-            die();
-        }
-
-        
-        return $users;
     }
 
     public function VerifyEmail($email){

@@ -18,6 +18,11 @@ if($_POST["action"] == "register"){
     
     $user->retrieveProfile();
 
+}
+elseif($_POST["action"] == "getProfilePics"){
+    
+    $user->retrieveProfilePics();
+
 }elseif($_POST["action"] == "update_profile"){
     $firstname = $_POST["firstname"];
     $lastname = $_POST["lastname"];
@@ -26,4 +31,8 @@ if($_POST["action"] == "register"){
     $state = $_POST["state"];    
 
     $user->updateProfile($firstname, $lastname, $phone, $address, $state);
+}else{
+    $receipt = $_FILES["file"]["name"];
+
+    $user->uploadProfile($receipt);
 }
