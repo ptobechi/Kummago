@@ -36,6 +36,7 @@
     
 })();
 
+
 function box_details(boxid){
     document.getElementById("detail_div").innerHTML = "";
     $.ajax({

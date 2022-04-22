@@ -25,8 +25,12 @@
         data:{action:"getProfilePics"},
         success: function (data) {
             if(data != ""){
+                let x = document.querySelectorAll("#profile_pic").length;
+                for(let i =0; i<x; i++){
+                    document.querySelectorAll("#profile_pic")[i].src = '../server/avatars/'+data+'';
+                }
                 document.getElementById("profile_img").style.backgroundImage  = 'url(../server/avatars/'+data+')';
-                // console.log(data)
+
             }else{
                 document.getElementById("profile_img").style.backgroundImage  = 'url(assets/media/avatars/300-1.jpg)';
             }
