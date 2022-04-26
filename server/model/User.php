@@ -46,12 +46,12 @@ class User extends Database{
         $query = $this->connect()->query($sql);
         $numRows = $query->num_rows;
         if($numRows > 0){
-            echo "emailExists";
+            echo "302";
             exit;
         }
 
         //INSERT INTO TABLE
-        $sql3 = "INSERT INTO register SET userid='$userid', email='$email_address', password='$password', status='0', date=NOW() ";
+        $sql3 = "INSERT INTO register SET userid='$userid', email='$email_address', password='$password', role='user', status='0', date=NOW() ";
         $query3 = $this->connect()->query($sql3);
         if($query3){ 
             $sql4 = "INSERT INTO profile SET userid='$userid', firstname='$firstname', lastname='$lastname', email='$email_address'";
@@ -88,28 +88,36 @@ class User extends Database{
                 $_SESSION["email"] = $row["email"];
                 $_SESSION["userid"] = $row["userid"];
 
-                // if($row["status"] == "2" AND $row["role"] == "2"){
-                //     // $code = random_int(100000, 999999);
-
-                //     // $this->TwoFactorAuthentication($code);
-
-                //     echo "101";
-
-                // }elseif($row["status"] == "4"){
-                //     echo "401";
-                //     exit;
-                // }elseif($row["status"] == "x"){
-                //     // $this->WelcomeMessage($email, $fname);
-                //     echo "404";
-                //     exit;
-                // }
-                if($row["role"] == "user"){
-                    echo "user";
-                }else{
+                if($row["status"] == "0" AND $row["role"] == "user"){
+                    // $this->verify($email, $fname);
+                    echo "403";
+                    exit;
+                }elseif($row["status"] == "1" AND $row["role"] == "user"){
+                    //check if profile is updated
+                    echo "202";
+                    exit;
+                }elseif($row["status"] == "2" AND $row["role"] == "user"){
+                    //user verified
+                    echo "200";
+                    exit;
+                }elseif($row["status"] == "3" AND $row["role"] == "user"){
+                    //user authentication is activated
+                    echo "401";
+                     // $code = random_int(100000, 999999);
+                    // $this->TwoFactorAuthentication($code);
+                    exit;
+                }elseif($row["status"] == "4" AND $row["role"] == "user"){
+                    //an error exists
+                    echo "404";
+                    exit;
+                }elseif($row["role"] == "admin"){
                     echo "admin";
+                    exit;
+                }else{
+                    //an error exists
+                    echo "404";
+                    exit;
                 }
-
-                // echo "200";
             }
         }else{
             echo "404";
@@ -149,7 +157,7 @@ class User extends Database{
                                 <i class='fas fa-exclamation-circle ms-1 fs-7' data-bs-toggle='tooltip' title='Phone number must be active'></i>
                             </label>
                             <div class='col-lg-8 fv-row'>
-                                <input type='tel' id='phone_number' class='form-control form-control-lg form-control-solid' placeholder='Phone number' value='$row[phone]' required />
+                                <input type='tel' id='phone_number' class='form-control form-control-lg form-control-solid' placeholder='enter a valid contact phone number' value='$row[phone]' required />
                             </div>
                         </div>
 

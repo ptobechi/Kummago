@@ -113,11 +113,27 @@ class Database{
             `productid` INT(11) NOT NULL , 
             `category` VARCHAR(255) NOT NULL , 
             `product` VARCHAR(255) NOT NULL , 
+            `price` VARCHAR(255) NOT NULL , 
             `status` INT(11) NOT NULL ,  
             `date` DATETIME NOT NULL ,  
             PRIMARY KEY  (`id`)
         )ENGINE = InnoDB;");
         $create = $this->connect()->query($create_table);
+
+        $create_table = ("CREATE TABLE IF NOT EXISTS notifications ( 
+            `id` INT NOT NULL AUTO_INCREMENT ,
+            `userid` INT(11) NOT NULL , 
+            `email` VARCHAR(255) NOT NULL , 
+            `msg_title` VARCHAR(255) NOT NULL ,  
+            `msg_subject` VARCHAR(255) NOT NULL ,  
+            `msg_body` VARCHAR(255) NOT NULL ,  
+            `status` INT(11) NOT NULL , 
+            `date` DATETIME NOT NULL ,
+            PRIMARY KEY  (`id`),
+            FOREIGN KEY (`userid`) REFERENCES register(`userid`)
+        )ENGINE = InnoDB;");
+        $create = $this->connect()->query($create_table);
+ 
    
     }
 

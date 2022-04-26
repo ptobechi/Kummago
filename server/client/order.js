@@ -6,6 +6,7 @@
         data:{action:"getOrder"},
         success: function (data) {
             const tr_div = document.getElementById("OREDR");
+            
             tr_div.innerHTML += data;
         },
         error: function (e) {

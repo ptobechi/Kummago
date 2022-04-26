@@ -3,7 +3,7 @@
 	<!--begin::Head-->
 	<head>
 		<!-- <base href="../../../"> -->
-		<title>Metronic - the world's #1 selling Bootstrap Admin Theme Ecosystem for HTML, Vue, React, Angular &amp; Laravel by Keenthemes</title>
+		<title>KumagoFoods Abuja</title>
 		<meta charset="utf-8" />
 		<meta name="description" content="The most advanced Bootstrap Admin Theme on Themeforest trusted by 94,000 beginners and professionals. Multi-demo, Dark Mode, RTL support and complete React, Angular, Vue &amp; Laravel versions. Grab your copy now and get life-time updates for free." />
 		<meta name="keywords" content="Metronic, bootstrap, bootstrap 5, Angular, VueJs, React, Laravel, admin themes, web design, figma, web development, free templates, free admin themes, bootstrap theme, bootstrap template, bootstrap dashboard, bootstrap dak mode, bootstrap button, bootstrap datepicker, bootstrap timepicker, fullcalendar, datatables, flaticon" />
@@ -53,7 +53,7 @@
 								<!--end::Link-->
 							</div>
 							<!--end::Heading-->
-							
+							<div id="empty_form_error"></div>
 							<!--begin::Input group-->
 							<div class="row fv-row mb-7">
 								<!--begin::Col-->
@@ -74,6 +74,7 @@
 							<div class="fv-row mb-7">
 								<label class="form-label fw-bolder text-dark fs-6">Email</label>
 								<input class="form-control form-control-lg form-control-solid" type="email" placeholder="" id="email" autocomplete="off" />
+								<span class="form-label fw-bolder text-danger fs-6" id="email_msg"></span>
 							</div>
 							<!--end::Input group-->
 							<!--begin::Input group-->
@@ -110,7 +111,8 @@
 							<!--begin::Input group-->
 							<div class="fv-row mb-5">
 								<label class="form-label fw-bolder text-dark fs-6">Confirm Password</label>
-								<input class="form-control form-control-lg form-control-solid" type="password" placeholder="" id="confirm_password" autocomplete="off" />
+								<input class="form-control form-control-lg form-control-solid" type="password" oninput="checkPassword()" id="confirm_password" autocomplete="off" />
+								<label id="confirm_password_msg"></label>
 							</div>
 							<!--end::Input group-->
 							<!--begin::Input group-->

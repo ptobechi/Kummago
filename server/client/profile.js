@@ -32,7 +32,11 @@
                 document.getElementById("profile_img").style.backgroundImage  = 'url(../server/avatars/'+data+')';
 
             }else{
-                document.getElementById("profile_img").style.backgroundImage  = 'url(assets/media/avatars/300-1.jpg)';
+                let x = document.querySelectorAll("#profile_pic").length;
+                for(let i =0; i<x; i++){
+                    document.querySelectorAll("#profile_pic")[i].src = 'assets/media/avatars/default.png';
+                }
+                document.getElementById("profile_img").style.backgroundImage  = 'url(assets/media/avatars/default.png)';
             }
         },
         error: function (e) {
@@ -98,8 +102,8 @@ $(document).ready(function () {
         // alert("Okay")
         var file_data = $('#avater_holder').prop('files')[0];
         var form_data = new FormData();
-        form_data.append('avatar', file_data);
-        console.log(form_data.append('file', file_data));
+        form_data.append('file', file_data);
+        // console.log(form_data.append('file', file_data));
         // console.log(form_data.getAll("avatar"))
         $.ajax({
             url: '../server/controller/user.php', // point to server-side controller method
@@ -110,8 +114,9 @@ $(document).ready(function () {
             contentType: false,
             data: form_data,
             success: function (response) {
-                $('#msg').html(response); // display success response from the server
-                console.log(response)
+                // if(response == "201"){
+                    window.location.href = "user/";
+                // }
             },
             error: function (response) {
                 $('#msg').html(response); // display error response from the server
