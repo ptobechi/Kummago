@@ -186,5 +186,18 @@ class Database{
             echo "404";
         }
     }
+
+    public function addNotifications($msg_title, $msg_subject, $msg_body){
+        $userid = $_SESSION["userid"];
+        $email = $_SESSION["email"];
+        $sql = "INSERT INTO notifications SET msg_title='$msg_title', msg_subject='$msg_subject', msg_body='$msg_body', userid='$userid', email='$email' ";
+        $query = $this->connect()->query($sql);
+        if($query){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
     
 }

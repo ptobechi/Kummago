@@ -11,6 +11,7 @@ function addItem(e){
     setItems(products);
     setPrice(products);
     displayResult();
+    document.getElementById("search_item").value = "";
 
 
 }
@@ -123,7 +124,7 @@ function displayResult(){
                     <td>
                         <div class="d-flex align-items-center" data-kt-ecommerce-edit-order-filter="product" data-kt-ecommerce-edit-order-id="product_30">
                             <div class="ms-5">
-                                <a class="text-gray-800 text-hover-primary fs-5 fw-bolder">${item.name.toUpperCase()}</a>
+                                <a class="text-gray-800 text-hover-primary fs-5 fw-bolder">${item.name}</a>
                                 <input type='hidden' value='${item.name}' name='item[]' class='box_items' />
                             </div>
                         </div>

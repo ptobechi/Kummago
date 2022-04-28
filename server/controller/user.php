@@ -18,8 +18,11 @@ if($_POST["action"] == "register"){
     
     $user->retrieveProfile();
 
-}
-elseif($_POST["action"] == "getProfilePics"){
+}elseif($_POST["action"] == "authUser"){
+    
+    $user->authusers();
+
+}elseif($_POST["action"] == "getProfilePics"){
     
     $user->retrieveProfilePics();
 

@@ -23,19 +23,30 @@
     let url = window.location.href;
     let explode = url.split("=");
     let id = explode[1]
-    console.log(explode[1])
     $.ajax({
         url: "../server/controller/order.php",
         method: "POST",
         data:{action:"getDraftedOrderDetails", id:id},
         success: function (data) {
             // console.log(data);
-            const tr_div = document.getElementById("todo_cart");
+            const tr_div = document.getElementById("cart");
             cartItems = JSON.parse(data);
-            console.log(cartItems["items"] )
+            // console.log(cartItems)
     
+            // let products = [];
+            // let totalCost = 0;
+
+            // for(let i=0; i < Object.keys(cartItems["items"]).length; i++){
+            //     products.push({"name":cartItems["items"][i].item, "price": cartItems["items"][i].price * cartItems["items"][i].qty, "inCart": cartItems["items"][i].qty})
+
+            //     totalCost += parseInt(cartItems["items"][i].price * cartItems["items"][i].qty);                 
+            // }
+            // localStorage.setItem("totalCost", totalCost);
+            // setItems(products)
+            // displayResult()
+            
             for(let i=0; i < Object.keys(cartItems["items"]).length; i++){
-                console.log(cartItems["items"][i].item );
+                // console.log(cartItems["items"][i].item );
                 tr_div.innerHTML += `
                     <tr>
                         <td>
@@ -97,6 +108,11 @@ $("#kt_modal_offer_a_deal_form").submit(function(event){
     let quantity = document.querySelectorAll(".box_items_qty");
     let box_item = [];
     
+    if(box_name == "" || box_description == "" || delivery_date == ""){
+        document.getElementById("empty_form_error").innerHTML = "<span class='alert alert-warning' role='alert'>Do ensure to enter all available field</span>";
+        return
+    }
+
     for(let i=0; i<items.length; i++){
         box_item.push({"item":items[i].value, "price":prices[i].value, "qty":quantity[i].value});        
     }

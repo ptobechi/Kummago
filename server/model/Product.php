@@ -39,7 +39,7 @@ class Product extends Database{
                 echo "
                     <div class='d-flex align-items-center m-3' id='$rows[product]-$rows[price]' onclick='addItem(this.id)'>
                         <span class='bullet bullet-vertical h-20px bg-success'></span>
-                        <div class='flex-grow-1 mx-5' onclick='Paste(this.id)'>
+                        <div class='flex-grow-1 mx-5'>
                             <span id='item' class='text-gray-800 text-hover-primary fw-bolder fs-6'>$rows[product]</span>
                         </div>
                         <span class='badge badge-light-success fs-8 fw-bolder'> &#x20A6 <span>$rows[price]</span></span>

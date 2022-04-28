@@ -13,6 +13,7 @@ $(document).ready(function(){
                 data: data,
                 success: function (data) {
                     $("#display_result").html(data);
+                    // $("#display_result").val() = "";
                 },
                 error: function (e) {
                     $("#display_result").css("display", "none");  
@@ -24,7 +25,3 @@ $(document).ready(function(){
     });
 });
 
-function Paste(e){
-    document.getElementById("item").value = document.getElementById(e);
-    // e.value = e;
-}

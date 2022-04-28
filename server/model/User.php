@@ -4,21 +4,29 @@ require "../config/connection.php";
 class User extends Database{
 
     public function authusers(){
-        $userid = $_SESSION["userid"];
-        $email = $_SESSION["email"];
+        if(empty($_SESSION)){
+            echo "404";
+            die();
+        }else{
+            $userid = $_SESSION["userid"];
+            $email = $_SESSION["email"];
+        }
 
         //Check if account is logged in
         $sql = "SELECT * FROM profile WHERE userid='$userid' AND email='$email' ";
         $query = $this->connect()->query($sql);
         $Logged_user = $query->num_rows;
         if($Logged_user > 0){
-           
+            while($rows = $query->fetch_assoc()){
+                $data = array("200", "$rows[email]", "$rows[firstname] $rows[lastname]");
+            }
+            echo json_encode($data);   
         }else{
-            echo "<script>alert('Login required'); window.location='../login.html'; </script>";
+            echo "404";
             die();
         }
         
-        // return $users;
+        
     }
     
     public function userRegistration($firstname, $lastname, $email, $password){
@@ -93,11 +101,11 @@ class User extends Database{
                     echo "403";
                     exit;
                 }elseif($row["status"] == "1" AND $row["role"] == "user"){
-                    //check if profile is updated
+                    ///check if profile is updated
                     echo "202";
                     exit;
                 }elseif($row["status"] == "2" AND $row["role"] == "user"){
-                    //user verified
+                    //verified
                     echo "200";
                     exit;
                 }elseif($row["status"] == "3" AND $row["role"] == "user"){
@@ -227,7 +235,7 @@ class User extends Database{
         $sql = "UPDATE profile SET firstname='$firstname', lastname='$lastname', phone='$phone', address='$address', state='$state' WHERE userid='$userid' AND email='$email' ";
         $query = $this->connect()->query($sql);
         if($query){
-            $sql2 = "UPDATE register SET status='1', date = NOW() WHERE userid = '$userid' AND email = '$email' ";
+            $sql2 = "UPDATE register SET status='2', date = NOW() WHERE userid = '$userid' AND email = '$email' ";
             $query2 = $this->connect()->query($sql2);
             if($query){
                 echo "200";

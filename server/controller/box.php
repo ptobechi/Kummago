@@ -2,11 +2,11 @@
 require ("../model/Box.php");
 $box = new Box;
 
-if($_POST["action"] == "place_order"){
+if($_POST["action"] == "create_box"){
     $box_name = $_POST["box_name"];
-    $box_desc = $_POST["box_description"];
+    $box_desc = $_POST["desc"];
     $total = $_POST["total_price"];
-    $items =  $_POST["box_item"];
+    $items =  $_POST["items"];
     $item = json_encode($items, true);
 
     // echo $item;

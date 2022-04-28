@@ -347,7 +347,7 @@
                 <div class="post d-flex flex-column-fluid" id="kt_post">
                     <!--begin::Container-->
                     <div id="kt_content_container" class="container-xxl">
-                        <form id="kt_ecommerce_edit_order_form" class="form d-flex flex-column flex-lg-row" action="/api/product" method="POST">
+                        <form id="kt_modal_offer_a_deal_form" class="form d-flex flex-column flex-lg-row">
                             <!--begin::Aside column-->
                             <div class="w-100 flex-lg-row-auto w-lg-300px mb-7 me-7 me-lg-10">
                                 <!--begin::Order details-->
@@ -368,7 +368,7 @@
                                                 <label class="required form-label">Box Name</label>
                                                 <!--end::Label-->
                                                 <!--begin::Select2-->
-                                                <input type="text" class="form-control" name="box_name">
+                                                <input type="text" class="form-control" id="box_name">
                                                 <!--end::Select2-->
                                             </div>
                                             <!--end::Input group-->
@@ -378,13 +378,15 @@
                                                 <label class="required form-label">Box Description</label>
                                                 <!--end::Label-->
                                                 <!--begin::Select2-->
-                                                <input type="text" class="form-control" name="box_description" >
+                                                <input type="text" class="form-control" id="box_description" >
                                                 <!--end::Select2-->
                                             </div>
                                             <!--end::Input group-->
                                         </div>
                                     </div>
                                     <!--end::Card header-->
+                                    <div id="empty_form_error"></div>
+
                                 </div>
                                 <!--end::Order details-->
                             </div>
@@ -393,18 +395,12 @@
                             <div class="d-flex flex-column flex-lg-row-fluid gap-7 gap-lg-10">
                                 <!--begin::Order details-->
                                 <div class="card card-flush py-4">
-                                    <div class="card-header">
-                                        <!--begin::Modal title-->
-                                        <h2>Add Items to your Box</h2>
-                                        <!--end::Modal title-->
-                                    </div>
-                                    <!--end::Modal header-->
                                     <!--begin::Card body-->
                                     <div class="card-body pt-0">
                                         <div class="d-flex flex-column gap-10">
                                             <div class="row">
-                                                <!--begin::Search-->
-                                                <div class="d-flex align-items-center position-relative my-1">
+                                            <!--begin::Search products-->
+                                                <div class="d-flex align-items-center position-relative mb-n7">
                                                     <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
                                                     <span class="svg-icon svg-icon-1 position-absolute ms-4">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -413,15 +409,15 @@
                                                         </svg>
                                                     </span>
                                                     <!--end::Svg Icon-->
-                                                    <input type="text" id="item" class="form-control form-control-solid w-250px ps-14" placeholder="Search Products" />
-                                                    <input type="text" id="price" class="form-control form-control-solid w-250px ps-14" placeholder="Enter Price" />
-                                                    <!-- <input type="text" id="item" onkeyup="sendData(this)" name="" class="form-control form-control-solid w-250px ps-14" placeholder="Search Products" /> -->
-                                                    <button type="button" id="kt_ecommerce_add_order_submit" class="btn btn-primary">Add</button>
+                                                    <!-- <input type="text" data-kt-ecommerce-edit-order-filter="search" class="form-control form-control-solid w-100 w-lg-50 ps-14" placeholder="Search Products" /> -->
+                                                    <input type="text" id="search_item" class="form-control form-control-solid w-100 w-lg-100 ps-14" placeholder="Search Products" />
                                                 </div>
-                                                <div id="display_result"></div>
+                                                <!--end::Search products-->
                                                 <!--begin::Input group-->
                                             </div>
                                             <!--end::Search-->
+                                            <div id="display_result"></div>
+
                                             <div>
                                                 <!--begin::Selected products-->
                                                 <!--begin::Total price-->
@@ -440,14 +436,16 @@
                                                 <!--begin::Table head-->
                                                 <thead>
                                                     <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
-                                                        <th class="min-w-200px">Product</th>
-                                                        <th class="min-w-100px text-end pe-5">Action</th>
+                                                        <th class="min-w-100px">Product</th>
+                                                        <th class="min-w-70px">Quantity</th>
+                                                        <th class="min-w-70px">Price</th>
+                                                        <th class="min-w-30px text-end pe-5">Action</th>
                                                     </tr>
-                                                </thead> 
+                                                </thead>
                                                 <!--end::Table head-->
-                        
+
                                                 <!--begin::Table body-->
-                                                <tbody class="fw-bold text-gray-600" id="cart">
+                                                <tbody class="fw-bold text-gray-600 product-container" id="cart">
                                                     <!--begin::Table row-->
                                                     <tr id="total_price_container"></tr>
                                                     <!--end::Table row-->
@@ -499,19 +497,19 @@
                     <!--begin::Copyright-->
                     <div class="text-dark order-2 order-md-1">
                         <span class="text-muted fw-bold me-1">2022©</span>
-                        <a href="https://keenthemes.com" target="_blank" class="text-gray-800 text-hover-primary">Keenthemes</a>
+                        <a href="" target="_blank" class="text-gray-800 text-hover-primary">Keenthemes</a>
                     </div>
                     <!--end::Copyright-->
                     <!--begin::Menu-->
                     <ul class="menu menu-gray-600 menu-hover-primary fw-bold order-1">
                         <li class="menu-item">
-                            <a href="https://keenthemes.com" target="_blank" class="menu-link px-2">About</a>
+                            <a href="" target="_blank" class="menu-link px-2">About</a>
                         </li>
                         <li class="menu-item">
-                            <a href="https://devs.keenthemes.com" target="_blank" class="menu-link px-2">Support</a>
+                            <a href="" target="_blank" class="menu-link px-2">Support</a>
                         </li>
                         <li class="menu-item">
-                            <a href="https://1.envato.market/EA4JP" target="_blank" class="menu-link px-2">Purchase</a>
+                            <a href="" target="_blank" class="menu-link px-2">Purchase</a>
                         </li>
                     </ul>
                     <!--end::Menu-->
@@ -660,13 +658,6 @@
         </div>
         <!--end::Scrolltop-->
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-        <!--begin::application javascript-->
-        <script src="../server/client/product_upload.js"></script>
-        <script src="../server/client/searchdb.js"></script>
-
-        <!--end::application javascript-->
 
 
 
@@ -674,6 +665,12 @@
         <!--begin::Global Javascript Bundle(used by all pages)-->
         <script src="assets/plugins/global/plugins.bundle.js"></script>
         <script src="assets/js/scripts.bundle.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<script src="../server/client/box.js"></script>
+		<script src="assets/js/carting.js"></script>
+        <script src="../server/client/product_upload.js"></script>
+		<script src="../server/client/profile.js"></script>
+		<script src="../server/client/searchdb.js"></script>
         <!--end::Global Javascript Bundle-->
         <!--begin::Javascript-->
         <!--begin::Global Javascript Bundle(used by all pages)-->

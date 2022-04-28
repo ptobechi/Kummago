@@ -19,7 +19,7 @@ $("#sign_up_form").submit(function(event){
     let email = document.getElementById("email").value;
     let password = document.getElementById("password").value;
 
-    if(first_name = "" || last_name == "" || email == "" || password == ""){
+    if(first_name == "" || last_name == "" || email == "" || password == ""){
         document.getElementById("empty_form_error").innerHTML = "<span class='alert alert-warning' role='alert'>Do ensure to enter all available field</span>";
         return
     }
@@ -87,17 +87,21 @@ $("#sign_in_form").submit(function(event){
         enctype: 'multipart/form-data',
         data: data,
         success: function (data) {
+
             console.log(data);
-            if(data == "200"){
-                window.location.href = "user/";
-            }else if(data == "admin"){
+            if(data == "admin"){
                 window.location.href = "admin/";
+            }else if(data == "403"){
+                window.location.href = "auth.html/";
             }else if(data == "202"){
                 window.location.href = "user/profile.html";
+            }else if(data == "200"){
+                window.location.href = "user/";
             }else if(data == "404"){
                 alert("Email address or password does not exist");
-                $("#sign_in_submit").prop("disabled", false);
             }
+            $("#sign_in_submit").prop("disabled", false);
+
         },
         error: function (e) {
             alert("An unknown error occured. check your network connection and try again or contact support");

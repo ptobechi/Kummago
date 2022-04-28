@@ -6,19 +6,14 @@
         success: function (data) {
             const profile_div = document.getElementById("kt_account_profile_details");
             profile_div.innerHTML += data;
-            // let new_array = data.map(function(e) {
-            //     return e.data;
-            // });
-            
-            // console.log(data)
         },
         error: function (e) {
             $("#output").text(e.responseText);
             console.log("ERROR : ", e);
-            $("#place-order").prop("disabled", false);
         }
     });
 
+    
     $.ajax({
         url: "../server/controller/user.php",
         method: "POST",
@@ -81,6 +76,7 @@ $("#submit_form").submit(function(event){
         success: function (data) {
             if(data == 200){
                 alert("Profile Updated");
+                window.location.href = "user/";
                 $("#kt_account_profile_details_submit").prop("disabled", false);
             }else{
                 alert("Profile Update Failed");
@@ -103,8 +99,6 @@ $(document).ready(function () {
         var file_data = $('#avater_holder').prop('files')[0];
         var form_data = new FormData();
         form_data.append('file', file_data);
-        // console.log(form_data.append('file', file_data));
-        // console.log(form_data.getAll("avatar"))
         $.ajax({
             url: '../server/controller/user.php', // point to server-side controller method
             method: 'POST',
