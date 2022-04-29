@@ -80,6 +80,7 @@ $("#sign_in_form").submit(function(event){
 
      // disabled the submit button
     $("#sign_in_submit").prop("disabled", true);
+    $("#sign_in_submit").val("Processing..");
 
     $.ajax({
         url: "../server/controller/user.php",

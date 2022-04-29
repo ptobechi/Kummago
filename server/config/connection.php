@@ -1,5 +1,13 @@
 <?php
 session_start();
+// Import PHPMailer classes into the global namespace
+// These must be at the top of your script, not inside a function
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+// Load Composer's autoloader
+require 'vendor/autoload.php';
 
 class Database{
     private $severname;
@@ -17,6 +25,41 @@ class Database{
         
         return $connect;
 
+    }
+
+    public function configMsg($email, $name, $msg_subject, $msg_body){
+        // Instantiation and passing `true` enables exceptions
+        $mail = new PHPMailer(true);
+        try {
+            //Server settings
+            // $mail->SMTPDebug = SMTP::DEBUG_SERVER;                    // Enable verbose debug output
+            $mail->isSMTP();                                            // Send using SMTP
+            $mail->Host       = "www.kumagofoods.store";    // Set the SMTP server to send through
+            $mail->SMTPAuth   = true;                                 // Enable SMTP authentication
+            $mail->Username   = "info@kumagofoods.store"; // SMTP username
+            $mail->Password   =  "fakePassword2er";                 // SMTP password
+            $mail->SMTPSecure = 'ssl';       // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
+            $mail->Port       = 465;     // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above         
+
+            //Recipients
+            $mail->setFrom("info@fundingoptionsinvestment.com", "Funding Options Investment");
+            $mail->addAddress($email, $name);        // Add a recipient
+            // $mail->AddBCC('info@fundingoptionsinvestment.com', 'Admin');      // Add a recipient
+
+            // Content
+            $mail->isHTML(true);   // Set email format to HTML
+            $mail->Subject = $msg_subject;
+
+            $mail->Body  = $msg_body;
+            
+            return $mail->send();
+            die();
+        } catch (Exception $e) {
+            return $mail->ErrorInfo;
+            // echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+            die();
+
+        }
     }
 
     public function IdGenerator($table, $id){
