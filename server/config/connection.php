@@ -32,17 +32,17 @@ class Database{
         $mail = new PHPMailer(true);
         try {
             //Server settings
-            // $mail->SMTPDebug = SMTP::DEBUG_SERVER;                    // Enable verbose debug output
-            $mail->isSMTP();                                            // Send using SMTP
-            $mail->Host       = "www.kumagofoods.store";    // Set the SMTP server to send through
-            $mail->SMTPAuth   = true;                                 // Enable SMTP authentication
-            $mail->Username   = "info@kumagofoods.store"; // SMTP username
-            $mail->Password   =  "fakePassword2er";                 // SMTP password
-            $mail->SMTPSecure = 'ssl';       // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
-            $mail->Port       = 465;     // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above         
+            // $mail->SMTPDebug = SMTP::DEBUG_SERVER;            // Enable verbose debug output
+            $mail->isSMTP();                                    // Send using SMTP
+            $mail->Host       = "www.kumagofoods.store";       // Set the SMTP server to send through
+            $mail->SMTPAuth   = true;                         // Enable SMTP authentication
+            $mail->Username   = "noreply@kumagofoods.store"; // SMTP username
+            $mail->Password   =  "tE8p56NPaDt_fzB";         // SMTP password
+            $mail->SMTPSecure = 'ssl';                     // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
+            $mail->Port       = 465;                      // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above         
 
             //Recipients
-            $mail->setFrom("info@fundingoptionsinvestment.com", "Funding Options Investment");
+            $mail->setFrom("noreply@kumagofoods.store", "Kumagofoods Abuja");
             $mail->addAddress($email, $name);        // Add a recipient
             // $mail->AddBCC('info@fundingoptionsinvestment.com', 'Admin');      // Add a recipient
 
@@ -53,7 +53,7 @@ class Database{
             $mail->Body  = $msg_body;
             
             return $mail->send();
-            die();
+            // die();
         } catch (Exception $e) {
             return $mail->ErrorInfo;
             // echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
@@ -244,3 +244,4 @@ class Database{
     }
     
 }
+

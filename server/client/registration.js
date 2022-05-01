@@ -9,7 +9,6 @@ function checkPassword(){
     }
 }
 
-
 $("#sign_up_form").submit(function(event){
     event.preventDefault();
 
@@ -24,8 +23,6 @@ $("#sign_up_form").submit(function(event){
         return
     }
 
-
-
     let data = {
         firstname: first_name,
         lastname: last_name,
@@ -36,6 +33,7 @@ $("#sign_up_form").submit(function(event){
 
      // disabled the submit button
     $("#sign_up_submit").prop("disabled", true);
+    $("#sign_up_submit").html('<i class="fa fa-circle-o-notch fa-spin"></i> loading...');
 
     $.ajax({
         url: "../server/controller/user.php",
@@ -50,15 +48,17 @@ $("#sign_up_form").submit(function(event){
                 document.getElementById("email").scrollIntoView();
                 document.getElementById("email_msg").textContent = "Email address already exists";
                 $("#sign_up_submit").prop("disabled", false);
+                $("#sign_up_submit").html('Submit');
                 return
             }else{
                 alert("Registration Failed");
                 $("#sign_up_submit").prop("disabled", false);
+                $("#sign_up_submit").html('Submit');
             }
         },
         error: function (e) {
             $("#sign_up_submit").prop("disabled", false);
-
+            $("#sign_up_submit").html('Submit');
         }
     });
     

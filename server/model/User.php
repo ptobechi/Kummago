@@ -1,7 +1,7 @@
 <?php
-require "../config/connection.php";
+require "../model/Message.php";
 
-class User extends Database{
+class User extends Messages{
 
     public function authusers(){
         if(empty($_SESSION)){
@@ -65,7 +65,7 @@ class User extends Database{
             $sql4 = "INSERT INTO profile SET userid='$userid', firstname='$firstname', lastname='$lastname', email='$email_address'";
             $query4 = $this->connect()->query($sql4);
 
-            // $this->WelcomeMessage($email, $fname);
+            $this->sendEmailVerification("$email_address", "$firstname $lastname");
             
             echo "201";
             exit;
