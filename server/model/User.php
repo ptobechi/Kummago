@@ -50,13 +50,13 @@ class User extends Messages{
         $email_address = strtolower($email);
 
         //Check email if already registered
-        $sql = "SELECT email FROM register WHERE email='$email_address'";
-        $query = $this->connect()->query($sql);
-        $numRows = $query->num_rows;
-        if($numRows > 0){
-            echo "302";
-            exit;
-        }
+        // $sql = "SELECT email FROM register WHERE email='$email_address'";
+        // $query = $this->connect()->query($sql);
+        // $numRows = $query->num_rows;
+        // if($numRows > 0){
+        //     echo "302";
+        //     exit;
+        // }
 
         //INSERT INTO TABLE
         $sql3 = "INSERT INTO register SET userid='$userid', email='$email_address', password='$password', role='user', status='0', date=NOW() ";
@@ -65,9 +65,12 @@ class User extends Messages{
             $sql4 = "INSERT INTO profile SET userid='$userid', firstname='$firstname', lastname='$lastname', email='$email_address'";
             $query4 = $this->connect()->query($sql4);
 
-            $this->sendEmailVerification("$email_address", "$firstname $lastname");
+            $email = $email_address;
+            $name = $firstname." ".$lastname;
+
+            $this->sendEmailVerification($email, $name);
             
-            echo "201";
+            // echo "201";
             exit;
         }else{
             echo "400";

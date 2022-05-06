@@ -43,7 +43,7 @@ class Database{
 
             //Recipients
             $mail->setFrom("noreply@kumagofoods.store", "Kumagofoods Abuja");
-            $mail->addAddress($email, $name);        // Add a recipient
+            $mail->addAddress($email, $email);        // Add a recipient
             // $mail->AddBCC('info@fundingoptionsinvestment.com', 'Admin');      // Add a recipient
 
             // Content
@@ -52,11 +52,17 @@ class Database{
 
             $mail->Body  = $msg_body;
             
-            return $mail->send();
+            $mail = $mail->send();
+            if($mail){
+                echo "done";
+            }else{
+                echo "failed";
+            }
+            
             // die();
         } catch (Exception $e) {
             return $mail->ErrorInfo;
-            // echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
             die();
 
         }
