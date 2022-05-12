@@ -53,30 +53,45 @@ class Product extends Database{
         
     }
 
-    public function getBox(){
-        $sql = "SELECT * FROM box ";
+    public function getProducts(){
+        $sql = "SELECT * FROM products ";
         $query = $this->connect()->query($sql);
         $numRows = $query->num_rows;
         if($numRows > 0){
             while($rows = $query->fetch_array()){
                 $row[] = "
-                    <label class='btn btn-outline btn-outline-dashed btn-outline-default d-flex text-start p-6'>
-                        <input class='btn-check' type='radio' id='offer_type' value='$rows[id]' data-id='$rows[id]'/>
-                        <span class='d-flex'>
-                            <span class='svg-icon svg-icon-3hx'>
-                                <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'>
-                                    <rect x='2' y='2' width='9' height='9' rx='2' fill='black' />
-                                    <rect opacity='0.3' x='13' y='2' width='9' height='9' rx='2' fill='black' />
-                                    <rect opacity='0.3' x='13' y='13' width='9' height='9' rx='2' fill='black' />
-                                    <rect opacity='0.3' x='2' y='13' width='9' height='9' rx='2' fill='black' />
-                                </svg>
-                            </span>
-                            <span class='ms-4'>
-                                <span class='fs-3 fw-bolder text-gray-900 mb-2 d-block'>$rows[box]</span>
-                                <span class='fw-bold fs-4 text-muted'>$rows[descripton]</span>
-                            </span>
-                        </span>
-                    </label>
+                    <div class='col-6 col-md-4 col-lg-3'>
+                        <div class='product product-11 text-center'>
+                            <figure class='product-media'>
+                                <a href='product.html'>
+                                    <img src='assets/images/demos/demo-2/products/product-2-1.jpg'
+                                        alt='Product image' class='product-image'>
+                                </a>
+                                <div class='product-action-vertical'>
+                                    <a href='#' class='btn-product-icon btn-wishlist'><span>add to
+                                            wishlist</span></a>
+                                </div>
+                            </figure>
+                    
+                            <div class='product-body'>
+                                <h3 class='product-title'>
+                                    <a href='product.html'>
+                                        <span class='text-primary'>
+                                            <strong>$rows[product]</strong>
+                                        </span>
+                                    </a>
+                                </h3>
+                    
+                                <div class='product-price'>
+                                    <span>&#8358 $rows[price]</span>
+                                </div>
+                    
+                                <div class='text-center justify-content-center'>
+                                    <button class='btn btn-primary btn-round' id='$rows[product]-$rows[price]' onclick='addItem(this.id)'>Add to Box</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 ";
             }
         }else{

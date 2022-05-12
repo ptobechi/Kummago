@@ -163,6 +163,8 @@ class Database{
             `category` VARCHAR(255) NOT NULL , 
             `product` VARCHAR(255) NOT NULL , 
             `price` VARCHAR(255) NOT NULL , 
+            `description` VARCHAR(255) NOT NULL , 
+            `image` VARCHAR(255) NOT NULL , 
             `status` INT(11) NOT NULL ,  
             `date` DATETIME NOT NULL ,  
             PRIMARY KEY  (`id`)

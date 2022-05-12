@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Chowbox</title>
+
+    <script>
+        WebFontConfig = {
+            google: { families: ['Open+Sans:300,400,600,700', 'Poppins:300,400,500,600,700'] }
+        };
+        (function (d) {
+            var wf = d.createElement('script'), s = d.scripts[0];
+            wf.src = 'assets/js/webfont.js';
+            wf.async = true;
+            s.parentNode.insertBefore(wf, s);
+        })(document);
+    </script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="keywords" content="HTML5 Template">
+    <meta name="description" content="Molla - Bootstrap eCommerce Template">
+    <meta name="author" content="p-themes">
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/icons/favicon-16x16.png">
+    <link rel="manifest" href="assets/images/icons/site.html">
+    <link rel="mask-icon" href="assets/images/icons/safari-pinned-tab.svg" color="#666666">
+    <link rel="shortcut icon" href="assets/images/icons/favicon.ico">
+    <meta name="apple-mobile-web-app-title" content="Molla">
+    <meta name="application-name" content="Molla">
+    <meta name="msapplication-TileColor" content="#cc9966">
+    <meta name="msapplication-config" content="assets/images/icons/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Plugins CSS File -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/plugins/owl-carousel/owl.carousel.css">
+    <link rel="stylesheet" href="assets/css/plugins/jquery.countdown.css">
+    <link rel="stylesheet" href="assets/css/plugins/magnific-popup/magnific-popup.css">
+    <!-- Main CSS File -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/skins/skin-demo-30.css">
+    <link rel="stylesheet" href="assets/css/demos/demo-30.css">
+    <link rel="stylesheet" href="assets/style.css">
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <nav class="navbar fixed-top navbar-light bg-light mb-5">
+            <div class="container">
+                <a class="btn btn-primary rounded-pill my-2" href="#"><i class="fa fa-angle-left mx-2"></i> <span
+                        class="mx-2">Back</span> </a>
+                <div class="stepper">
+                    <span class="step-text"><span class="step" id="step-1">1</span>Select plan</span>
+                    <span class="step-text"><span class="step" id="step-2">2</span>Fill your box</span>
+                    <span class="step-text"><span class="step" id="step-3">3</span>Confirm your cart</span>
+                    <span class="step-text"><span class="step" id="step-4">4</span>Checkout</span>
+                </div>
+                <div>
+                    <!-- <button class="btn btn-primary rounded-pill">My Box</button> -->
+                    <div class="dropdown cart-dropdown">
+                        <a href="#" class="btn btn-primary dropdown-toggle" role="button" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false" data-display="static">
+                            <i class="icon-shopping-cart"></i>
+                            <span class="cart-count" id="cart_total">0</span>
+                            <span class="cart-txt">&#8358; <span id="total_price">0.00</span></span>
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <div class="dropdown-cart-products" id="cart">
+                                <!-- <div class="product">
+                                    <div class="product-cart-details">
+                                        <h4 class="product-title">
+                                            <a href="product.html">Beige knitted elastic runner shoes</a>
+                                        </h4>
+                                        <span class="cart-product-info">
+                                            <span class="cart-product-qty">1</span>
+                                            x $84.00
+                                        </span>
+                                    </div>
+
+                                    <figure class="product-image-container">
+                                        <a href="product.html" class="product-image">
+                                            <img src="assets/images/products/cart/product-1.jpg" alt="product">
+                                        </a>
+                                    </figure>
+                                    <a href="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>
+                                </div> -->
+
+                            </div>
+
+                            <div class="dropdown-cart-total">
+                                <span>Total</span>
+
+                                <span class="cart-total-price">&#8358; <span id="total_sum">0.00</span></span>
+                            </div><!-- End .dropdown-cart-total -->
+
+                            <div class="dropdown-cart-action">
+                                <a href="cart.html" class="btn btn-primary">Confirm Cart</a>
+                                <!-- <a href="checkout.html" class="btn btn-outline-primary-2"><span>Checkout</span><i
+                                        class="icon-long-arrow-right"></i></a> -->
+                            </div><!-- End .dropdown-cart-total -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <main class="main">
+            <div class="row">
+                <div class="container">
+                    <div class="content-left px-4">
+                        <div class="heading">
+                            <!-- <h4 class="subtitle">Our</h4> -->
+                            <h2 class="title mb-2 ">Menu</h2>
+                            <h4 class="mb-6 ">
+                                Donec nec justo eget felis facilisis fermentum. Aliquam <br />
+                                porttitor mauris sit amet orci. Aenean dignissim <br>
+                                pellentesque felis.
+                            </h4>
+                        </div>
+                        <div class="heading heading-center mb-3">
+                            <ul class="nav nav-pills justify-content-center" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="trendy-all-link" data-toggle="tab"
+                                        href="#trendy-all-tab" role="tab" aria-controls="trendy-all-tab"
+                                        aria-selected="true">All</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="trendy-fur-link" data-toggle="tab" href="#trendy-fur-tab"
+                                        role="tab" aria-controls="trendy-fur-tab" aria-selected="false">Furniture</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="trendy-decor-link" data-toggle="tab"
+                                        href="#trendy-decor-tab" role="tab" aria-controls="trendy-decor-tab"
+                                        aria-selected="false">Decor</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="trendy-light-link" data-toggle="tab"
+                                        href="#trendy-light-tab" role="tab" aria-controls="trendy-light-tab"
+                                        aria-selected="false">Lighting</a>
+                                </li>
+                            </ul>
+                        </div><!-- End .heading -->
+
+                        <div class="tab-content tab-content-carousel">
+                            <div class="tab-pane p-0 fade show active" id="trendy-all-tab" role="tabpanel"
+                                aria-labelledby="trendy-all-link">
+                                <div class="row" id="all_categories">
+
+                                </div><!-- End .row -->
+                            </div><!-- .End .tab-pane -->
+                            <div class="tab-pane p-0 fade" id="trendy-fur-tab" role="tabpanel"
+                                aria-labelledby="trendy-fur-link">
+                                <div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow"
+                                    data-toggle="owl" data-owl-options='{
+                                        "nav": false, 
+                                        "dots": true,
+                                        "margin": 20,
+                                        "loop": false,
+                                        "responsive": {
+                                            "0": {
+                                                "items":2
+                                            },
+                                            "480": {
+                                                "items":2
+                                            },
+                                            "768": {
+                                                "items":3
+                                            },
+                                            "992": {
+                                                "items":4
+                                            },
+                                            "1200": {
+                                                "items":4,
+                                                "nav": true,
+                                                "dots": false
+                                            }
+                                        }
+                                    }'>
+                                    <div class="product product-11 text-center">
+                                        <figure class="product-media">
+                                            <span class="product-label label-new">NEW</span>
+                                            <a href="product.html">
+                                                <img src="assets/images/demos/demo-2/products/product-3-1.jpg"
+                                                    alt="Product image" class="product-image">
+                                            </a>
+
+                                            <div class="product-action-vertical">
+                                                <a href="#" class="btn-product-icon btn-wishlist"><span>add to
+                                                        wishlist</span></a>
+                                            </div><!-- End .product-action-vertical -->
+
+                                        </figure><!-- End .product-media -->
+
+                                        <div class="product-body">
+                                            <h3 class="product-title"><a href="product.html">Flow Slim Armchair</a></h3>
+                                            <!-- End .product-title -->
+                                            <div class="product-price">
+                                                $970,00
+                                            </div><!-- End .product-price -->
+                                        </div><!-- End .product-body -->
+                                        <div class="product-action">
+                                            <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                        </div><!-- End .product-action -->
+                                    </div><!-- End .product -->
+
+                                    <div class="product product-11 text-center">
+                                        <figure class="product-media">
+                                            <span class="product-label label-sale">30% OFF</span>
+                                            <a href="product.html">
+                                                <img src="assets/images/demos/demo-2/products/product-4-1.jpg"
+                                                    alt="Product image" class="product-image">
+                                            </a>
+
+                                            <div class="product-action-vertical">
+                                                <a href="#" class="btn-product-icon btn-wishlist"><span>add to
+                                                        wishlist</span></a>
+                                            </div><!-- End .product-action-vertical -->
+
+                                        </figure><!-- End .product-media -->
+
+                                        <div class="product-body">
+                                            <h3 class="product-title"><a href="product.html">Roots Sofa Bed</a></h3>
+                                            <!-- End .product-title -->
+                                            <div class="product-price">
+                                                <span class="new-price">$337,00</span>
+                                                <span class="old-price">Was $449,00</span>
+                                            </div><!-- End .product-price -->
+
+                                            <div class="product-nav product-nav-dots">
+                                                <a href="#" class="active" style="background: #878883;"><span
+                                                        class="sr-only">Color name</span></a>
+                                                <a href="#" style="background: #dfd5c2;"><span class="sr-only">Color
+                                                        name</span></a>
+                                            </div><!-- End .product-nav -->
+                                        </div><!-- End .product-body -->
+                                        <div class="product-action">
+                                            <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                        </div><!-- End .product-action -->
+                                    </div><!-- End .product -->
+                                </div><!-- End .owl-carousel -->
+                            </div><!-- .End .tab-pane -->
+                            <div class="tab-pane p-0 fade" id="trendy-decor-tab" role="tabpanel"
+                                aria-labelledby="trendy-decor-link">
+                                <div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow"
+                                    data-toggle="owl" data-owl-options='{
+                                        "nav": false, 
+                                        "dots": true,
+                                        "margin": 20,
+                                        "loop": false,
+                                        "responsive": {
+                                            "0": {
+                                                "items":2
+                                            },
+                                            "480": {
+                                                "items":2
+                                            },
+                                            "768": {
+                                                "items":3
+                                            },
+                                            "992": {
+                                                "items":4
+                                            },
+                                            "1200": {
+                                                "items":4,
+                                                "nav": true,
+                                                "dots": false
+                                            }
+                                        }
+                                    }'>
+                                    <div class="product product-11 text-center">
+                                        <figure class="product-media">
+                                            <a href="product.html">
+                                                <img src="assets/images/demos/demo-2/products/product-1-1.jpg"
+                                                    alt="Product image" class="product-image">
+                                            </a>
+
+                                            <div class="product-action-vertical">
+                                                <a href="#" class="btn-product-icon btn-wishlist"><span>add to
+                                                        wishlist</span></a>
+                                            </div><!-- End .product-action-vertical -->
+                                        </figure><!-- End .product-media -->
+
+                                        <div class="product-body">
+                                            <h3 class="product-title"><a href="product.html">Butler Stool Ladder</a>
+                                            </h3><!-- End .product-title -->
+                                            <div class="product-price">
+                                                $251,00
+                                            </div><!-- End .product-price -->
+                                        </div><!-- End .product-body -->
+                                        <div class="product-action">
+                                            <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                        </div><!-- End .product-action -->
+                                    </div><!-- End .product -->
+                                    <div class="product product-11 text-center">
+                                        <figure class="product-media">
+                                            <a href="product.html">
+                                                <img src="assets/images/demos/demo-2/products/product-6-1.jpg"
+                                                    alt="Product image" class="product-image">
+                                            </a>
+
+                                            <div class="product-action-vertical">
+                                                <a href="#" class="btn-product-icon btn-wishlist"><span>add to
+                                                        wishlist</span></a>
+                                            </div><!-- End .product-action-vertical -->
+
+                                        </figure><!-- End .product-media -->
+
+                                        <div class="product-body">
+                                            <h3 class="product-title"><a href="product.html">Elephant Armchair</a></h3>
+                                            <!-- End .product-title -->
+                                            <div class="product-price">
+                                                $457,00
+                                            </div><!-- End .product-price -->
+                                        </div><!-- End .product-body -->
+                                        <div class="product-action">
+                                            <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                        </div><!-- End .product-action -->
+                                    </div><!-- End .product -->
+                                </div><!-- End .owl-carousel -->
+                            </div><!-- .End .tab-pane -->
+                            <div class="tab-pane p-0 fade" id="trendy-light-tab" role="tabpanel"
+                                aria-labelledby="trendy-light-link">
+                                <div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow"
+                                    data-toggle="owl" data-owl-options='{
+                                        "nav": false, 
+                                        "dots": true,
+                                        "margin": 20,
+                                        "loop": false,
+                                        "responsive": {
+                                            "0": {
+                                                "items":2
+                                            },
+                                            "480": {
+                                                "items":2
+                                            },
+                                            "768": {
+                                                "items":3
+                                            },
+                                            "992": {
+                                                "items":4
+                                            },
+                                            "1200": {
+                                                "items":4,
+                                                "nav": true,
+                                                "dots": false
+                                            }
+                                        }
+                                    }'>
+                                    <div class="product product-11 text-center">
+                                        <figure class="product-media">
+                                            <a href="product.html">
+                                                <img src="assets/images/demos/demo-2/products/product-2-1.jpg"
+                                                    alt="Product image" class="product-image">
+                                            </a>
+
+                                            <div class="product-action-vertical">
+                                                <a href="#" class="btn-product-icon btn-wishlist"><span>add to
+                                                        wishlist</span></a>
+                                            </div><!-- End .product-action-vertical -->
+                                        </figure><!-- End .product-media -->
+
+                                        <div class="product-body">
+                                            <h3 class="product-title"><a href="product.html">Octo 4240</a></h3>
+                                            <!-- End .product-title -->
+                                            <div class="product-price">
+                                                $746,00
+                                            </div><!-- End .product-price -->
+
+                                            <div class="product-nav product-nav-dots">
+                                                <a href="#" class="active" style="background: #1f1e18;"><span
+                                                        class="sr-only">Color name</span></a>
+                                                <a href="#" style="background: #e8e8e8;"><span class="sr-only">Color
+                                                        name</span></a>
+                                            </div><!-- End .product-nav -->
+                                        </div><!-- End .product-body -->
+                                        <div class="product-action">
+                                            <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                        </div><!-- End .product-action -->
+                                    </div><!-- End .product -->
+                                    <div class="product product-11 text-center">
+                                        <figure class="product-media">
+                                            <a href="product.html">
+                                                <img src="assets/images/demos/demo-2/products/product-5-1.jpg"
+                                                    alt="Product image" class="product-image">
+                                            </a>
+
+                                            <div class="product-action-vertical">
+                                                <a href="#" class="btn-product-icon btn-wishlist"><span>add to
+                                                        wishlist</span></a>
+                                            </div><!-- End .product-action-vertical -->
+
+                                        </figure><!-- End .product-media -->
+
+                                        <div class="product-body">
+                                            <h3 class="product-title"><a href="product.html">Petite Table Lamp</a></h3>
+                                            <!-- End .product-title -->
+                                            <div class="product-price">
+                                                $675,00
+                                            </div><!-- End .product-price -->
+
+                                            <div class="product-nav product-nav-dots">
+                                                <a href="#" class="active" style="background: #74543e;"><span
+                                                        class="sr-only">Color name</span></a>
+                                                <a href="#" style="background: #e8e8e8;"><span class="sr-only">Color
+                                                        name</span></a>
+                                            </div><!-- End .product-nav -->
+                                        </div><!-- End .product-body -->
+                                        <div class="product-action">
+                                            <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                        </div><!-- End .product-action -->
+                                    </div><!-- End .product -->
+                                </div><!-- End .owl-carousel -->
+                            </div><!-- .End .tab-pane -->
+                        </div><!-- End .tab-content -->
+                    </div><!-- End .container -->
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer mt-5">
+            <section class="newsletter">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-sm-10 col-md-8 col-lg-6">
+                            <div class="cta-heading text-center">
+                                <h3 class="cta-title text-white">Get The Latest Deals</h3><!-- End .cta-title -->
+                                <p class="cta-desc">and receive <span class="font-weight-normal">10% discount</span> for
+                                    first first order</p><!-- End .cta-desc -->
+                            </div><!-- End .text-center -->
+
+                            <form action="#">
+                                <div class="input-group input-group-round">
+                                    <input type="email" class="form-control form-control-white"
+                                        placeholder="Enter your Email Address" aria-label="Email Adress" required="">
+                                    <div class="input-group-append">
+                                        <button class="btn" type="submit">Subscribe</button>
+                                    </div><!-- .End .input-group-append -->
+                                </div><!-- .End .input-group -->
+                            </form>
+                        </div><!-- End .col-sm-10 col-md-8 col-lg-6 -->
+                    </div><!-- End .row -->
+                </div>
+            </section>
+            <div class="footer-middle">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6 col-lg-3">
+                            <div class="widget widget-about">
+                                <h4 class="widget-title">About Molla</h4><!-- End .widget-title -->
+                                <p>Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue, eu vulputate
+                                    magna eros eu erat. </p>
+
+                                <div class="social-icons">
+                                    <a href="#" class="social-icon" title="Facebook" target="_blank"><i
+                                            class="icon-facebook-f"></i></a>
+                                    <a href="#" class="social-icon" title="Twitter" target="_blank"><i
+                                            class="icon-twitter"></i></a>
+                                    <a href="#" class="social-icon" title="Instagram" target="_blank"><i
+                                            class="icon-instagram"></i></a>
+                                    <a href="#" class="social-icon" title="Youtube" target="_blank"><i
+                                            class="icon-youtube"></i></a>
+                                </div><!-- End .soial-icons -->
+                            </div><!-- End .widget about-widget -->
+                        </div><!-- End .col-sm-6 col-lg-3 -->
+
+                        <div class="col-sm-6 col-lg-3">
+                            <div class="widget">
+                                <h4 class="widget-title">Useful Links</h4><!-- End .widget-title -->
+
+                                <ul class="widget-list">
+                                    <li><a href="about.html">About Molla</a></li>
+                                    <li><a href="#">How to shop on Molla</a></li>
+                                    <li><a href="#">FAQ</a></li>
+                                    <li><a href="contact.html">Contact us</a></li>
+                                    <li><a href="login.html">Log in</a></li>
+                                </ul><!-- End .widget-list -->
+                            </div><!-- End .widget -->
+                        </div><!-- End .col-sm-6 col-lg-3 -->
+
+                        <div class="col-sm-6 col-lg-3">
+                            <div class="widget">
+                                <h4 class="widget-title">Customer Service</h4><!-- End .widget-title -->
+
+                                <ul class="widget-list">
+                                    <li><a href="#">Payment Methods</a></li>
+                                    <li><a href="#">Money-back guarantee!</a></li>
+                                    <li><a href="#">Returns</a></li>
+                                    <li><a href="#">Shipping</a></li>
+                                    <li><a href="#">Terms and conditions</a></li>
+                                    <li><a href="#">Privacy Policy</a></li>
+                                </ul><!-- End .widget-list -->
+                            </div><!-- End .widget -->
+                        </div><!-- End .col-sm-6 col-lg-3 -->
+
+                        <div class="col-sm-6 col-lg-3">
+                            <div class="widget">
+                                <h4 class="widget-title">My Account</h4><!-- End .widget-title -->
+
+                                <ul class="widget-list">
+                                    <li><a href="#">Sign In</a></li>
+                                    <li><a href="cart.html">View Cart</a></li>
+                                    <li><a href="#">My Wishlist</a></li>
+                                    <li><a href="#">Track My Order</a></li>
+                                    <li><a href="#">Help</a></li>
+                                </ul><!-- End .widget-list -->
+                            </div><!-- End .widget -->
+                        </div><!-- End .col-sm-6 col-lg-3 -->
+                    </div><!-- End .row -->
+                </div><!-- End .container -->
+            </div><!-- End .footer-middle -->
+
+            <div class="footer-bottom">
+                <div class="container">
+                    <figure class="footer-payments">
+                        <img src="assets/images/payments.png" alt="Payment methods" width="272" height="20">
+                    </figure><!-- End .footer-payments -->
+                    <img src="assets/images/demos/demo-30/logo.png" alt="Molla Logo" width="82" height="25">
+                    <p class="footer-copyright">Copyright © 2020 Molla Store. All Rights Reserved.</p>
+                    <!-- End .footer-copyright -->
+                </div><!-- End .container -->
+            </div><!-- End .footer-bottom -->
+        </footer><!-- End .footer -->
+    </div>
+
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/jquery.hoverIntent.min.js"></script>
+    <script src="assets/js/jquery.waypoints.min.js"></script>
+    <script src="assets/js/superfish.min.js"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
+    <script src="assets/js/bootstrap-input-spinner.js"></script>
+    <script src="assets/js/jquery.magnific-popup.min.js"></script>
+    <!-- Main JS File -->
+    <script src="assets/js/main.js"></script>
+    <!-- <script src="assets/js/demos/demo-30.js"></script> -->
+    <script src="server/client/fill_box.js"></script>
+    <script src="server/client/product_page.js"></script>
+</body>
+
+
+</html>

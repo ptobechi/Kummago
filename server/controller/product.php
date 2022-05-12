@@ -11,5 +11,8 @@ if($_POST["action"] == "upload_product"){
     $input = $_POST["input"];
 
     $obj->searchProducts($input);
+}elseif($_POST["action"] == "getProducts"){
+
+    $obj->getProducts();
 }
 

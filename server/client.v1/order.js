@@ -1,12 +1,12 @@
 // alert("lal")
-(function(){
+(function () {
     $.ajax({
         url: "../server/controller/order.php",
         method: "POST",
-        data:{action:"getOrder"},
+        data: { action: "getOrder" },
         success: function (data) {
             const tr_div = document.getElementById("OREDR");
-            
+
             tr_div.innerHTML += data;
         },
         error: function (e) {
@@ -16,36 +16,23 @@
         }
     });
 
-    
+
 })();
 
-(function(){
+(function () {
     let url = window.location.href;
     let explode = url.split("=");
     let id = explode[1]
     $.ajax({
         url: "../server/controller/order.php",
         method: "POST",
-        data:{action:"getDraftedOrderDetails", id:id},
+        data: { action: "getDraftedOrderDetails", id: id },
         success: function (data) {
             // console.log(data);
             const tr_div = document.getElementById("cart");
             cartItems = JSON.parse(data);
-            // console.log(cartItems)
-    
-            // let products = [];
-            // let totalCost = 0;
 
-            // for(let i=0; i < Object.keys(cartItems["items"]).length; i++){
-            //     products.push({"name":cartItems["items"][i].item, "price": cartItems["items"][i].price * cartItems["items"][i].qty, "inCart": cartItems["items"][i].qty})
-
-            //     totalCost += parseInt(cartItems["items"][i].price * cartItems["items"][i].qty);                 
-            // }
-            // localStorage.setItem("totalCost", totalCost);
-            // setItems(products)
-            // displayResult()
-            
-            for(let i=0; i < Object.keys(cartItems["items"]).length; i++){
+            for (let i = 0; i < Object.keys(cartItems["items"]).length; i++) {
                 // console.log(cartItems["items"][i].item );
                 tr_div.innerHTML += `
                     <tr>
@@ -73,7 +60,7 @@
                 
                 `;
             }
-            
+
         },
         error: function (e) {
             $("#output").text(e.responseText);
@@ -82,18 +69,18 @@
         }
     });
 
-    
+
 })();
 
 
-$("#kt_modal_offer_a_deal_form").submit(function(event){
+$("#kt_modal_offer_a_deal_form").submit(function (event) {
     event.preventDefault();
 
     let order = event.originalEvent.submitter.id;
-    if(order == "place-order"){
+    if (order == "place-order") {
         orderStatus = 1;
         //set status for pending is zero (1)
-    }else{
+    } else {
         orderStatus = 0;
         //set status for save draft is zero (0)
     }
@@ -107,31 +94,31 @@ $("#kt_modal_offer_a_deal_form").submit(function(event){
     let prices = document.querySelectorAll(".box_items_price");
     let quantity = document.querySelectorAll(".box_items_qty");
     let box_item = [];
-    
-    if(box_name == "" || box_description == "" || delivery_date == ""){
+
+    if (box_name == "" || box_description == "" || delivery_date == "") {
         document.getElementById("empty_form_error").innerHTML = "<span class='alert alert-warning' role='alert'>Do ensure to enter all available field</span>";
         return
     }
 
-    for(let i=0; i<items.length; i++){
-        box_item.push({"item":items[i].value, "price":prices[i].value, "qty":quantity[i].value});        
+    for (let i = 0; i < items.length; i++) {
+        box_item.push({ "item": items[i].value, "price": prices[i].value, "qty": quantity[i].value });
     }
 
     // console.log(box_item)
 
     let data = {
-        total_price : total_price,
+        total_price: total_price,
         delivery_date: delivery_date,
         orderStatus: orderStatus,
-        basket : {
+        basket: {
             box_name: box_name,
             desc: box_description,
             items: box_item
         },
         action: "place_order"
-    };      
+    };
 
-     // disabled the submit button
+    // disabled the submit button
     $("#place-order").prop("disabled", true);
     $("#save_to_draft").prop("disabled", true);
 
@@ -141,14 +128,14 @@ $("#kt_modal_offer_a_deal_form").submit(function(event){
         enctype: 'multipart/form-data',
         data: data,
         success: function (data) {
-            if(data == 201){
+            if (data == 201) {
                 alert("Your order has been received");
                 localStorage.removeItem("productsInCart");
                 localStorage.removeItem("totalCost");
                 $("#place-order").prop("disabled", false);
                 $("#save_to_draft").prop("disabled", false);
                 location.reload();
-            }else{
+            } else {
                 alert(data);
                 $("#place-order").prop("disabled", false);
                 $("#save_to_draft").prop("disabled", false);
@@ -163,7 +150,7 @@ $("#kt_modal_offer_a_deal_form").submit(function(event){
             $("#save_to_draft").prop("disabled", false);
         }
     });
-    
+
 
 });
 

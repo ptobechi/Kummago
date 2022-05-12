@@ -1,8 +1,8 @@
-(function(){
+(function () {
     $.ajax({
         url: "../server/controller/user.php",
         method: "POST",
-        data:{action:"getProfile"},
+        data: { action: "getProfile" },
         success: function (data) {
             const profile_div = document.getElementById("kt_account_profile_details");
             profile_div.innerHTML += data;
@@ -13,25 +13,25 @@
         }
     });
 
-    
+
     $.ajax({
         url: "../server/controller/user.php",
         method: "POST",
-        data:{action:"getProfilePics"},
+        data: { action: "getProfilePics" },
         success: function (data) {
-            if(data != ""){
+            if (data != "") {
                 let x = document.querySelectorAll("#profile_pic").length;
-                for(let i =0; i<x; i++){
-                    document.querySelectorAll("#profile_pic")[i].src = '../server/avatars/'+data+'';
+                for (let i = 0; i < x; i++) {
+                    document.querySelectorAll("#profile_pic")[i].src = '../server/avatars/' + data + '';
                 }
-                document.getElementById("profile_img").style.backgroundImage  = 'url(../server/avatars/'+data+')';
+                document.getElementById("profile_img").style.backgroundImage = 'url(../server/avatars/' + data + ')';
 
-            }else{
+            } else {
                 let x = document.querySelectorAll("#profile_pic").length;
-                for(let i =0; i<x; i++){
+                for (let i = 0; i < x; i++) {
                     document.querySelectorAll("#profile_pic")[i].src = 'assets/media/avatars/default.png';
                 }
-                document.getElementById("profile_img").style.backgroundImage  = 'url(assets/media/avatars/default.png)';
+                document.getElementById("profile_img").style.backgroundImage = 'url(assets/media/avatars/default.png)';
             }
         },
         error: function (e) {
@@ -41,11 +41,11 @@
         }
     });
 
-    
+
 })();
 
 
-$("#submit_form").submit(function(event){
+$("#submit_form").submit(function (event) {
     event.preventDefault();
 
     //initialize form variables
@@ -54,18 +54,17 @@ $("#submit_form").submit(function(event){
     let phonenumber = document.getElementById("phone_number").value;
     let address = document.getElementById("home_address").value;
     let state = document.getElementById("state").value;
-    
+
     let data = {
-        firstname : firstname,
+        firstname: firstname,
         lastname: lastname,
         phonenumber: phonenumber,
         address: address,
         state: state,
         action: "update_profile"
-    };  
-    // console.log(data)    
+    };
 
-     // disabled the submit button
+    // disabled the submit button
     $("#kt_account_profile_details_submit").prop("disabled", true);
 
     $.ajax({
@@ -74,11 +73,11 @@ $("#submit_form").submit(function(event){
         enctype: 'multipart/form-data',
         data: data,
         success: function (data) {
-            if(data == 200){
+            if (data == 200) {
                 alert("Profile Updated");
                 window.location.href = "user/";
                 $("#kt_account_profile_details_submit").prop("disabled", false);
-            }else{
+            } else {
                 alert("Profile Update Failed");
                 $("#kt_account_profile_details_submit").prop("disabled", false);
             }
@@ -89,7 +88,7 @@ $("#submit_form").submit(function(event){
             $("#kt_account_profile_details_submit").prop("disabled", false);
         }
     });
-    
+
 
 });
 
@@ -109,7 +108,7 @@ $(document).ready(function () {
             data: form_data,
             success: function (response) {
                 // if(response == "201"){
-                    window.location.href = "user/";
+                window.location.href = "user/";
                 // }
             },
             error: function (response) {
