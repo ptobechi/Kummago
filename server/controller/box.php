@@ -9,8 +9,6 @@ if($_POST["action"] == "create_box"){
     $items =  $_POST["items"];
     $item = json_encode($items, true);
 
-    // echo $item;
-
     $box->uploadBox($box_name, $box_desc, $item, $total);
 }
 

@@ -125,63 +125,109 @@
                                         </tr>
                                     </thead>
 
-                                    <tbody id="cart">
+                                    <form id="submit_cart">
+                                        <input type="hidden" name="total_sum" id="total_sum">
+                                        <tbody id="cart">
 
 
-                                    </tbody>
+                                        </tbody>
                                 </table><!-- End .table table-wishlist -->
                             </div><!-- End .col-lg-9 -->
                             <aside class="col-lg-3">
-                                <div class="summary summary-cart">
-                                    <h3 class="summary-title">Cart Total</h3><!-- End .summary-title -->
+                                <div class="summary summary-cart" id="delivery_option">
+                                    <h3 class="summary-title" id="deliveryOptionsError">Cart Total</h3>
+                                    <!-- End .summary-title -->
+
+                                    <div class="accordion-summary" id="accordion-payment">
+                                        <div class="card">
+                                            <div class="card-header" id="heading-1">
+                                                <h2 class="card-title">
+                                                    <input id="radio" name="delivery_schedule" type="radio" class="mt-2"
+                                                        id="delivery_schedule" value="One_Time" role="button"
+                                                        data-toggle="collapse" href="#collapse-1" aria-expanded="false"
+                                                        aria-controls="collapse-1" />
+                                                    <label for="radio"> One Time Delivery</label>
+
+
+                                                </h2>
+                                            </div><!-- End .card-header -->
+                                            <div id="collapse-1" class="collapse show" aria-labelledby="heading-1"
+                                                data-parent="#accordion-payment">
+                                                <div class="card-body">
+                                                    <p class="mb-1">Set delivery schedule </p>
+                                                    <div>
+                                                        <input id="instant" name="delivery_time" type="radio"
+                                                            id="delivery_time" value="today" />
+                                                        <label for="instant">Instant</label>
+                                                    </div>
+                                                    <div>
+                                                        <select class="form-select" id="dayContainer">
+                                                            <option value="undefined">
+                                                                Select a prefered delivery date
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                </div><!-- End .card-body -->
+                                            </div><!-- End .collapse -->
+                                        </div><!-- End .card -->
+
+                                        <div class="card">
+                                            <div class="card-header" id="heading-2">
+                                                <h2 class="card-title">
+                                                    <input id="radio1" name="delivery_schedule" type="radio"
+                                                        id="delivery_schedule" value="Daily" class="collapsed"
+                                                        role="button" data-toggle="collapse" href="#collapse-2"
+                                                        aria-expanded="true" aria-controls="collapse-2" />
+                                                    <label for="radio1"> Daily Delivery</label>
+                                                </h2>
+                                            </div><!-- End .card-header -->
+                                            <div id="collapse-2" class="collapse" aria-labelledby="heading-2"
+                                                data-parent="#accordion-payment">
+                                                <div class="card-body">
+                                                    <p class="mb-1">Set Daily delivery schedule </p>
+                                                    <strong>NB:</strong>
+                                                    <span>Delivery will be available starting from</span>
+                                                    <span><select class="form-select" required="" id="dateContainer">
+                                                            <option value="undefined">Open this select menu</option>
+                                                        </select>
+                                                    </span>
+
+
+                                                    <ul>
+                                                        <li>
+                                                            <input id="morning" name="delivery_time" type="radio"
+                                                                id="delivery_time" value="Morning" />
+                                                            <label for="morning"> Morning</label>
+                                                        </li>
+                                                        <li><input id="afternoon" name="delivery_time" type="radio"
+                                                                id="delivery_time" value="Afternoon" />
+                                                            <label for="afternoon"> Afternoon</label>
+                                                        </li>
+                                                        <li><input id="evening" name="delivery_time" type="radio"
+                                                                id="delivery_time" value="Evening" />
+                                                            <label for="evening"> Evening</label>
+                                                        </li>
+                                                    </ul>
+                                                </div><!-- End .card-body -->
+                                            </div><!-- End .collapse -->
+                                        </div><!-- End .card -->
+
+                                    </div><!-- End .accordion -->
 
                                     <table class="table table-summary">
                                         <tbody>
-                                            <tr class="summary-subtotal">
-                                                <td>Subtotal:</td>
-                                                <td>&#8358; <span id="total_price">0.00</span></td>
-                                            </tr><!-- End .summary-subtotal -->
-                                            <tr class="summary-shipping">
-                                                <td>Delivery:</td>
-                                                <td>&nbsp;</td>
-                                            </tr>
-
-                                            <tr class="summary-shipping-row">
-                                                <td>
-                                                    <div class="custom-control custom-radio">
-                                                        <input type="radio" id="free-shipping" name="shipping"
-                                                            class="custom-control-input">
-                                                        <label class="custom-control-label" for="free-shipping">Daily
-                                                            Delivery <icon class="fa fa-info-circle"
-                                                                data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                title="Tooltip on top"></icon></label>
-                                                    </div><!-- End .custom-control -->
-                                                </td>
-                                                <td> &#8358; 10.00</td>
-                                            </tr><!-- End .summary-shipping-row -->
-
-                                            <tr class="summary-shipping-row">
-                                                <td>
-                                                    <div class="custom-control custom-radio">
-                                                        <input type="radio" id="standart-shipping" name="shipping"
-                                                            class="custom-control-input">
-                                                        <label class="custom-control-label" for="standart-shipping">One
-                                                            Time Delivery:</label>
-                                                    </div><!-- End .custom-control -->
-                                                </td>
-                                                <td>&#8358; 10.00</td>
-                                            </tr><!-- End .summary-shipping-row -->
-
                                             <tr class="summary-total">
                                                 <td>Total:</td>
-                                                <td>&#8358; 160.00</td>
+                                                <td>&#8358; <span id="total_price">0.00</span></td>
                                             </tr><!-- End .summary-total -->
                                         </tbody>
                                     </table><!-- End .table table-summary -->
 
-                                    <a href="checkout.html"
-                                        class="btn btn-outline-primary-2 btn-order btn-block">PROCEED TO CHECKOUT</a>
+                                    <button type="submit" class="btn btn-outline-primary-2 btn-order btn-block">PROCEED
+                                        TO
+                                        CHECKOUT</button>
                                 </div><!-- End .summary -->
+                                </form>
 
                             </aside><!-- End .col-lg-3 -->
                         </div><!-- End .row -->
@@ -461,6 +507,7 @@
     <script src="assets/js/bootstrap-input-spinner.js"></script>
     <!-- Main JS File -->
     <script src="server/client/cart.js"></script>
+    <script src="server/client/checkout.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
 

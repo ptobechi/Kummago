@@ -147,10 +147,11 @@ class Database{
             `email` VARCHAR(255) NOT NULL , 
             `phone` VARCHAR(50) NOT NULL , 
             `address` VARCHAR(555) NOT NULL , 
+            `meal_plan` VARCHAR(1976) NOT NULL , 
             `basket` VARCHAR(1976) NOT NULL , 
-            `total_sum` VARCHAR(255) NOT NULL , 
+            `total_price` VARCHAR(255) NOT NULL , 
+            `description` VARCHAR(255) NOT NULL , 
             `status` INT(11) NOT NULL ,  
-            `delivery_date` DATETIME NOT NULL ,  
             `date` DATETIME NOT NULL ,  
             PRIMARY KEY  (`id`),
             FOREIGN KEY (`userid`) REFERENCES register(`userid`) 

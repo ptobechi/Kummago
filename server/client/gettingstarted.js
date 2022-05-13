@@ -1,8 +1,8 @@
 $("#gettingStarted").submit(function (event) {
     event.preventDefault();
 
-    let meal_quantity = $('input[name="meal_quantity"]:checked').val();
-    if (meal_quantity == undefined) {
+    let meal_plan = $('input[name="meal_quantity"]:checked').val();
+    if (meal_plan == undefined) {
         $("#started__description")[0].scrollIntoView({
             behavior: "smooth"
         });
@@ -11,11 +11,12 @@ $("#gettingStarted").submit(function (event) {
     }
     let location = $("#location").val();
     let email_address = $("#email_address").val();
-    let delivery_date = $("#delivery_date").val();
+    // let delivery_date = $("#delivery_date").val();
 
     setCookie("email", email_address, 1);
     setCookie("location", location, 1);
-    setCookie("delivery_date", delivery_date, 1);
+    setCookie("meal_plan", meal_plan, 1);
+    // setCookie("delivery_date", delivery_date, 1);
 
     window.location.href = "fill_box.html"
 

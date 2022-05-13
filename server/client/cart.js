@@ -130,9 +130,9 @@ function displayResult() {
                             </figure>
                             <h3 class="product-title">
                                 <a href="#">${item.name}</a>
-                                <input type='hidden' value='${item.name}' name='item[]' class='box_items' />
-                                <input type='hidden' value='${item.price}' name='price[]' class='box_items_price' />
-                                <input type='hidden' value='${item.inCart}' name='quantity[]' class='box_items_qty' />
+                                <input type='hidden' value='${item.name}' name='item[]' id='box_items' />
+                                <input type='hidden' value='${item.price}' name='price[]' id='box_items_price' />
+                                <input type='hidden' value='${item.inCart}' name='quantity[]' id='box_items_qty' />
                             </h3>
                         </div>
                     </td>
@@ -151,8 +151,33 @@ function displayResult() {
             `
         });
         document.getElementById("total_price").textContent = sum;
+        document.getElementById("total_sum").value = sum;
     }
 
 }
 
 displayResult();
+// let today = new Date();
+// let tomorrow = new Date(today.getTime() + (48 * 60 * 60 * 1000));
+
+const weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+const d = new Date();
+let day = weekday[d.getDay()];
+
+// weekday.forEach(element => {
+//     if (element == day) {
+//         alert(element);
+//     }
+
+// });
+
+let dateContainer = document.getElementById("dateContainer");
+
+for (let i = 2; i < weekday.length; i++) {
+    dateContainer.innerHTML += `
+        <option value="${weekday[i]}">${weekday[i]}</option>
+    `;
+
+}
+
+// document.getElementById("delivery_date").textContent = weekday.length;
