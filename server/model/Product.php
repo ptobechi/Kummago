@@ -60,36 +60,18 @@ class Product extends Database{
         if($numRows > 0){
             while($rows = $query->fetch_array()){
                 $row[] = "
-                    <div class='col-6 col-md-4 col-lg-3'>
-                        <div class='product product-11 text-center'>
-                            <figure class='product-media'>
-                                <a href='product.html'>
-                                    <img src='assets/images/demos/demo-2/products/product-2-1.jpg'
-                                        alt='Product image' class='product-image'>
-                                </a>
-                                <div class='product-action-vertical'>
-                                    <a href='#' class='btn-product-icon btn-wishlist'><span>add to
-                                            wishlist</span></a>
-                                </div>
-                            </figure>
-                    
-                            <div class='product-body'>
-                                <h3 class='product-title'>
-                                    <a href='product.html'>
-                                        <span class='text-primary'>
-                                            <strong>$rows[product]</strong>
-                                        </span>
-                                    </a>
-                                </h3>
-                    
-                                <div class='product-price'>
-                                    <span>&#8358 $rows[price]</span>
-                                </div>
-                    
-                                <div class='text-center justify-content-center'>
-                                    <button class='btn btn-primary btn-round' id='$rows[product]-$rows[price]' onclick='addItem(this.id)'>Add to Box</button>
-                                </div>
-                            </div>
+                    <div class='col-12 col-md-3 col-lg-3'>
+                        <div class='food-card'>
+                            <img src='server/menu/Beef-Bourguignon__88320.webp' alt=''
+                                style='width:100%'>
+                            <h6 class='description'>$rows[product]
+                            </h6>
+                            <p class='price'>&#8358; $rows[price]</p>
+                            <p>
+                                <button class='btn btn-black-cart btn-round' id='$rows[product]-$rows[price]' onclick='addItem(this.id)'>
+                                    Add to Cart
+                                </button>
+                            </p>
                         </div>
                     </div>
                 ";

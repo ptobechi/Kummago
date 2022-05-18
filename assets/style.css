@@ -8,16 +8,43 @@
   line-height: 30px;
   margin: 0 2px;
   color: #000;
-  font-weight: 500;
+  font-weight: 700;
   text-align: center;
   border: 2px solid #000;
   /* background: green; */
   border-radius: 50%;
   display: inline-block;
-  opacity: 0.25;
+  /* opacity: 0.25; */
+}
+.step.active,
+.step.checked {
+  color: #fff;
+}
+.step.active {
+  background-color: #64b018;
+}
+.step.checked {
+  background-color: #000;
 }
 .main {
   margin-top: 10em;
+}
+.back-btn {
+  background-color: #000;
+  /* border-radius: 35%; */
+  padding: 5px 15px 5px 15px;
+}
+@media screen and (max-width: 768px) {
+  .stepper-text {
+    display: none;
+  }
+  .get-started-img {
+    display: none;
+  }
+  .back-btn {
+    background-color: #000;
+    border-radius: 50%;
+  }
 }
 .user-box input,
 select {

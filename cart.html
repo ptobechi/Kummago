@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Molla - Bootstrap eCommerce Template</title>
+    <title>Chowbox - Cart</title>
     <meta name="keywords" content="HTML5 Template">
     <meta name="description" content="Molla - Bootstrap eCommerce Template">
     <meta name="author" content="p-themes">
@@ -24,7 +24,11 @@
     <!-- Plugins CSS File -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <!-- Main CSS File -->
+    <!-- Main CSS File -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="assets/css/skins/skin-demo-30.css">
+    <link rel="stylesheet" href="assets/css/demos/demo-30.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
         integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -65,46 +69,59 @@
                                 <a href="#">Links</a>
                                 <ul>
                                     <li><a href="tel:#"><i class="icon-phone"></i>Call: +0123 456 789</a></li>
-                                    <li><a href="wishlist.html"><i class="icon-heart-o"></i>Wishlist
-                                            <span>(3)</span></a></li>
-                                    <li><a href="about.html">About Us</a></li>
-                                    <li><a href="contact.html">Contact Us</a></li>
-                                    <li><a href="#signin-modal" data-toggle="modal"><i class="icon-user"></i>Login</a>
-                                    </li>
-                                </ul>
                             </li>
+                        </ul>
+                        </li>
                         </ul><!-- End .top-menu -->
                     </div><!-- End .header-right -->
                 </div><!-- End .container -->
             </div><!-- End .header-top -->
 
-            <nav class="navbar fixed-top navbar-light bg-light mb-5">
+            <nav class="navbar fixed-top navbar-light bg-light">
                 <div class="container">
-                    <a class="btn btn-primary rounded-pill my-2" href="#"><i class="fa fa-angle-left mx-2"></i> <span
-                            class="mx-2">Back</span> </a>
-                    <div class="stepper">
-                        <span class="step-text"><span class="step" id="step-1">1</span>Select plan</span>
-                        <span class="step-text"><span class="step" id="step-2">2</span>Fill your box</span>
-                        <span class="step-text"><span class="step" id="step-3">3</span>Confirm your cart</span>
-                        <span class="step-text"><span class="step" id="step-4">4</span>Checkout</span>
+                    <div class="back-btn header-left">
+                        <a href="index.html">
+                            <i class="fa fa-angle-left text-white"></i>
+                            <span class="stepper-text text-white mx-2"> Back</span>
+                        </a>
                     </div>
-                    <div></div>
+                    <div class="stepper">
+                        <span class="step-text">
+                            <span class="step checked" id="step-1">1</span>
+                            <span class="stepper-text">Select plan</span>
+                        </span>
+                        <span class="step-text">
+                            <span class="step checked" id="step-2">2</span>
+                            <span class="stepper-text">Fill your box </span>
+                        </span>
+                        <span class="step-text">
+                            <span class="step active" id="step-3">3</span>
+                            <span class="stepper-text">Confirm your cart</span>
+                        </span>
+                        <span class="step-text">
+                            <span class="step" id="step-4">4</span>
+                            <span class="stepper-text">Checkout</span>
+
+                        </span>
+                    </div>
+                    <div> </div>
+
                 </div>
             </nav>
         </header><!-- End .header -->
 
         <main class="main">
-            <div class="page-header text-center" style="background-image: url('assets/images/page-header-bg.jpg')">
+            <div class="page-header text-center" style="background-color: black; margin-top: -7em;">
                 <div class="container">
-                    <h1 class="page-title">Shopping Cart<span>Shop</span></h1>
+                    <h1 class="page-title text-white">Cart</h1>
                 </div><!-- End .container -->
             </div><!-- End .page-header -->
             <nav aria-label="breadcrumb" class="breadcrumb-nav">
                 <div class="container">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li class="breadcrumb-item"><a href="#">Shop</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Shopping Cart</li>
+                        <li class="breadcrumb-item"><a href="#">Fill Box</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Cart</li>
                     </ol>
                 </div><!-- End .container -->
             </nav><!-- End .breadcrumb-nav -->
@@ -140,15 +157,13 @@
 
                                     <div class="accordion-summary" id="accordion-payment">
                                         <div class="card">
-                                            <div class="card-header" id="heading-1">
+                                            <div class="card-title" id="heading-1">
                                                 <h2 class="card-title">
                                                     <input id="radio" name="delivery_schedule" type="radio" class="mt-2"
                                                         id="delivery_schedule" value="One_Time" role="button"
                                                         data-toggle="collapse" href="#collapse-1" aria-expanded="false"
                                                         aria-controls="collapse-1" />
                                                     <label for="radio"> One Time Delivery</label>
-
-
                                                 </h2>
                                             </div><!-- End .card-header -->
                                             <div id="collapse-1" class="collapse show" aria-labelledby="heading-1"
@@ -227,6 +242,9 @@
                                         TO
                                         CHECKOUT</button>
                                 </div><!-- End .summary -->
+                                <a href="fill_box.html" class="btn btn-outline-dark-2 btn-block mb-3"><span>Edit
+                                        Box</span><i class="icon-edit"></i></a>
+
                                 </form>
 
                             </aside><!-- End .col-lg-3 -->

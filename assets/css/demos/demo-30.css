@@ -7,6 +7,34 @@
   position: relative;
   z-index: 1040;
 }
+.food-card {
+  border-radius: 4%;
+  text-align: center;
+  font-family: arial;
+  padding: 10px;
+}
+
+.price {
+  color: #000;
+  font-size: 18px;
+  font-weight: 600;
+}
+.description {
+  color: #000;
+  font-size: 19px;
+  font-weight: 600;
+}
+
+.card button {
+  border: none;
+  outline: 0;
+  padding: 12px;
+  margin: 10px;
+  text-align: center;
+  cursor: pointer;
+  /* width: 100%; */
+  font-size: 18px;
+}
 
 .header-top {
   background-color: #222;
@@ -178,8 +206,9 @@ figure {
 }
 
 .intro-section .banner img {
-  min-height: 600px;
+  min-height: 300px;
   object-fit: cover;
+  margin-top: 5rem;
 }
 .intro-section .banner-text {
   font-size: 2rem;
@@ -235,6 +264,7 @@ figure {
   position: absolute;
   left: 16%;
   bottom: -6rem;
+  top: 2em;
 }
 .sound-section .banner .banner-content {
   position: static;
@@ -512,7 +542,7 @@ figure {
   left: 0;
   top: 0;
   border-right: 100vw solid #fff;
-  border-bottom: 80px solid transparent;
+  border-bottom: 2px solid transparent;
 }
 .overview .bg-image {
   position: absolute;
