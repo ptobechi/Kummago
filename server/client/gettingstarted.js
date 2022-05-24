@@ -18,8 +18,41 @@ $("#gettingStarted").submit(function (event) {
     setCookie("meal_plan", meal_plan, 1);
     // setCookie("delivery_date", delivery_date, 1);
 
-    window.location.href = "fill_box.html"
+    window.location.href = "fill_box.html";
 
+});
+
+$("#loginForm").submit(function (event) {
+    event.preventDefault();
+    let email = $("#email_address").val();
+    let password = $("#password").val();
+
+    let data = {
+        email: email,
+        password: password,
+        action: "login"
+    };
+
+    $.ajax({
+        url: "server/controller/user.php",
+        method: "POST",
+        enctype: 'multipart/form-data',
+        data: data,
+        success: function (data) {
+            console.log(data)
+            if (data == 200) {
+                window.location.href = getCookie("href");
+            } else {
+                alert("Invalid login")
+            }
+
+        },
+        error: function (e) {
+            $("#output").text(e.responseText);
+            console.log("ERROR : ", e);
+            $("#login_btn").prop("disabled", false);
+        }
+    });
 });
 
 function setCookie(cname, cvalue, exdays) {

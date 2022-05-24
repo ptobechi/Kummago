@@ -117,7 +117,7 @@ class Database{
             `lastname` VARCHAR(255) NOT NULL , 
             `email` VARCHAR(255) NOT NULL , 
             `phone` VARCHAR(255) NOT NULL ,  
-            `address` VARCHAR(255) NOT NULL ,  
+            `address` VARCHAR(255) NOT NULL , 
             `state` VARCHAR(255) NOT NULL ,  
             `country` VARCHAR(255) NOT NULL , 
             `image` VARCHAR(255) NOT NULL ,  
@@ -126,16 +126,19 @@ class Database{
         )ENGINE = InnoDB;");
         $create = $this->connect()->query($create_table);
 
-        $create_table = ("CREATE TABLE IF NOT EXISTS box ( 
+        $create_table = ("CREATE TABLE IF NOT EXISTS billing_address ( 
             `id` INT NOT NULL AUTO_INCREMENT ,
-            `boxid` INT(11) NOT NULL , 
-            `box` VARCHAR(255) NOT NULL , 
-            `descripton` VARCHAR(1976) NOT NULL , 
-            `items` VARCHAR(1976) NOT NULL , 
-            `total_sum` VARCHAR(255) NOT NULL , 
-            `status` INT(11) NOT NULL ,  
-            `date` DATETIME NOT NULL ,  
-            PRIMARY KEY  (`id`)
+            `userid` INT(11) NOT NULL , 
+            `email` VARCHAR(255) NOT NULL , 
+            `street` VARCHAR(255) NOT NULL , 
+            `apartment_unit` VARCHAR(255) NOT NULL , 
+            `city` VARCHAR(255) NOT NULL ,  
+            `address` VARCHAR(255) NOT NULL ,  
+            `state` VARCHAR(255) NOT NULL ,  
+            `country` VARCHAR(255) NOT NULL , 
+            `image` VARCHAR(255) NOT NULL ,  
+            PRIMARY KEY  (`id`),
+            FOREIGN KEY (`userid`) REFERENCES register(`userid`)
         )ENGINE = InnoDB;");
         $create = $this->connect()->query($create_table);
 
@@ -147,12 +150,13 @@ class Database{
             `email` VARCHAR(255) NOT NULL , 
             `phone` VARCHAR(50) NOT NULL , 
             `address` VARCHAR(555) NOT NULL , 
-            `meal_plan` VARCHAR(1976) NOT NULL , 
+            `meal_plan` VARCHAR(555) NOT NULL , 
             `basket` VARCHAR(1976) NOT NULL , 
             `total_price` VARCHAR(255) NOT NULL , 
             `description` VARCHAR(255) NOT NULL , 
             `status` INT(11) NOT NULL ,  
             `date` DATETIME NOT NULL ,  
+            `delivery_date` DATETIME NOT NULL ,  
             PRIMARY KEY  (`id`),
             FOREIGN KEY (`userid`) REFERENCES register(`userid`) 
         )ENGINE = InnoDB;");
@@ -162,8 +166,8 @@ class Database{
             `id` INT NOT NULL AUTO_INCREMENT ,
             `productid` INT(11) NOT NULL , 
             `category` VARCHAR(255) NOT NULL , 
-            `product` VARCHAR(255) NOT NULL , 
-            `price` VARCHAR(255) NOT NULL , 
+            `product_name` VARCHAR(255) NOT NULL , 
+            `product_price` VARCHAR(255) NOT NULL , 
             `description` VARCHAR(255) NOT NULL , 
             `image` VARCHAR(255) NOT NULL , 
             `status` INT(11) NOT NULL ,  
@@ -171,21 +175,6 @@ class Database{
             PRIMARY KEY  (`id`)
         )ENGINE = InnoDB;");
         $create = $this->connect()->query($create_table);
-
-        $create_table = ("CREATE TABLE IF NOT EXISTS notifications ( 
-            `id` INT NOT NULL AUTO_INCREMENT ,
-            `userid` INT(11) NOT NULL , 
-            `email` VARCHAR(255) NOT NULL , 
-            `msg_title` VARCHAR(255) NOT NULL ,  
-            `msg_subject` VARCHAR(255) NOT NULL ,  
-            `msg_body` VARCHAR(255) NOT NULL ,  
-            `status` INT(11) NOT NULL , 
-            `date` DATETIME NOT NULL ,
-            PRIMARY KEY  (`id`),
-            FOREIGN KEY (`userid`) REFERENCES register(`userid`)
-        )ENGINE = InnoDB;");
-        $create = $this->connect()->query($create_table);
- 
    
     }
 

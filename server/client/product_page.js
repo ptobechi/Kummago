@@ -8,6 +8,7 @@
             const label_div = document.getElementById("all_categories");
             label_div.innerHTML += data;
         },
+
         error: function (e) {
             $("#output").text(e.responseText);
             console.log("ERROR : ", e);

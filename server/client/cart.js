@@ -130,9 +130,6 @@ function displayResult() {
                             </figure>
                             <h3 class="product-title">
                                 <a href="#">${item.name}</a>
-                                <input type='hidden' value='${item.name}' name='item[]' id='box_items' />
-                                <input type='hidden' value='${item.price}' name='price[]' id='box_items_price' />
-                                <input type='hidden' value='${item.inCart}' name='quantity[]' id='box_items_qty' />
                             </h3>
                         </div>
                     </td>
