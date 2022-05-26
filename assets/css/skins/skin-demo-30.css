@@ -157,7 +157,7 @@ a:focus {
 .btn-white:not(:disabled):not(.disabled):active,
 .btn-white:not(:disabled):not(.disabled).active,
 .show > .btn-white.dropdown-toggle {
-  color: #fff;
+  color: #000;
   background-color: #dfe5d7;
   border-color: #dfe5d7;
   box-shadow: none;

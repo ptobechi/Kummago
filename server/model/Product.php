@@ -53,6 +53,74 @@ class Product extends Database{
         
     }
 
+    public function getAllHomeMeals(){
+        $sql = "SELECT * FROM products LIMIT 4 ";
+        $query = $this->connect()->query($sql);
+        $numRows = $query->num_rows;
+        if($numRows > 0){
+            while($rows = $query->fetch_array()){
+                $row[] = "
+                    <div class='col-12 col-md-3 col-lg-3'>
+                        <div class='home-food-card'>
+                            <img src='server/menu/Beef-Bourguignon__88320.webp' alt=''
+                                style='width:100%'>
+                            <h6 class='description'>$rows[product]
+                            </h6>
+                            <p class='price'>&#8358; $rows[price]</p>
+                            <p>
+                                <button class='btn btn-success btn-round' id='$rows[product]-$rows[price]' onclick='addItem(this.id)'>
+                                    Add to Cart
+                                </button>
+                            </p>
+                        </div>
+                    </div>
+                ";
+            }
+        }else{
+            return null;
+            exit;
+        }
+
+         foreach($row as $data){
+            echo $data;
+
+        }
+    }
+
+    public function getAllHomeBreakfast(){
+        $sql = "SELECT * FROM products  LIMIT 4 ";
+        $query = $this->connect()->query($sql);
+        $numRows = $query->num_rows;
+        if($numRows > 0){
+            while($rows = $query->fetch_array()){
+                $row[] = "
+                    <div class='col-12 col-md-3 col-lg-3'>
+                        <div class='home-food-card'>
+                            <img src='server/menu/Beef-Bourguignon__88320.webp' alt=''
+                                style='width:100%'>
+                            <h6 class='description'>$rows[product]
+                            </h6>
+                            <p class='price'>&#8358; $rows[price]</p>
+                            <p>
+                                <button class='btn btn-success btn-round' id='$rows[product]-$rows[price]' onclick='addItem(this.id)'>
+                                    Add to Cart
+                                </button>
+                            </p>
+                        </div>
+                    </div>
+                ";
+            }
+        }else{
+            return null;
+            exit;
+        }
+
+         foreach($row as $data){
+            echo $data;
+
+        }
+    }
+
     public function getProducts(){
         $sql = "SELECT * FROM products ";
         $query = $this->connect()->query($sql);
@@ -86,6 +154,7 @@ class Product extends Database{
 
         }
     }
+    
 
     public function getBoxDetails($id){
         $sql = "SELECT * FROM box WHERE id='$id' ";

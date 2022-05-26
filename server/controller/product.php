@@ -14,5 +14,9 @@ if($_POST["action"] == "upload_product"){
 }elseif($_POST["action"] == "getProducts"){
 
     $obj->getProducts();
+}elseif ($_POST["action"] == "homeProducts") {
+    $obj->getAllHomeMeals();
+}elseif ($_POST["action"] == "homeBreakfast") {
+    $obj->getAllHomeBreakfast();
 }
 
