@@ -60,8 +60,10 @@ class CheckOut extends Database{
         //INSERT INTO TABLE
         $sql3 = "INSERT INTO orders SET userid='$userid', orderid='$orderid', name='$name', email='$email', phone='$phone', address='$address', meal_plan='$meal_plan', basket='$item', total_price='$total_price', description='$description', status='0', date=NOW() ";
         $query3 = $this->connect()->query($sql3);
-        if($query3){             
-            echo "201";
+        if($query3){    
+            $data = array("status"=>"201", "email"=>$email, "orderid"=>$orderid, "amount"=>$total_price);     
+            $xdata = json_encode($data, true);    
+            echo $xdata;
             exit;
         }else{
             echo "400";

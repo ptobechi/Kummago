@@ -52,6 +52,24 @@ class Order extends Database{
 
     }
 
+    public function updateOrder($orderid){
+        $this->orderid = $orderid;
+
+        $orderid = mysqli_escape_string($this->connect(), $orderid);
+
+        $sql = "UPDATE orders SET status=1 WHERE orderid='$orderid' ";
+        $query = $this->connect()->query($sql);
+        if($query){
+            echo "201";
+            exit;
+        }else{
+            echo "401";
+            exit;
+        }
+
+
+    }
+
     public function getOrders(){
         $email = $_SESSION["email"];
         $userid = $_SESSION["userid"];

@@ -9,8 +9,6 @@ if($_POST["action"] == "place_order"){
     $items =  $_POST["basket"];
     $basket = json_encode($items, true);
 
-    // echo $item;
-
     $box->createOrder($basket, $total, $status, $delivery_date);
 }
 
@@ -33,4 +31,10 @@ if($_POST["action"] == "getDraftedOrderDetails"){
     // echo "okl";
 
     $box->getDraftedOrderDetails($id);
+}
+
+if($_POST["action"] == "update_order"){
+    $orderid = $_POST["reference"];
+
+    $box->updateOrder($orderid);
 }

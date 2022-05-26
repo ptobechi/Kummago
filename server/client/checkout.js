@@ -81,7 +81,6 @@ $("#confirm_checkout").submit(function (event) {
         orders.push({ "product": product[i].value, "price": price[i].value, "qty": quantity[i].value });
     }
 
-
     let data = {
         email: email,
         phone: phone,
@@ -105,15 +104,16 @@ $("#confirm_checkout").submit(function (event) {
         enctype: 'multipart/form-data',
         data: data,
         success: function (data) {
-            console.log(data)
-            if (data == 201) {
-                alert("Created");
-                localStorage.removeItem("productsInCart");
-                localStorage.removeItem("totalCost");
-                localStorage.removeItem("totalCost");
-                localStorage.removeItem("totalCart")
+            let datas = JSON.parse(data)
+           
+            if (datas["status"] == 201) {
+                // localStorage.removeItem("productsInCart");
+                // localStorage.removeItem("totalCost");
+                // localStorage.removeItem("totalCost");
+                // localStorage.removeItem("totalCart")
 
                 $("#check_out_btn").prop("disabled", false);
+                makePayment(datas["email"], datas["amount"], datas["orderid"]);
                 // location.reload();
             } else {
                 alert("Failed");
@@ -130,6 +130,50 @@ $("#confirm_checkout").submit(function (event) {
     });
 
 });
+
+function makePayment(email, amount, reference){
+    let handler = PaystackPop.setup({
+        key: 'pk_test_c2fcaea95321cf23f0af2681d625c0351ce010a6', // Replace with your public key
+        email: email,
+        amount: amount * 100,
+        ref: reference, // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
+        // label: "Optional string that replaces customer email"
+        onClose: function(){
+        alert('Window closed.');
+        },
+        callback: function(response){
+            let message = 'Payment complete! Reference: ' + response.reference;
+            alert(message);
+            console.log(response.status);
+            if(response.status = "success"){
+
+            }
+        }
+    });
+    handler.openIframe();
+}
+
+function updateSuccessfulOrder(reference){
+    let data = {
+        reference: reference,
+        action: "update_order"
+    };
+
+    $.ajax({
+        url: "server/controller/order.php",
+        method: "POST",
+        enctype: 'multipart/form-data',
+        data: data,
+        success: function (data) {
+            
+        },
+        error: function (e) {
+            $("#output").text(e.responseText);
+            console.log("ERROR : ", e);
+            $("#check_out_btn").prop("disabled", false);
+        }
+    });
+}
 
 (function getDefaultAddress() {
     let data = {
