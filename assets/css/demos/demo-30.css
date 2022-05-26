@@ -161,7 +161,7 @@ figure {
 }
 .banner .banner-content {
   left: 19%;
-  top: 58%;
+  top: 45%;
   width: auto;
   padding: 1rem;
 }
@@ -173,11 +173,11 @@ figure {
   color: #222;
 }
 .banner .banner-title {
-  font-size: 6rem;
+  font-size: 7rem;
   font-weight: 700;
   line-height: 1;
   letter-spacing: -0.025em;
-  color: #222;
+  /* color: #222; */
 }
 .banner .banner-text {
   font-size: 1.6rem;

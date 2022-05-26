@@ -4,7 +4,6 @@
         method: "POST",
         data: { action: "getProducts" },
         success: function (data) {
-            // console.log(data);
             const label_div = document.getElementById("all_categories");
             label_div.innerHTML += data;
         },
