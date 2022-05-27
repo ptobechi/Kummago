@@ -78,34 +78,17 @@ class Order extends Database{
         $numRows = $query->num_rows;
         if($numRows > 0){
             while($rows = $query->fetch_assoc()){
-                $data = json_decode($rows["basket"], true);
-                $count = sizeof($data);
-                    $d = $rows["delivery_date"];
-                    $explode = explode(" ", $d);
-                    $date = $explode[0];
+                $row[] = $rows;
+                $data = json_decode($row, true);
 
-                    if($rows["status"] == "1"){
-                        $status = "Processing";
-                    }
-                $rowa[] = "
-                    <tr>
-                        <td class='text-dark fw-bolder text-hover-primary fs-6'>".$date."</td>
-                        <td class='text-dark fw-bolder text-hover-primary fs-6'>".$data["box_name"]."</td>
-                        <td class='text-dark fw-bolder text-hover-primary fs-6'>$rows[total_sum]</td>
-                        <td class='text-dark fw-bolder text-hover-primary fs-6'>$status</td>
-                    </tr>    
-                ";
+                echo $data;
 
             }
         }else{
-            return null;
+            echo "404";
             exit;
         }
 
-         foreach($rowa as $data){
-            echo $data ."";
-
-        }
     }
 
     public function getOrderDetails($id){

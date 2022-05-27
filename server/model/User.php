@@ -148,55 +148,18 @@ class User extends Messages{
         $numRows = $queries->num_rows;
         if($numRows > 0){
             while($row = $queries->fetch_assoc()){
-                $user = "
-                        <div class='row mb-6'>
-                            <label class='col-lg-4 col-form-label required fw-bold fs-6'>Full Name</label>
-                            <div class='col-lg-8'>
-                                <div class='row'>
-                                    <div class='col-lg-6 fv-row'>
-                                        <input type='text' id='first_name' class='form-control form-control-lg form-control-solid mb-3 mb-lg-0' placeholder='First name' value='$row[firstname]' required/>
-                                    </div>
-                                    <div class='col-lg-6 fv-row'>
-                                        <input type='text' id='last_name' class='form-control form-control-lg form-control-solid' placeholder='Last name' value='$row[lastname]' required />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class='row mb-6'>
-                            <label class='col-lg-4 col-form-label fw-bold fs-6'>
-                                <span class='required'>Contact Phone</span>
-                                <i class='fas fa-exclamation-circle ms-1 fs-7' data-bs-toggle='tooltip' title='Phone number must be active'></i>
-                            </label>
-                            <div class='col-lg-8 fv-row'>
-                                <input type='tel' id='phone_number' class='form-control form-control-lg form-control-solid' placeholder='enter a valid contact phone number' value='$row[phone]' required />
-                            </div>
-                        </div>
-
-                        <div class='row mb-6'>
-                            <label class='col-lg-4 col-form-label fw-bold fs-6'>
-                                <span class='required'>Home Address</span>
-                                <i class='fas fa-exclamation-circle ms-1 fs-7' data-bs-toggle='tooltip' title='This will be set to your delivery address upon box order'></i>
-                            </label>
-                            <div class='col-lg-8'>
-                                <div class='row'>
-                                    <div class='col-lg-6 fv-row'>
-                                        <input type='text' id='state' class='form-control form-control-lg form-control-solid mb-3 mb-lg-0' placeholder='State' value='$row[state]' required />
-                                    </div>
-                                    <div class='col-lg-6 fv-row'>
-                                        <input type='text' id='home_address' class='form-control form-control-lg form-control-solid' placeholder='Home Address' value='$row[address]' required />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                ";
+                $user[] = $row;
+                $data = json_encode($user, true);
+                echo $data;
             }
         }else{
 
-            $user = "";
+            echo "400";
+            exit;
         }
 
-        echo $user;
     }
+
 
     public function retrieveProfilePics(){
         $userid = $_SESSION["userid"];

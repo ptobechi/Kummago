@@ -41,7 +41,14 @@ $("#loginForm").submit(function (event) {
         success: function (data) {
             console.log(data)
             if (data == 200) {
-                window.location.href = getCookie("href");
+                let location = getCookie("href");
+                alert(location)
+                if(location == ''){
+                    window.location.href="dashboard.html"; 
+                }else{
+                    window.location.href = location;
+
+                }
             } else {
                 alert("Invalid login")
             }

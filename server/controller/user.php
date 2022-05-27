@@ -18,6 +18,10 @@ if($_POST["action"] == "register"){
     
     $user->retrieveProfile();
 
+}elseif($_POST["action"] == "getAddress"){
+    
+    $user->retrieveAddress();
+
 }elseif($_POST["action"] == "authUser"){
     
     $user->authusers();
