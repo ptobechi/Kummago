@@ -4,7 +4,7 @@ function getAllMeals () {
         method: "POST",
         data: { action: "getProducts" },
         success: function (data) {
-            $("#all_available_meal").html(data);
+            document.getElementById("all_menu").innerHTML = data;
         },
 
         error: function (e) {

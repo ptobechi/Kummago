@@ -61,7 +61,7 @@ class Product extends Database{
             while($rows = $query->fetch_array()){
                 $row[] = "
                     <div class='col-12 col-md-3 col-lg-3'>
-                        <div class='home-food-card'>
+                        <div class='home-food-card'> 
                             <img src='server/menu/Beef-Bourguignon__88320.webp' alt=''
                                 style='width:100%'>
                             <h6 class='description'>$rows[product]

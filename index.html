@@ -2,9 +2,7 @@
 <html lang="en">
 
 <head>
-
     <title>Chowbox</title>
-
     <script>
         WebFontConfig = {
             google: { families: ['Open+Sans:300,400,600,700', 'Poppins:300,400,500,600,700'] }
@@ -49,16 +47,16 @@
 
 <body>
     <div class="page-wrapper">
-        <div class="notification" style="background-image: url(assets/images/demos/demo-30/notification-back.jpg)">
+        <!-- <div class="notification" style="background-image: url(assets/images/demos/demo-30/notification-back.jpg)">
             <div class="notify-content">
                 <h3 class="text-dark">Get 25% off your first order!</h3>
             </div>
             <div class="notify-action">
                 <a href="#"><i class="icon-close text-dark"></i></a>
             </div>
-        </div>
-        <header class="header">
-            <div class="header-top">
+        </div> -->
+        <header class="header" >
+            <div class="header-top" style="background-image: url(assets/images/demos/demo-30/notification-back.jpg)">
                 <div class="container">
                     <div class="header-right">
                         <ul class="top-menu p-2">
@@ -80,9 +78,9 @@
                             <span class="sr-only">Toggle mobile menu</span>
                             <i class="icon-bars"></i>
                         </button>
-
+                        
                         <a href="index.html" class="logo">
-                            <img src="assets/images/demos/demo-30/logo.png" alt="Molla Logo" width="82" height="20">
+                            <img src="assets/images/demos/demo-30/logo.jpg" alt="Logo" width="82" height="20">
                         </a>
                     </div><!-- End .header-left -->
 
@@ -107,7 +105,7 @@
         </header><!-- End .header -->
 
         <main class="main">
-            <section class="overview " >
+            <section class="overview" >
                 <div class="container">
                     <figure class="bg-image">
                         <!-- <img src="assets/images/bg-circle-03.png" alt="Background" width="799" height="760"> -->
@@ -123,12 +121,13 @@
                             <div class="banner-content">
                                 <h3 class="banner-subtitle text-primary">Spend Less,</h3>
                                 <h2 class="banner-title text-white mb-3"> Get More From <br/>Our Meal Deals</h2>
-
-                             
                                 <div class="action">
-                                    <a href="#" class="btn btn-white btn-round m-2">Solo Meal</a>
-                                    <a href="#" class="btn btn-primary btn-round m-2">Weekly Meals </a>
+                                    <a href="get_started.html" class="btn btn-white btn-round m-2">Get
+                                        Started</a>
+                                    <a href="fill_box.html" class="btn btn-primary btn-round m-2">Menu </a>
                                 </div>
+                             
+                                
                             </div>
                         </div>
                     </div>
@@ -188,10 +187,9 @@
                         </div><!-- End .icon-box -->
                     </div>
                 </div>
-
             </section>
 
-            <section class="overview">
+            <section class="overview second">
                 <div class="container">
                     <div class="banner row d-flex">
                         <div class="col-lg-6">
@@ -227,20 +225,17 @@
                                 </div>
 
                                 <div class="action">
-                                    <a href="get_started.html" class="btn btn-white btn-round m-2">Get
-                                        Started</a>
-                                    <a href="fill_box.html" class="btn btn-primary btn-round m-2">Menu </a>
+                                    <a href="#" class="btn btn-white btn-round m-2">Solo Meal</a>
+                                    <a href="#" class="btn btn-primary btn-round m-2">Weekly Meals </a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> 
             </section>
-            <section class="overview">
+
+            <section class="overview second">
                 <div class="container">
-                    <figure class="bg-image">
-                        <!-- <img src="assets/images/bg-circle-01.png" alt="Background" width="799" height="760"> -->
-                    </figure>
                     <div class="container">
                         <div class="content-left px-4">
                             <div class="heading">
@@ -256,17 +251,79 @@
                                 <div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow"
                                     data-toggle="owl">
                                     <div class="container">
-                                        <div class="row" id="all_categories"></div>
+                                        <div class="row" id="home_menu"></div>
                                     </div>
                                 </div><!-- End .owl-carousel -->
                             </div><!-- .End .tab-pane -->
                             
                         </div><!-- End .container -->
                     </div>
+                </div>
             </section>
-            <section class="sound-section" style="background-color: #000;">
-                <!-- <div class="container service">
-                </div> -->
+
+            <section class="overview second">
+                <div class="container">
+                    <div class="banner row d-flex">
+                        <div class="col-lg-5">
+                            <div class="banner-content">
+                                <h3 class="banner-subtitle text-primary">Why order a</h3>
+                                <h2 class="banner-title text-white">Chowbox</h2>
+                                <p class="banner-text">
+                                    Imagine no market runs, no cooking, no dishes and giving you <br/> time to focus on the things that you love. 
+                                </p>
+                                <div class="banner-info row">
+                                    <div class="col-sm-6">
+                                        <div class="icon-box icon-box-side">
+                                            <span class="icon-box-icon mx-2"><i class="icon-check text-success"></i></span>
+                                            <div class="icon-box-content">
+                                                <h3 class="icon-box-title text-white">Choose from a variety of healthy
+                                                    meals</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="icon-box icon-box-side">
+                                            <span class="icon-box-icon mx-2"><i class="icon-check text-success"></i></span>
+                                            <div class="icon-box-content">
+                                                <h3 class="icon-box-title text-white">Cooked fresh by seasoned chefs
+                                                </h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="icon-box icon-box-side">
+                                            <span class="icon-box-icon mx-2">
+                                                <i class="icon-check text-success"></i>
+                                            </span>
+                                            <div class="icon-box-content">
+                                                <h3 class="icon-box-title text-white"> 
+                                                    Packaged fresh and delivered to your door
+                                                </h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="icon-box icon-box-side">
+                                            <span class="icon-box-icon mx-2"><i class="icon-check text-success"></i></span>
+                                            <div class="icon-box-content">
+                                                <h3 class="icon-box-title text-white">Microwave and ready to eat in 3
+                                                    mins</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-6 mt-lg-0 d-flex d-lg-block justify-content-right  order-lg-last">
+                            <figure class="banner-img">
+                                <img src="assets/images/plate-03.png" width="579" height="653" alt="Product">
+                            </figure>
+                        </div>
+                    </div>
+                </div> 
+            </section>
+            <!-- <section class="sound-section" style="background-color: #000;">
                 <div class="container">
                     <div class="banner row d-flex">
                         <div class="col-lg-6 mt-2 mt-lg-0">
@@ -320,19 +377,18 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-6 mt-2 mt-lg-0 d-flex d-lg-block justify-content-center">
+                        <div class="col-lg-6 mt-lg-0 d-flex d-lg-block justify-content-center">
                             <figure class="banner-img">
                                 <img src="assets/images/plate-03.png" width="579" height="653" alt="Product">
                             </figure>
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> -->
         </main>
 
         <footer class="footer">
             <section class="newsletter" style="background-color: #000;">
-                <hr/>
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-sm-10 col-md-8 col-lg-6">
@@ -422,7 +478,6 @@
 
     <button id="scroll-top" title="Back to Top"><i class="icon-arrow-up"></i></button>
 
-
     <div class="mobile-menu-overlay">
     </div><!-- End .mobil-menu-overlay -->
     <div class="mobile-menu-container">
@@ -458,8 +513,9 @@
         </div><!-- End .mobile-menu-wrapper -->
     </div><!-- End .mobile-menu-container -->
 
-
     <script src="assets/js/jquery.min.js"></script>
+    <script src="server/client/home_product.js"></script>
+
     <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/jquery.hoverIntent.min.js"></script>
     <script src="assets/js/jquery.waypoints.min.js"></script>
@@ -470,7 +526,6 @@
     <!-- Main JS File -->
     <script src="assets/js/main.js"></script>
     <script src="assets/js/demos/demo-30.js"></script>
-    <script src="server/client/home_product.js"></script>
 
 </body>
 

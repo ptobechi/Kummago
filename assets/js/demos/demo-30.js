@@ -10,9 +10,9 @@ $(document).ready(function () {
 
     // Parallax
 
-    window.addEventListener('scroll', function() {
-        var parallax = $('.bg-parallax')[0];
-        var y = ( parallax.offsetTop - this.window.pageYOffset ) * 300 / parallax.offsetTop + 50;;
-        $(parallax).css("background-position-y", y + '%');
-    });
+    // window.addEventListener('scroll', function() {
+    //     var parallax = $('.bg-parallax')[0];
+    //     // var y = ( parallax.offsetTop - this.window.pageYOffset ) * 300 / parallax.offsetTop + 50;;
+    //     $(parallax).css("background-position-y", y + '%');
+    // });
 });
