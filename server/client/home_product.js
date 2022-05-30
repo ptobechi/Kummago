@@ -1,10 +1,16 @@
 (function () {
+    let data = {
+        action: "homeProducts"
+    };
     $.ajax({
         url: "server/controller/product.php",
         method: "POST",
-        data: { action: "homeProducts" },
+        data: data,
         success: function (data) {
-            document.getElementById("home_menu").innerHTML = data;
+            console.log(data);
+            document.getElementById("homeMenu").innerHTML = data;
+            // $('#someID').html(data);
+            // alert("okay")
         },
 
         error: function (e) {

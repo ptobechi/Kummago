@@ -174,18 +174,29 @@
                                                             id="delivery_time" value="today" />
                                                         <label for="instant">Instant</label>
                                                     </div>
-                                                    <p class="mb-1">Set delivery schedule </p>
-
-                                                    <div>
-                                                        <select class="form-select" id="dayContainer">
-                                                            <option value="undefined">
-                                                                Select a prefered delivery date
-                                                            </option>
-                                                        </select>
-                                                    </div>
-                                                </div><!-- End .card-body -->
+                                                    <div class="accordion" id="accordion-1">                        
+                                                        <div class="card">
+                                                            <div class="card-header" id="heading-3">
+                                                                <h2 class="card-title">
+                                                                    <input id="radios" name="delivery_time" type="radio" class="collapsed" role="button" data-toggle="collapse" href="#collapse-3" aria-expanded="false" aria-controls="collapse-3" />
+                                                                    <label for="radios"> Set a later delivery date</label>
+                                                                </h2>
+                                                            </div><!-- End .card-header -->
+                                                            <div id="collapse-3" class="collapse" aria-labelledby="heading-3" data-parent="#accordion-1">
+                                                                <div class="card-body">
+                                                                    <select class="form-select" id="dayContainer">
+                                                                        <option value="undefined">
+                                                                            Select a prefered delivery date
+                                                                        </option>
+                                                                    </select>                                                                
+                                                                </div><!-- End .card-body -->
+                                                            </div><!-- End .collapse -->
+                                                        </div><!-- End .card -->
+                                                    </div><!-- End .accordion -->
+                                                </div>
                                             </div><!-- End .collapse -->
                                         </div><!-- End .card -->
+
 
                                         <div class="card">
                                             <div class="card-header" id="heading-2">
@@ -224,7 +235,7 @@
                                                     </ul>
                                                 </div><!-- End .card-body -->
                                             </div><!-- End .collapse -->
-                                        </div><!-- End .card -->
+                                        </div>
 
                                     </div><!-- End .accordion -->
 

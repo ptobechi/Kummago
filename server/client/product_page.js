@@ -1,10 +1,28 @@
 function getAllMeals () {
+
     $.ajax({
         url: "server/controller/product.php",
         method: "POST",
-        data: { action: "getProducts" },
+        data: { action: "getMenu", category: "" },
         success: function (data) {
-            document.getElementById("all_menu").innerHTML = data;
+            // console.log(data)
+            document.getElementById("allMenu").innerHTML += data;
+        },
+
+        error: function (e) {
+            $("#output").text(e.responseText);
+            console.log("ERROR : ", e);
+            $("#place-order").prop("disabled", false);
+        }
+    });
+
+    $.ajax({
+        url: "server/controller/product.php",
+        method: "POST",
+        data: { action: "getMenu", category: "Breakfast" },
+        success: function (data) {
+            // console.log(data)
+            document.getElementById("breakfastMenu").innerHTML += data;
         },
 
         error: function (e) {

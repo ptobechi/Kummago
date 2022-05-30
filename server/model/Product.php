@@ -54,7 +54,7 @@ class Product extends Database{
     }
 
     public function getAllHomeMeals(){
-        $sql = "SELECT * FROM products LIMIT 4 ";
+        $sql = "SELECT * FROM products ORDER BY RAND() LIMIT 4 ";
         $query = $this->connect()->query($sql);
         $numRows = $query->num_rows;
         if($numRows > 0){
@@ -87,15 +87,23 @@ class Product extends Database{
         }
     }
 
-    public function getAllHomeBreakfast(){
-        $sql = "SELECT * FROM products  LIMIT 4 ";
+    public function getMeals($category){
+        $this->category = $category;
+
+        if($category == ""){
+            $sql = "SELECT * FROM products ";
+
+        }else{
+            $sql = "SELECT * FROM products WHERE category='$category' ";
+        }
+
         $query = $this->connect()->query($sql);
         $numRows = $query->num_rows;
         if($numRows > 0){
             while($rows = $query->fetch_array()){
                 $row[] = "
                     <div class='col-12 col-md-3 col-lg-3'>
-                        <div class='home-food-card'>
+                        <div class='food-card'>
                             <img src='server/menu/Beef-Bourguignon__88320.webp' alt=''
                                 style='width:100%'>
                             <h6 class='description'>$rows[product]
@@ -154,7 +162,6 @@ class Product extends Database{
 
         }
     }
-    
 
     public function getBoxDetails($id){
         $sql = "SELECT * FROM box WHERE id='$id' ";

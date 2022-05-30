@@ -17,9 +17,9 @@ class Database{
     
     protected function connect(){
         $this->severname = "localhost";
-        $this->username = "root";//mydrgvpm_admin
-        $this->password = "";//esc1024Bytes
-        $this->db = "database";//
+        $this->username = "root";//kumamjuy_kumamjuy
+        $this->password = "";//Ck#z8uxD6jo7
+        $this->db = "database";//kumamjuy_database
 
         $connect = new mysqli($this->severname, $this->username, $this->password, $this->db);
         

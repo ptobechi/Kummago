@@ -11,9 +11,10 @@ if($_POST["action"] == "upload_product"){
     $input = $_POST["input"];
 
     $obj->searchProducts($input);
-}elseif($_POST["action"] == "getProducts"){
+}elseif($_POST["action"] == "getMenu"){
+    $category = $_POST["category"];
 
-    $obj->getProducts();
+    $obj->getMeals($category);
 }elseif ($_POST["action"] == "homeProducts") {
     $obj->getAllHomeMeals();
 }elseif ($_POST["action"] == "homeBreakfast") {
