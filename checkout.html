@@ -128,15 +128,21 @@
             <div class="page-content">
                 <div class="checkout">
                     <div class="container">
-                        <form id="confirm_checkout">
                             <div class="row">
                                 <div class="col-lg-9">
                                     <div class="custom-control custom-checkbox">
                                         <!-- <input type="checkbox" class="custom-control-input" id="checkout-create-acc"> -->
-                                        <label>
-                                            <a href="">Create an account ?</a>
+                                        <label id="label_login">
+                                            <a class="text-dark" href="">Kindly login to input delivery details.</a>
                                         </label>
+                                        <div class="col-md-8 contents" >
+                                            <form id="loginForm" autocomplete="off" >
 
+                                            </form>
+                                        </div>
+
+
+                                     <form id="confirm_checkout">
                                         <div class="accordion-summary" id="accordion-payment">
                                             <div class="card mt-2">
                                                 <div class="card-header" id="heading-1">
@@ -149,76 +155,16 @@
                                                             Address</label>
                                                     </h2>
                                                 </div><!-- End .card-header -->
-                                                <div id="old-address" class="collapse" aria-labelledby="heading-1"
+                                                <div id="old-address" class="collapse show" aria-labelledby="heading-1"
                                                     data-parent="#accordion-payment">
                                                     <div class="card-body" id="default_address_div">
-                                                        <!-- <label class="custom-control-label" for="checkout-create-acc"
-                                                            
 
-                                                        </label> -->
                                                     </div><!-- End .card-body -->
                                                 </div><!-- End .collapse -->
                                             </div><!-- End .card -->
 
-                                            <div class="card mt-3">
-                                                <div class="card-header" id="heading-2">
-                                                    <h2 class="card-title">
-                                                        <input type="radio" name="delivery_address" value="new-address"
-                                                            role="button" id="new_address" data-toggle="collapse"
-                                                            href="#new-address" aria-expanded="true"
-                                                            aria-controls="new-address">
-
-                                                        <label for="new_address"> Setup a new
-                                                            Address</label>
-                                                    </h2>
-                                                </div><!-- End .card-header -->
-                                                <div id="new-address" class="collapse show" aria-labelledby="heading-2"
-                                                    data-parent="#accordion-payment">
-                                                    <div class="card-body">
-                                                        <h2 class="checkout-title">Delivery Details</h2>
-
-                                                        <div class="row">
-                                                            <div class="col-sm-6">
-                                                                <label>Phone Number *</label>
-                                                                <input type="text" id="phone_number"
-                                                                    class="form-control">
-                                                            </div><!-- End .col-sm-6 -->
-
-                                                            <div class="col-sm-6">
-                                                                <label>Email Address *</label>
-                                                                <input type="text" id="email_address"
-                                                                    class="form-control">
-                                                            </div><!-- End .col-sm-6 -->
-                                                        </div><!-- End .row -->
-
-                                                        <div class="row">
-                                                            <div class="col-sm-6">
-                                                                <label>Street address *</label>
-                                                                <input type="text" class="form-control"
-                                                                    id="street_address"
-                                                                    placeholder="House number and Street name">
-                                                            </div><!-- End .col-sm-6 -->
-
-                                                            <div class="col-sm-6">
-                                                                <label>Appartments *</label>
-                                                                <input type="text" id="apartments" class="form-control"
-                                                                    placeholder="Appartments, suite, unit etc ...">
-                                                            </div><!-- End .col-sm-6 -->
-                                                        </div><!-- End .row -->
-
-                                                        <div class="row">
-                                                            <div class="col-sm-6">
-                                                                <label>Town / City *</label>
-                                                                <input type="text" id="town" class="form-control">
-                                                            </div><!-- End .col-sm-6 -->
-
-                                                            <div class="col-sm-6">
-                                                                <label>State / County *</label>
-                                                                <input type="text" id="state" class="form-control">
-                                                            </div><!-- End .col-sm-6 -->
-                                                        </div><!-- End .row -->
-                                                    </div><!-- End .custom-checkbox -->
-                                                </div><!-- End .card-body -->
+                                            <div class="card mt-3" id="secondary_address">
+                                                
                                             </div><!-- End .collapse -->
                                         </div><!-- End .card -->
                                     </div><!-- End .accordion -->
@@ -239,18 +185,18 @@
                                             <tbody id="local_products"></tbody>
 
                                             <tbody>
-                                                <tr>
-                                                    <td><a href="">Your delivery information will appear here</a></td>
-                                                    <td></td>
-                                                </tr>
 
                                                 <tr class="summary-total">
-                                                    <td>Total:</td>
-                                                    <td> &#8358; <span id="total_cost"></span></td>
+                                                    <td class="text-success">Total:</td>
+                                                    <td class="text-success text-right"> &#8358; <span id="total_cost"></span></td>
                                                     <input type="hidden" id="total_sum">
                                                 </tr>
                                             </tbody>
                                         </table>
+                                        <a href="fill_box.html" class="btn btn-outline-dark-2 btn-block mb-3">
+                                            <span>Edit Box</span><i class="icon-edit"></i>
+                                        </a>
+                                        
                                         <!-- <div class="accordion-summary" id="accordion-payment">
                                             <div class="card">
                                                 <div class="card-header" id="heading-1">
@@ -311,18 +257,15 @@
                                         </div> -->
 
                                         <button type="submit" id="check_out_btn"
-                                            class="btn btn-outline-primary-2 btn-order btn-block">
+                                            class="btn btn-primary btn-order btn-block">
                                             <span class="btn-text">Place Order</span>
                                             <span class="btn-hover-text">Continue</span>
                                         </button>
                                     </div><!-- End .summary -->
-                                    <a href="fill_box.html" class="btn btn-outline-dark-2 btn-block mb-3">
-                                        <span>Edit Box</span><i class="icon-edit"></i>
-                                    </a>
+                                </form>                                  
 
                                 </aside><!-- End .col-lg-3 -->
                             </div><!-- End .row -->
-                        </form>
                     </div><!-- End .container -->
                 </div><!-- End .checkout -->
             </div><!-- End .page-content -->
@@ -380,8 +323,8 @@
 
             <div class="footer-bottom">
                 <div class="container">
-                    <img src="assets/images/demos/demo-30/logo-light.jpg" alt="Chowbox" width="100" height="100">
-                    <p class="footer-copyright">Copyright © 2022 Chowbox. All Rights Reserved.</p>
+                    <img src="assets/images/demos/demo-30/logo.PNG" alt="Chowbox" width="100" height="100">
+                    <p class="footer-copyright">Copyright © 2022 Chowbox Meals, LLC<br/> All Rights Reserved.</p>
                     <!-- End .footer-copyright -->
                 </div><!-- End .container -->
             </div><!-- End .footer-bottom -->
@@ -426,6 +369,10 @@
 
 
     <!-- Plugins JS File -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="server/client/checkout.js"></script>
+
+    <script src="server/client/gettingstarted.js"></script>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/jquery.hoverIntent.min.js"></script>
@@ -434,7 +381,6 @@
     <script src="assets/js/owl.carousel.min.js"></script>
     <!-- Main JS File -->
     <script src="assets/js/main.js"></script>
-    <script src="server/client/checkout.js"></script>
     <script src="https://js.paystack.co/v1/inline.js"></script>
 
 </body>

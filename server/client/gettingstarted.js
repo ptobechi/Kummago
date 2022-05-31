@@ -21,7 +21,7 @@ $("#gettingStarted").submit(function (event) {
     window.location.href = "fill_box.html";
 
 });
-
+// alert("oka")
 $("#loginForm").submit(function (event) {
     event.preventDefault();
     let email = $("#email_address").val();
@@ -42,13 +42,16 @@ $("#loginForm").submit(function (event) {
             // console.log(data)
             if (data == 200) {
                 let location = getCookie("href");
-                // alert(location)
-                if(location == ''){
+
+                if(document.referrer = window.location.href="checkout.html"){
+                    history.back();
+                }else if(location == ''){
                     window.location.href="dashboard.html"; 
                 }else{
                     window.location.href = location;
-
                 }
+
+
             } else {
                 alert("Invalid login")
             }

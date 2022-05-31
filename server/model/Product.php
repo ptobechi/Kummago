@@ -106,14 +106,14 @@ class Product extends Database{
                         <div class='food-card'>
                             <img src='server/menu/Beef-Bourguignon__88320.webp' alt=''
                                 style='width:100%'>
-                            <h6 class='description'>$rows[product]
-                            </h6>
-                            <p class='price'>&#8358; $rows[price]</p>
+                            <p class='description'>$rows[product]</p>
+                            <p class='price'> &#8358 $rows[price]</p>
                             <p>
                                 <button class='btn btn-success btn-round' id='$rows[product]-$rows[price]' onclick='addItem(this.id)'>
                                     Add to Cart
                                 </button>
                             </p>
+                            <div id='continue_to_checkout'></div>
                         </div>
                     </div>
                 ";

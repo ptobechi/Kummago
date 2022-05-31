@@ -108,7 +108,7 @@ $("#confirm_checkout").submit(function (event) {
            
             if (datas["status"] == 201) {
                 $("#check_out_btn").prop("disabled", false);
-                makePayment(datas["email"], datas["amount"], datas["orderid"]);
+                makePayment(datas["email"], datas["amount"], datas["orderid"]); 
                 // location.reload();
             } else {
                 alert("Failed");
@@ -164,11 +164,11 @@ function updateSuccessfulOrder(reference){
             localStorage.removeItem("totalCost");
             localStorage.removeItem("totalCost");
             localStorage.removeItem("totalCart")
-            window.location.href = "dashboard.html";
+            window.location.href = "dashboard.html#tab-orders";
         },
         error: function (e) {
             $("#output").text(e.responseText);
-            console.log("ERROR : ", e);
+            // console.log("ERROR : ", e);
             $("#check_out_btn").prop("disabled", false);
         }
     });
@@ -184,14 +184,109 @@ function updateSuccessfulOrder(reference){
         enctype: 'multipart/form-data',
         data: data,
         success: function (data) {
-            console.log(data)
+            // console.log(data)
             if (data == 404) {
-                $("#default_address_div").html(`<a href="login.html" onclick='getLastLocation()'>Login to continue</a>`);
+                $("#loginForm").html(`
+                    <div class="container ">
+                        <div class="started__form form">
+                            <div class="started__description font-weight-bold mb-2 mt-2" id="started__description">
+                                Don't have an account
+                                <a class='text-success' href="create_account.html">Sign Up</a></div>
+                            <!-- Email -->
+                            <div id="email-form-field"
+                                class="form-field form-field-common form-field-text form-required">
+                                <div class="user-box">
+                                    <input type="email" name="" required="" id="email_address">
+                                    <label>Email Address</label>
+                                </div>
+                                <div class="form-field__errors">
+                                    <span id="emailMessage"></span>
+                                </div>
+                            </div>
+                            <!-- Password -->
+                            <div id="email-form-field"
+                                class="form-field form-field-common form-field-text form-required mt-2">
+                                <div class="row">
+                                    <div class="user-box col-md-12">
+                                        <input type="password" name="" required="" id="password">
+                                        <label class="mx-3">Password</label>
+                                    </div>
+                                </div>
 
+                                <div class="form-field__errors">
+                                    <span id="emailMessage"></span>
+                                </div>
+                            </div>
+
+                            <button type="submit" id="login_btn"
+                                class="btn btn-primary rounded-pill text-center mb-2">
+                                Login</button>
+                        </div>
+                    </div>`);
+
+                $("#accordion-payment").css('display','none');
+ 
                 $("#check_out_btn").prop("disabled", false);
                 // location.reload();
             } else {
+                $("#label_login").css('display','none');
+
                 $("#default_address_div").html(data);
+                $("#secondary_address").html(`<div class="card-header" id="heading-2">
+                        <h2 class="card-title">
+                            <input type="radio" name="delivery_address" value="new-address"
+                                role="button" id="new_address" data-toggle="collapse"
+                                href="#new-address" aria-expanded="true" aria-controls="new-address">
+
+                            <label for="new_address"> Setup a new Address</label>
+                        </h2>
+                    </div><!-- End .card-header -->
+                    <div id="new-address" class="collapse" aria-labelledby="heading-2"
+                        data-parent="#accordion-payment">
+                        <div class="card-body">
+                            <h2 class="checkout-title">Delivery Details</h2>
+
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label>Phone Number *</label>
+                                    <input type="text" id="phone_number"
+                                        class="form-control">
+                                </div><!-- End .col-sm-6 -->
+
+                                <div class="col-sm-6">
+                                    <label>Email Address *</label>
+                                    <input type="text" id="email_address"
+                                        class="form-control">
+                                </div><!-- End .col-sm-6 -->
+                            </div><!-- End .row -->
+
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label>House/Appartments *</label>
+                                    <input type="text" id="apartments" class="form-control"
+                                        placeholder="House, Appartments, suite, unit etc ...">
+                                </div><!-- End .col-sm-6 -->
+                                <div class="col-sm-6">
+                                    <label>Street address *</label>
+                                    <input type="text" class="form-control"
+                                        id="street_address"
+                                        placeholder="House number and Street name">
+                                </div><!-- End .col-sm-6 -->
+                            </div><!-- End .row -->
+
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label>Town / City *</label>
+                                    <input type="text" id="town" class="form-control">
+                                </div><!-- End .col-sm-6 -->
+
+                                <div class="col-sm-6">
+                                    <label>State / County *</label>
+                                    <input type="text" id="state" class="form-control">
+                                </div><!-- End .col-sm-6 -->
+                            </div><!-- End .row -->
+                        </div><!-- End .custom-checkbox -->
+                    </div><!-- End .card-body -->`)
             }
         },
         error: function (e) {

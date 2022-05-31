@@ -21,12 +21,16 @@
     $.ajax({
         url: "server/controller/order.php",
         method: "POST",
-        data: { action: "getOrders" },
+        data: { action: "getOrder" },
         success: function (data) {
-            datas = JSON.parse(data);
-            $("#firstname").val(datas[0]["firstname"]);
-            $("#lastname").val(datas[0]["lastname"]);
-            $("#default_delivery_address").html(datas[0]["firstname"]+" "+datas[0]["lastname"]+"<br/>"+datas[0]["address"]+"<br/>"+datas[0]["phone"]+"<br/>"+datas[0]["email"] );
+            // datas = JSON.parse(data);
+            console.log(data)
+
+            // if(){
+
+            // }else{
+            //     $("#open_order").html("<p>No order has been made yet.</p> ");
+            // }
         },
         error: function (e) {
             $("#output").text(e.responseText);

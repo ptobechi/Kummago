@@ -141,7 +141,7 @@ function displayResult() {
                             <icon class='fa fa-plus-circle' id='${item.name}' onclick="increaseinCart(this.id)"></icon>
                         </div>
                     </td>
-                    <td class="total-col">&#8358;  ${item.price * item.inCart}</td>
+                    <td class="total-col text-success">&#8358;  ${item.price * item.inCart}</td>
                     <td class="remove-col"><button class="btn-remove" id='${item.name}' onclick="removeProduct(this.id)"><i class="icon-close"></i></button></td>
                 </tr>
             

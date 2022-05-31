@@ -36,7 +36,9 @@
 
 .food-card .price {
   color: #000;
+  margin-top: -1px;
   font-size: 18px;
+  margin-bottom: 7px;
   font-weight: 600;
 }
 .food-card .description {
@@ -265,7 +267,15 @@ figure {
 .icon-box-side p {
   color: #999999;
 }
-
+#meal-heading{
+  max-width: 45%;
+  display: block;
+}
+@media screen and (max-width: 768px) {
+  #meal-heading{
+    max-width: fit-content;
+  }
+}
 .container.service {
   border-bottom: 1px solid #333;
 }

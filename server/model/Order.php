@@ -73,16 +73,19 @@ class Order extends Database{
     public function getOrders(){
         $email = $_SESSION["email"];
         $userid = $_SESSION["userid"];
-        $sql = "SELECT * FROM orders WHERE userid='$userid' AND email='$email' AND status != '0' ";
+        $sql = "SELECT * FROM orders WHERE userid='$userid' AND email='$email' AND status = '1' ";
         $query = $this->connect()->query($sql);
         $numRows = $query->num_rows;
         if($numRows > 0){
             while($rows = $query->fetch_assoc()){
-                $row[] = $rows;
-                $data = json_decode($row, true);
+                $user[] = $rows["basket"];
+                $data = json_encode($user, true);
+                // echo $user;
+                // print_r($user);
 
-                echo $data;
-
+                echo "
+                    <p>You have orders</p>
+                ";
             }
         }else{
             echo "404";

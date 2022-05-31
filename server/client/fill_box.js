@@ -133,7 +133,6 @@ function displayResult() {
         productContainer.innerHTML = '';
         Object.values(cartItems).map(item => {
             productContainer.innerHTML += `
-
                 <div class='product'>
                     <div class='product-cart-details'>
                         <h4 class='product-title'>
@@ -158,7 +157,10 @@ function displayResult() {
         document.getElementById("total_price").textContent = sum;
         document.getElementById("total_sum").textContent = sum;
         document.getElementById("cart_total").textContent = cart;
+        
     }
+
+    
 
 }
 
