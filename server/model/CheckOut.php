@@ -79,6 +79,7 @@ class CheckOut extends Database{
             $email = $_SESSION["email"];
         }else{
             echo "404";
+            exit;
         }
 
         $sql = "SELECT * FROM profile WHERE userid='$userid' AND email='$email' ";

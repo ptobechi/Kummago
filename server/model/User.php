@@ -29,18 +29,26 @@ class User extends Messages{
         
     }
     
-    public function userRegistration($firstname, $lastname, $email, $password){
+    public function userRegistration($email, $firstname, $lastname, $phone_number, $unit, $street, $location, $password){
+        $this->email = $email;
         $this->firstname = $firstname;
         $this->lastname = $lastname;
-        $this->email = $email;
+        $this->phone_number = $phone_number;
+        $this->unit = $unit;
+        $this->street = $street;
+        $this->location = $location;
         $this->password = $password;
 
         $this->CreateDataTables();
 
         //Escape Strings for Injetions
+        $email = mysqli_escape_string($this->connect(),$email);
         $firstname = mysqli_escape_string($this->connect(), $firstname);
         $lastname = mysqli_escape_string($this->connect(), $lastname);
-        $email = mysqli_escape_string($this->connect(),$email);
+        $phone_number = mysqli_escape_string($this->connect(), $phone_number);
+        $unit = mysqli_escape_string($this->connect(), $unit);
+        $street = mysqli_escape_string($this->connect(), $street);
+        $location = mysqli_escape_string($this->connect(), $location);
         $password = mysqli_escape_string($this->connect(),$password);
 
         //Generate Userid 
@@ -50,27 +58,27 @@ class User extends Messages{
         $email_address = strtolower($email);
 
         //Check email if already registered
-        // $sql = "SELECT email FROM register WHERE email='$email_address'";
-        // $query = $this->connect()->query($sql);
-        // $numRows = $query->num_rows;
-        // if($numRows > 0){
-        //     echo "302";
-        //     exit;
-        // }
+        $sql = "SELECT email FROM register WHERE email='$email_address'";
+        $query = $this->connect()->query($sql);
+        $numRows = $query->num_rows;
+        if($numRows > 0){
+            echo "302";
+            exit;
+        }
 
         //INSERT INTO TABLE
         $sql3 = "INSERT INTO register SET userid='$userid', email='$email_address', password='$password', role='user', status='0', date=NOW() ";
         $query3 = $this->connect()->query($sql3);
         if($query3){ 
-            $sql4 = "INSERT INTO profile SET userid='$userid', firstname='$firstname', lastname='$lastname', email='$email_address'";
+            $sql4 = "INSERT INTO profile SET userid='$userid', firstname='$firstname', lastname='$lastname', email='$email_address', phone='$phone_number', address='$unit $street', state='$location'  ";
             $query4 = $this->connect()->query($sql4);
 
             $email = $email_address;
             $name = $firstname." ".$lastname;
 
-            $this->sendEmailVerification($email, $name);
+            // $this->sendEmailVerification($email, $name);
             
-            // echo "201";
+            echo "201";
             exit;
         }else{
             echo "400";
@@ -99,36 +107,39 @@ class User extends Messages{
                 $_SESSION["email"] = $row["email"];
                 $_SESSION["userid"] = $row["userid"];
 
-                if($row["status"] == "0" AND $row["role"] == "user"){
-                    // $this->verify($email, $fname);
-                    echo "403";
-                    exit;
-                }elseif($row["status"] == "1" AND $row["role"] == "user"){
-                    ///check if profile is updated
-                    echo "202";
-                    exit;
-                }elseif($row["status"] == "2" AND $row["role"] == "user"){
-                    //verified
-                    echo "200";
-                    exit;
-                }elseif($row["status"] == "3" AND $row["role"] == "user"){
-                    //user authentication is activated
-                    echo "401";
-                     // $code = random_int(100000, 999999);
-                    // $this->TwoFactorAuthentication($code);
-                    exit;
-                }elseif($row["status"] == "4" AND $row["role"] == "user"){
-                    //an error exists
-                    echo "404";
-                    exit;
-                }elseif($row["role"] == "admin"){
-                    echo "admin";
-                    exit;
-                }else{
-                    //an error exists
-                    echo "404";
-                    exit;
-                }
+                echo "200";
+                exit;
+
+                // if($row["status"] == "0" AND $row["role"] == "user"){
+                //     // $this->verify($email, $fname);
+                //     echo "403";
+                //     exit;
+                // }elseif($row["status"] == "1" AND $row["role"] == "user"){
+                //     ///check if profile is updated
+                //     echo "202";
+                //     exit;
+                // }elseif($row["status"] == "2" AND $row["role"] == "user"){
+                //     //verified
+                //     echo "200";
+                //     exit;
+                // }elseif($row["status"] == "3" AND $row["role"] == "user"){
+                //     //user authentication is activated
+                //     echo "401";
+                //      // $code = random_int(100000, 999999);
+                //     // $this->TwoFactorAuthentication($code);
+                //     exit;
+                // }elseif($row["status"] == "4" AND $row["role"] == "user"){
+                //     //an error exists
+                //     echo "404";
+                //     exit;
+                // }elseif($row["role"] == "admin"){
+                //     echo "admin";
+                //     exit;
+                // }else{
+                //     //an error exists
+                //     echo "404";
+                //     exit;
+                // }
             }
         }else{
             echo "404";
@@ -159,7 +170,6 @@ class User extends Messages{
         }
 
     }
-
 
     public function retrieveProfilePics(){
         $userid = $_SESSION["userid"];

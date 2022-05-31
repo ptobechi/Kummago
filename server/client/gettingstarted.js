@@ -10,10 +10,10 @@ $("#gettingStarted").submit(function (event) {
         exit;
     }
     let location = $("#location").val();
-    let email_address = $("#email_address").val();
+    // let email_address = $("#email_address").val();
     // let delivery_date = $("#delivery_date").val();
 
-    setCookie("email", email_address, 1);
+    // setCookie("email", email_address, 1);
     setCookie("location", location, 1);
     setCookie("meal_plan", meal_plan, 1);
     // setCookie("delivery_date", delivery_date, 1);
@@ -39,10 +39,10 @@ $("#loginForm").submit(function (event) {
         enctype: 'multipart/form-data',
         data: data,
         success: function (data) {
-            console.log(data)
+            // console.log(data)
             if (data == 200) {
                 let location = getCookie("href");
-                alert(location)
+                // alert(location)
                 if(location == ''){
                     window.location.href="dashboard.html"; 
                 }else{

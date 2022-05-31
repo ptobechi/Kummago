@@ -107,11 +107,6 @@ $("#confirm_checkout").submit(function (event) {
             let datas = JSON.parse(data)
            
             if (datas["status"] == 201) {
-                // localStorage.removeItem("productsInCart");
-                // localStorage.removeItem("totalCost");
-                // localStorage.removeItem("totalCost");
-                // localStorage.removeItem("totalCart")
-
                 $("#check_out_btn").prop("disabled", false);
                 makePayment(datas["email"], datas["amount"], datas["orderid"]);
                 // location.reload();
@@ -144,9 +139,9 @@ function makePayment(email, amount, reference){
         callback: function(response){
             let message = 'Payment complete! Reference: ' + response.reference;
             alert(message);
-            console.log(response.status);
+            // console.log(response.status);
             if(response.status = "success"){
-
+                updateSuccessfulOrder(reference)
             }
         }
     });
@@ -165,7 +160,11 @@ function updateSuccessfulOrder(reference){
         enctype: 'multipart/form-data',
         data: data,
         success: function (data) {
-            
+            localStorage.removeItem("productsInCart");
+            localStorage.removeItem("totalCost");
+            localStorage.removeItem("totalCost");
+            localStorage.removeItem("totalCart")
+            window.location.href = "dashboard.html";
         },
         error: function (e) {
             $("#output").text(e.responseText);

@@ -60,10 +60,10 @@ class Order extends Database{
         $sql = "UPDATE orders SET status=1 WHERE orderid='$orderid' ";
         $query = $this->connect()->query($sql);
         if($query){
-            echo "201";
+            echo "200";
             exit;
         }else{
-            echo "401";
+            echo "400";
             exit;
         }
 

@@ -3,11 +3,16 @@ require ("../model/User.php");
 $user = new User;
 
 if($_POST["action"] == "register"){
+    $email = $_POST["email"];
     $firstname = $_POST["firstname"];
     $lastname = $_POST["lastname"];
-    $email = $_POST["email"];
+    $phone_number = $_POST["phone"];
+    $unit = $_POST["unit"];
+    $street = $_POST["street"];
+    $location = $_POST["location"];
     $password = $_POST["password"];
-    $user->userRegistration($firstname, $lastname, $email, $password);
+
+    $user->userRegistration($email, $firstname, $lastname, $phone_number, $unit, $street, $location, $password);
 
 }elseif($_POST["action"] == "login"){
     $email = $_POST["email"];
