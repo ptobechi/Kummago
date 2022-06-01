@@ -62,7 +62,7 @@ class Product extends Database{
                 $row[] = "
                     <div class='col-12 col-md-3 col-lg-3'>
                         <div class='home-food-card'> 
-                            <img src='server/menu/Beef-Bourguignon__88320.webp' alt=''
+                            <img src='server/menu/$rows[image]' alt=''
                                 style='width:100%'>
                             <h6 class='description'>$rows[product]
                             </h6>
@@ -104,7 +104,7 @@ class Product extends Database{
                 $row[] = "
                     <div class='col-12 col-md-3 col-lg-3'>
                         <div class='food-card'>
-                            <img src='server/menu/Beef-Bourguignon__88320.webp' alt=''
+                            <img src='server/menu/$rows[image]' alt=''
                                 style='width:100%'>
                             <p class='description'>$rows[product]</p>
                             <p class='price'> &#8358 $rows[price]</p>
