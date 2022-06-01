@@ -3,15 +3,24 @@ function addItem(e) {
     let item = e.split("-");
 
     let products = {
-        name: item[0],
+        name:  item[0],
         price: item[1],
+        image: item[2],
         inCart: 0
     };
 
     setItems(products);
     setPrice(products);
     displayResult();
-    document.getElementById("search_item").value = "";
+    // document.getElementById("search_item").value = "";
+    let x = localStorage.getItem("totalCart");
+    // console.log(total)
+
+    if(x > 0){
+        document.querySelectorAll("#continue_to_checkout").forEach(element => {
+            element.innerHTML = "<a class='text-success p-2' href='cart.html'>Continue to checkout</a>"
+        }); 
+    }
 
 
 }
@@ -125,7 +134,7 @@ function displayResult() {
                         <div class="product">
                             <figure class="product-media">
                                 <a href="#">
-                                    <img src="assets/images/products/table/product-1.jpg" alt="Product image">
+                                    <img src="server/menu/${item.image}" alt="Product image">
                                 </a>
                             </figure>
                             <h3 class="product-title">

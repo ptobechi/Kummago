@@ -68,10 +68,12 @@ class Product extends Database{
                             </h6>
                             <p class='price'>&#8358; $rows[price]</p>
                             <p>
-                                <button class='btn btn-success btn-round' id='$rows[product]-$rows[price]' onclick='addItem(this.id)'>
+                                <button class='btn btn-success btn-round' id='$rows[product]-$rows[price]-$rows[image]' onclick='addItem(this.id)'>
                                     Add to Cart
                                 </button>
                             </p>
+                            <div id='continue_to_checkout'></div>
+
                         </div>
                     </div>
                 ";
@@ -109,7 +111,7 @@ class Product extends Database{
                             <p class='description'>$rows[product]</p>
                             <p class='price'> &#8358 $rows[price]</p>
                             <p>
-                                <button class='btn btn-success btn-round' id='$rows[product]-$rows[price]' onclick='addItem(this.id)'>
+                                <button class='btn btn-success btn-round' id='$rows[product]-$rows[price]-$rows[image]' onclick='addItem(this.id)'>
                                     Add to Cart
                                 </button>
                             </p>
@@ -144,7 +146,7 @@ class Product extends Database{
                             </h6>
                             <p class='price'>&#8358; $rows[price]</p>
                             <p>
-                                <button class='btn btn-black-cart btn-round' id='$rows[product]-$rows[price]' onclick='addItem(this.id)'>
+                                <button class='btn btn-black-cart btn-round' id='$rows[product]-$rows[price]-$rows[image]' onclick='addItem(this.id)'>
                                     Add to Cart
                                 </button>
                             </p>

@@ -7,16 +7,6 @@ function getAllMeals () {
         success: function (data) {
             // console.log(data)
             document.getElementById("allMenu").innerHTML += data;
-            let x = localStorage.getItem("totalCart");
-    let total = $("*#continue_to_checkout");
-
-    // console.log(total)
-
-    if(x > 0){
-        document.querySelectorAll("#continue_to_checkout").forEach(element => {
-            element.innerHTML = "<a class='text-success p-2' href='cart.html'>Continue to checkout</a>"
-        }); 
-    }
 
         },
 

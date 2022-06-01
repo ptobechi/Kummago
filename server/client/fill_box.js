@@ -5,6 +5,7 @@ function addItem(e) {
     let products = {
         name: item[0],
         price: item[1],
+        image: item[2],
         inCart: 0
     };
 
@@ -13,6 +14,14 @@ function addItem(e) {
     countItem();
     displayResult();
     // document.getElementById("search_item").value = "";
+    let x = localStorage.getItem("totalCart");
+    // console.log(total)
+
+    if(x > 0){
+        document.querySelectorAll("#continue_to_checkout").forEach(element => {
+            element.innerHTML = "<a class='text-success p-2' href='cart.html'>Continue to checkout</a>"
+        }); 
+    }
 
 
 }
@@ -145,7 +154,7 @@ function displayResult() {
 
                     <figure class='product-image-container'>
                         <a href='product.html' class='product-image'>
-                            <img src='assets/images/products/cart/product-1.jpg' alt='product'>
+                            <img src='server/menu/${item.image}' alt='product'>
                         </a>
                     </figure>
                     <a href='#' class='btn-remove' title='Remove Product'><i class='icon-close'></i></a>
